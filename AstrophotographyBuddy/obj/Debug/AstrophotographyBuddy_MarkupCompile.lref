@@ -1,10 +1,11 @@
 ﻿
-FN:\Pojects\AstrophotographyBuddy\AstrophotographyBuddy\App.xaml;;
-FN:\Pojects\AstrophotographyBuddy\AstrophotographyBuddy\MainWindow.xaml;;
-FN:\Pojects\AstrophotographyBuddy\AstrophotographyBuddy\View\ApplicationMenu.xaml;;
-FN:\Pojects\AstrophotographyBuddy\AstrophotographyBuddy\View\CameraView.xaml;;
-FN:\Pojects\AstrophotographyBuddy\AstrophotographyBuddy\View\FrameFocusView.xaml;;
-FN:\Pojects\AstrophotographyBuddy\AstrophotographyBuddy\View\ImagingView.xaml;;
-FN:\Pojects\AstrophotographyBuddy\AstrophotographyBuddy\View\SequenceView.xaml;;
-FN:\Pojects\AstrophotographyBuddy\AstrophotographyBuddy\View\TelescopeView.xaml;;
+FF:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\App.xaml;;
+FF:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\MainWindow.xaml;;
+FF:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\View\ApplicationMenu.xaml;;
+FF:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\View\CameraView.xaml;;
+FF:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\View\FrameFocusView.xaml;;
+FF:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\View\ImagingView.xaml;;
+FF:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\View\LoadingAnimation.xaml;;
+FF:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\View\SequenceView.xaml;;
+FF:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\View\TelescopeView.xaml;;
 

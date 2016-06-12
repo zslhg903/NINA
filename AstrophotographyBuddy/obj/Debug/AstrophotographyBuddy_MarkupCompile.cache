@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-N:\Pojects\AstrophotographyBuddy\AstrophotographyBuddy\obj\Debug\
+F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\Debug\
 AstrophotographyBuddy
 none
 false
 DEBUG;TRACE
-N:\Pojects\AstrophotographyBuddy\AstrophotographyBuddy\App.xaml
-7220086879
+F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\App.xaml
+8-1226120155
 
-26-1232564924
-28-343605245
-MainWindow.xaml;View\ApplicationMenu.xaml;View\CameraView.xaml;View\FrameFocusView.xaml;View\ImagingView.xaml;View\SequenceView.xaml;View\TelescopeView.xaml;
+301031702351
+28163723632
+MainWindow.xaml;View\ApplicationMenu.xaml;View\CameraView.xaml;View\FrameFocusView.xaml;View\ImagingView.xaml;View\LoadingAnimation.xaml;View\SequenceView.xaml;View\TelescopeView.xaml;
 
 False
 
