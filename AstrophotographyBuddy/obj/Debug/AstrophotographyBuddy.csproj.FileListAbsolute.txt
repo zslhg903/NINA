@@ -135,7 +135,6 @@ F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\Debug\Astrophotograp
 F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\Debug\AstrophotographyBuddy.csproj.GenerateResource.Cache
 F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\Debug\View\LoadingAnimation.g.cs
 F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\Debug\View\LoadingAnimation.baml
-F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\Debug\AstrophotographyBuddy.csprojResolveAssemblyReference.cache
 F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\Debug\View\OptionsView.g.cs
 F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\Debug\View\OptionsView.baml
 F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\Debug\View\FilterWheelView.g.cs
