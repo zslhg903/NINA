@@ -139,3 +139,4 @@ F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\Debug\View\OptionsVi
 F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\Debug\View\OptionsView.baml
 F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\Debug\View\FilterWheelView.g.cs
 F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\Debug\View\FilterWheelView.baml
+F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\Debug\AstrophotographyBuddy.csprojResolveAssemblyReference.cache
