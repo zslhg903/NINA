@@ -122,3 +122,4 @@ F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\Debug\Astrophotograp
 F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\Debug\AstrophotographyBuddy.csproj.GenerateResource.Cache
 F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\bin\Debug\Newtonsoft.Json.dll
 F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\bin\Debug\Newtonsoft.Json.xml
+F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\Debug\AstrophotographyBuddy.csprojResolveAssemblyReference.cache
