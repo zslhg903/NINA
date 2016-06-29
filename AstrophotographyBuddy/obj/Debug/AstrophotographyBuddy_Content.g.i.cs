@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/telescope.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/telescopeactive.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/telescopeinactive.png")]
 
 
