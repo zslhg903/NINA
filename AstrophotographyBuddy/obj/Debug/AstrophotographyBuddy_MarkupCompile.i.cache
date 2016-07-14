@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\App.xaml
-16-579917835
+15950486466
 
-50729036920
+49-1449266195
 321248619686
-MainWindow.xaml;Resources\Camera.xaml;Resources\SVGDictionary.xaml;View\ApplicationMenu.xaml;View\CameraCoolingChartsView.xaml;View\CameraView.xaml;View\FilterWheelView.xaml;View\FrameFocusView.xaml;View\ImagingView.xaml;View\LoadingAnimation.xaml;View\OptionsView.xaml;View\OverView.xaml;View\PHD2Graph.xaml;View\PHD2View.xaml;View\SequenceView.xaml;View\TelescopeView.xaml;
+MainWindow.xaml;Resources\SVGDictionary.xaml;View\ApplicationMenu.xaml;View\CameraCoolingChartsView.xaml;View\CameraView.xaml;View\FilterWheelView.xaml;View\FrameFocusView.xaml;View\ImagingView.xaml;View\LoadingAnimation.xaml;View\OptionsView.xaml;View\OverView.xaml;View\PHD2Graph.xaml;View\PHD2View.xaml;View\SequenceView.xaml;View\TelescopeView.xaml;
 
 True
 
