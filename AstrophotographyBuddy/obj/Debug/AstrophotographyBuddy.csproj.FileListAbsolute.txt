@@ -135,3 +135,4 @@ F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\Debug\Astrophotograp
 F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\Debug\AstrophotographyBuddy.csproj.GenerateResource.Cache
 F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\Debug\AstrophotographyBuddy.exe
 F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\Debug\AstrophotographyBuddy.pdb
+F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\Debug\AstrophotographyBuddy.csprojResolveAssemblyReference.cache
