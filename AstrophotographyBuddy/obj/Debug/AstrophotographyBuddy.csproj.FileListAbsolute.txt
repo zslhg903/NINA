@@ -135,5 +135,9 @@ F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\Debug\Astrophotograp
 F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\Debug\AstrophotographyBuddy.csproj.GenerateResource.Cache
 F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\Debug\AstrophotographyBuddy.exe
 F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\Debug\AstrophotographyBuddy.pdb
-F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\Debug\AstrophotographyBuddy.csprojResolveAssemblyReference.cache
-F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\bin\Debug\Resources\Credits.html
+F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\bin\Debug\Credits.html
+F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\bin\Debug\AstrophotographyBuddy.exe.manifest
+F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\bin\Debug\AstrophotographyBuddy.application
+F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\Debug\AstrophotographyBuddy.TrustInfo.xml
+F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\Debug\AstrophotographyBuddy.exe.manifest
+F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\Debug\AstrophotographyBuddy.application
