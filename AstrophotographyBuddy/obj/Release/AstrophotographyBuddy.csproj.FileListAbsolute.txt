@@ -41,4 +41,8 @@ F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\Release\Astrophotogr
 F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\Release\AstrophotographyBuddy.csproj.GenerateResource.Cache
 F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\Release\AstrophotographyBuddy.exe
 F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\Release\AstrophotographyBuddy.pdb
-F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\Release\AstrophotographyBuddy.csprojResolveAssemblyReference.cache
+F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\Release\AstrophotographyBuddy.TrustInfo.xml
+F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\Release\AstrophotographyBuddy.exe.manifest
+F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\Release\AstrophotographyBuddy.application
+N:\Astrofotografie\AstrophotographyBuddy\AstrophotographyBuddy.exe.manifest
+N:\Astrofotografie\AstrophotographyBuddy\AstrophotographyBuddy.application
