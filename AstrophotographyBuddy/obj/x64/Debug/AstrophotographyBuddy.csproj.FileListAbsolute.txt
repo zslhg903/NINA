@@ -61,3 +61,4 @@ F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\bin\x64\Debug\LICENCE.tx
 F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\x64\Debug\AstrophotographyBuddy_Content.g.cs
 F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\x64\Debug\View\PlateSolveView.g.cs
 F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\x64\Debug\View\PlateSolveView.baml
+F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\x64\Debug\AstrophotographyBuddy.csprojResolveAssemblyReference.cache
