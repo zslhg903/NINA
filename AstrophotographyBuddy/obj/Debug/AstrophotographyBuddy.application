@@ -7,14 +7,14 @@
     <framework targetVersion="4.5" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="AstrophotographyBuddy.exe.manifest" size="14042">
+    <dependentAssembly dependencyType="install" codebase="AstrophotographyBuddy.exe.manifest" size="14431">
       <assemblyIdentity name="AstrophotographyBuddy.exe" version="0.1.0.0" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>L0a5bvWdO00woajuRox3M8cThJUH24Ee6PsvoWCZGiU=</dsig:DigestValue>
+        <dsig:DigestValue>mYS1rJD9bdaidylofxtmwOgXWCqc5MSDAyU7otA4Kx4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
