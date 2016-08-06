@@ -105,7 +105,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>VLljGlQEPJSMYOzXsSeelTYQ3icQZAf++zm5CH36U5Y=</dsig:DigestValue>
+        <dsig:DigestValue>Z4NXKwEX2yRZJckIRAsCKrjDpzym/LZpw3o3y6QHglA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -205,13 +205,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="AstrophotographyBuddy.exe.config" size="4815">
+  <file name="AstrophotographyBuddy.exe.config" size="4940">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>01ixbtXFMiRXTakf0zDgtAiCa7mfzZrPp/oaFu/K/dA=</dsig:DigestValue>
+      <dsig:DigestValue>lAnhh9hau0qxf8YvZWbysnj6KXLaPGTp5r/e9rfrH2k=</dsig:DigestValue>
     </hash>
   </file>
   <file name="LICENCE.txt" size="7798">
