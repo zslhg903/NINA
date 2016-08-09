@@ -61,4 +61,3 @@ F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\x64\Release\Astropho
 F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\x64\Release\AstrophotographyBuddy.application
 F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\x64\Release\AstrophotographyBuddy.exe
 F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\x64\Release\AstrophotographyBuddy.pdb
-F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\x64\Release\AstrophotographyBuddy.csprojResolveAssemblyReference.cache

@@ -98,14 +98,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AstrophotographyBuddy.exe" size="1115600">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AstrophotographyBuddy.exe" size="1119184">
       <assemblyIdentity name="AstrophotographyBuddy" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>AOjTCQzMMS52QcKDPT3jvi+TRJHWBJlKRvqPzFw33oM=</dsig:DigestValue>
+        <dsig:DigestValue>hJqW44U7TtQj7u27ZqdvW/bIEIfQxn1aYXmJNxaWt+0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -205,13 +205,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="AstrophotographyBuddy.exe.config" size="5062">
+  <file name="AstrophotographyBuddy.exe.config" size="5194">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>sVXZ6SpWKK94hoLUg66JOhbIsd/uIUMcikvkfkaRSRA=</dsig:DigestValue>
+      <dsig:DigestValue>wDBsd7cf14JK2MijnJd0tdX+RusC4ReNVEOIZA7WbZE=</dsig:DigestValue>
     </hash>
   </file>
   <file name="LICENCE.txt" size="7798">
