@@ -98,14 +98,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AstrophotographyBuddy.exe" size="1122256">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AstrophotographyBuddy.exe" size="1123792">
       <assemblyIdentity name="AstrophotographyBuddy" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>hREXmTRpLkUI450pQvr4dH3v4azuerFSCyLiO0aDrNs=</dsig:DigestValue>
+        <dsig:DigestValue>6joVIvZIkKvhVNE1IGXXikcmFi12YE7YKRs3nzmGp5k=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
