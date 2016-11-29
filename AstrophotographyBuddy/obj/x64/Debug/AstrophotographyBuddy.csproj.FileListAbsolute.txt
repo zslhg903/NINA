@@ -80,7 +80,6 @@ D:\Projects\astrophotographybuddy\AstrophotographyBuddy\bin\x64\Debug\WPFToolkit
 D:\Projects\astrophotographybuddy\AstrophotographyBuddy\bin\x64\Debug\Microsoft.Expression.Interactions.xml
 D:\Projects\astrophotographybuddy\AstrophotographyBuddy\bin\x64\Debug\Newtonsoft.Json.xml
 D:\Projects\astrophotographybuddy\AstrophotographyBuddy\bin\x64\Debug\System.Windows.Interactivity.xml
-D:\Projects\astrophotographybuddy\AstrophotographyBuddy\obj\x64\Debug\AstrophotographyBuddy.csprojResolveAssemblyReference.cache
 D:\Projects\astrophotographybuddy\AstrophotographyBuddy\obj\x64\Debug\MainWindow.g.cs
 D:\Projects\astrophotographybuddy\AstrophotographyBuddy\obj\x64\Debug\View\ApplicationMenu.g.cs
 D:\Projects\astrophotographybuddy\AstrophotographyBuddy\obj\x64\Debug\View\CameraCoolingChartsView.g.cs
@@ -127,3 +126,4 @@ D:\Projects\astrophotographybuddy\AstrophotographyBuddy\obj\x64\Debug\Astrophoto
 D:\Projects\astrophotographybuddy\AstrophotographyBuddy\obj\x64\Debug\AstrophotographyBuddy.exe
 D:\Projects\astrophotographybuddy\AstrophotographyBuddy\obj\x64\Debug\AstrophotographyBuddy.pdb
 D:\Projects\astrophotographybuddy\AstrophotographyBuddy\bin\x64\Debug\ToastNotifications.dll
+D:\Projects\astrophotographybuddy\AstrophotographyBuddy\obj\x64\Debug\AstrophotographyBuddy.csprojResolveAssemblyReference.cache

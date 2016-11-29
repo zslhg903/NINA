@@ -98,14 +98,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AstrophotographyBuddy.exe" size="1057744">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AstrophotographyBuddy.exe" size="1068496">
       <assemblyIdentity name="AstrophotographyBuddy" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Sz/1kBxkjkhpKxLVCE6xgljufuqULHpbtVgp0WG9pmk=</dsig:DigestValue>
+        <dsig:DigestValue>yQznq/G548iPMQda/cJj+EX0F0mKCu5qgKPKCIaYRVk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -194,6 +194,18 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ToastNotifications.dll" size="35840">
+      <assemblyIdentity name="ToastNotifications" version="1.5.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>zbT3qYZQPP/obz+v7d6TiauCFGX0hRc4u/XuH7ddKNk=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WPFToolkit.dll" size="467288">
       <assemblyIdentity name="WPFToolkit" version="3.5.40128.1" publicKeyToken="31BF3856AD364E35" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -205,13 +217,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="AstrophotographyBuddy.exe.config" size="5062">
+  <file name="AstrophotographyBuddy.exe.config" size="5194">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>sVXZ6SpWKK94hoLUg66JOhbIsd/uIUMcikvkfkaRSRA=</dsig:DigestValue>
+      <dsig:DigestValue>wDBsd7cf14JK2MijnJd0tdX+RusC4ReNVEOIZA7WbZE=</dsig:DigestValue>
     </hash>
   </file>
   <file name="LICENCE.txt" size="7798">
