@@ -126,4 +126,3 @@ D:\Projects\astrophotographybuddy\AstrophotographyBuddy\obj\x64\Debug\Astrophoto
 D:\Projects\astrophotographybuddy\AstrophotographyBuddy\obj\x64\Debug\AstrophotographyBuddy.exe
 D:\Projects\astrophotographybuddy\AstrophotographyBuddy\obj\x64\Debug\AstrophotographyBuddy.pdb
 D:\Projects\astrophotographybuddy\AstrophotographyBuddy\bin\x64\Debug\ToastNotifications.dll
-D:\Projects\astrophotographybuddy\AstrophotographyBuddy\obj\x64\Debug\AstrophotographyBuddy.csprojResolveAssemblyReference.cache
