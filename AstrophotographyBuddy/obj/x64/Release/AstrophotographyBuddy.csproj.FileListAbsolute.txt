@@ -125,4 +125,3 @@ D:\Projects\astrophotographybuddy\AstrophotographyBuddy\obj\x64\Release\Astropho
 D:\Projects\astrophotographybuddy\AstrophotographyBuddy\obj\x64\Release\AstrophotographyBuddy.TrustInfo.xml
 D:\Projects\astrophotographybuddy\AstrophotographyBuddy\obj\x64\Release\AstrophotographyBuddy.exe.manifest
 D:\Projects\astrophotographybuddy\AstrophotographyBuddy\obj\x64\Release\AstrophotographyBuddy.application
-D:\Projects\astrophotographybuddy\AstrophotographyBuddy\obj\x64\Release\AstrophotographyBuddy.csprojResolveAssemblyReference.cache
