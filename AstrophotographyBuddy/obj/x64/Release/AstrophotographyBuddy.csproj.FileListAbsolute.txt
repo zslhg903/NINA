@@ -61,11 +61,9 @@ F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\x64\Release\Astropho
 F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\x64\Release\AstrophotographyBuddy.application
 F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\x64\Release\AstrophotographyBuddy.exe
 F:\Projects\AstrophotographyBuddy\AstrophotographyBuddy\obj\x64\Release\AstrophotographyBuddy.pdb
-D:\Projects\astrophotographybuddy\AstrophotographyBuddy\bin\x64\Release\AstrophotographyBuddy.exe.config
-D:\Projects\astrophotographybuddy\AstrophotographyBuddy\obj\x64\Release\AstrophotographyBuddy.exe
-D:\Projects\astrophotographybuddy\AstrophotographyBuddy\obj\x64\Release\AstrophotographyBuddy.pdb
 D:\Projects\astrophotographybuddy\AstrophotographyBuddy\bin\x64\Release\LICENCE.txt
 D:\Projects\astrophotographybuddy\AstrophotographyBuddy\bin\x64\Release\Credits.html
+D:\Projects\astrophotographybuddy\AstrophotographyBuddy\bin\x64\Release\AstrophotographyBuddy.exe.config
 D:\Projects\astrophotographybuddy\AstrophotographyBuddy\bin\x64\Release\AstrophotographyBuddy.exe.manifest
 D:\Projects\astrophotographybuddy\AstrophotographyBuddy\bin\x64\Release\AstrophotographyBuddy.application
 D:\Projects\astrophotographybuddy\AstrophotographyBuddy\bin\x64\Release\AstrophotographyBuddy.exe
@@ -125,3 +123,5 @@ D:\Projects\astrophotographybuddy\AstrophotographyBuddy\obj\x64\Release\Astropho
 D:\Projects\astrophotographybuddy\AstrophotographyBuddy\obj\x64\Release\AstrophotographyBuddy.TrustInfo.xml
 D:\Projects\astrophotographybuddy\AstrophotographyBuddy\obj\x64\Release\AstrophotographyBuddy.exe.manifest
 D:\Projects\astrophotographybuddy\AstrophotographyBuddy\obj\x64\Release\AstrophotographyBuddy.application
+D:\Projects\astrophotographybuddy\AstrophotographyBuddy\obj\x64\Release\AstrophotographyBuddy.exe
+D:\Projects\astrophotographybuddy\AstrophotographyBuddy\obj\x64\Release\AstrophotographyBuddy.pdb
