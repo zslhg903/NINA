@@ -141,7 +141,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>XAmZb85dfOlLQkXi92jbsWzDIs8Pzad08RoAjBTnStc=</dsig:DigestValue>
+        <dsig:DigestValue>afYVHchf10OMtzvpQCgYOfp9j/TvGUOZmsw4reY4PCk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -217,13 +217,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="LICENCE.txt" size="35146">
+  <file name="LICENCE.txt" size="35819">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>xTplwv1WHIfqq/EHLvXcq4ZTBCvBUwhGX1JBNYXrYnE=</dsig:DigestValue>
+      <dsig:DigestValue>s9Hq5/Uk/J3dSFYqRlLv0rzYSOOLA/BeOIvM6UPnPfI=</dsig:DigestValue>
     </hash>
   </file>
   <file name="NINA.exe.config" size="5145">
