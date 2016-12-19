@@ -62,3 +62,4 @@ D:\Projects\nina\NINA\obj\x64\Release\NINA.exe.manifest
 D:\Projects\nina\NINA\obj\x64\Release\NINA.application
 D:\Projects\nina\NINA\obj\x64\Release\NINA.exe
 D:\Projects\nina\NINA\obj\x64\Release\NINA.pdb
+D:\Projects\nina\NINA\obj\x64\Release\NINA.csprojResolveAssemblyReference.cache
