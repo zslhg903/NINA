@@ -134,14 +134,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NINA.exe" size="1133008">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NINA.exe" size="1134544">
       <assemblyIdentity name="NINA" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Wu1qijfaBbCLmnwZWT6TcUeHQjcvpJeKuRhlJDWEjqg=</dsig:DigestValue>
+        <dsig:DigestValue>wuzj2IVvR60zbGJO/WotaxztjWTNGDPZh3KRHWf/l7A=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

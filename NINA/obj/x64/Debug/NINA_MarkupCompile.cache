@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\Projects\nina\NINA\App.xaml
-16-1983364853
+17363351268
 1404325702
-52-239006764
+54-105006533
 351434937746
-MainWindow.xaml;Resources\SVGDictionary.xaml;View\ApplicationMenu.xaml;View\CameraCoolingChartsView.xaml;View\CameraView.xaml;View\FilterWheelView.xaml;View\FrameFocusView.xaml;View\ImagingView.xaml;View\LoadingAnimation.xaml;View\OptionsView.xaml;View\OverView.xaml;View\PHD2Graph.xaml;View\PHD2View.xaml;View\PlateSolveView.xaml;View\SequenceView.xaml;View\TelescopeView.xaml;
+MainWindow.xaml;Resources\SVGDictionary.xaml;View\ApplicationMenu.xaml;View\CameraCoolingChartsView.xaml;View\CameraView.xaml;View\FilterWheelView.xaml;View\FrameFocusView.xaml;View\ImagingView.xaml;View\LoadingAnimation.xaml;View\OptionsView.xaml;View\OverView.xaml;View\PHD2Graph.xaml;View\PHD2View.xaml;View\PlateSolveView.xaml;View\PolarAlignmentView.xaml;View\SequenceView.xaml;View\TelescopeView.xaml;
 
 False
 

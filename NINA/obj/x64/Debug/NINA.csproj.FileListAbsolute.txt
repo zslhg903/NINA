@@ -81,7 +81,6 @@ D:\Projects\nina\NINA\bin\x64\Debug\WPFToolkit.dll
 D:\Projects\nina\NINA\bin\x64\Debug\Microsoft.Expression.Interactions.xml
 D:\Projects\nina\NINA\bin\x64\Debug\Newtonsoft.Json.xml
 D:\Projects\nina\NINA\bin\x64\Debug\System.Windows.Interactivity.xml
-D:\Projects\nina\NINA\obj\x64\Debug\NINA.csprojResolveAssemblyReference.cache
 D:\Projects\nina\NINA\obj\x64\Debug\MainWindow.g.cs
 D:\Projects\nina\NINA\obj\x64\Debug\View\ApplicationMenu.g.cs
 D:\Projects\nina\NINA\obj\x64\Debug\View\CameraCoolingChartsView.g.cs
@@ -127,3 +126,5 @@ D:\Projects\nina\NINA\obj\x64\Debug\NINA.exe.manifest
 D:\Projects\nina\NINA\obj\x64\Debug\NINA.application
 D:\Projects\nina\NINA\obj\x64\Debug\NINA.exe
 D:\Projects\nina\NINA\obj\x64\Debug\NINA.pdb
+D:\Projects\nina\NINA\obj\x64\Debug\View\PolarAlignmentView.g.cs
+D:\Projects\nina\NINA\obj\x64\Debug\View\PolarAlignmentView.baml

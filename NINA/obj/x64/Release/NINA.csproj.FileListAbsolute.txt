@@ -63,3 +63,5 @@ D:\Projects\nina\NINA\obj\x64\Release\NINA.application
 D:\Projects\nina\NINA\obj\x64\Release\NINA.exe
 D:\Projects\nina\NINA\obj\x64\Release\NINA.pdb
 D:\Projects\nina\NINA\obj\x64\Release\NINA.csprojResolveAssemblyReference.cache
+D:\Projects\nina\NINA\obj\x64\Release\View\PolarAlignmentView.g.cs
+D:\Projects\nina\NINA\obj\x64\Release\View\PolarAlignmentView.baml
