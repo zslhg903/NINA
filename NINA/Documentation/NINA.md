@@ -284,42 +284,42 @@ The Camera panel allows you to connect ASCOM based cameras as well as various ZW
 
 ![Tab: Camera](images/tab-camera.png)
 
-1. Camera Drop Down
+1. **Camera Drop Down**
     - Select the Camera to connect
     - Canon cameras will show up as their own devices
     - For Nikon you have to select the general “Nikon” option
-2. Camera Settings (ASCOM)
+2. **Camera Settings (ASCOM)**
     - Start the ASCOM settings software for the selected camera (if available)
-3. Refresh Camera Devices
+3. **Refresh Camera Devices**
     - Refreshes the device list and checks for newly connected cameras
-4. Connect Camera
+4. **Connect Camera**
     - Attempts to connect the camera to NINA
     - Nikon cameras can take a bit longer
         > Clearing up the SD card or using no SD card with Nikon cameras will speed up this process
-5. Camera Information
+5. **Camera Information**
     - Displays various information about the connected camera
         > Please note that DSLR do not report all necessary data
-6. Gain, Offset and USB Limit Settings
+6. **Gain, Offset and USB Limit Settings**
     - Allows the change of Gain, Offset and USB Limit
         > Please note that the specific driver has to support this
 > Following settings need the camera to have an active cooler and report its status to NINA
-7. Cooler status and switch
+7. **Cooler status and switch**
     - Enable to start cooling the camera to the selected Target Temperature (9)
-8. Temperature Information
+8. **Temperature Information**
     - Shows the current cooler power, chip temperature and target temperature
-9. Target Temperature setting
+9. **Target Temperature setting**
     - Allows you to set the target temperature that the camera will try to cool down to
-10. Duration for Cooldown
+10. **Duration for Cooldown**
     - Allows a gradual cool down of the camera to prevent dew from forming
     - Duration is set in minutes
-11. Start Cooling
+11. **Start Cooling**
     - Starts the cooling to the target temperature
     - If Duration (10) is set it will try to achieve the temperature within the given duration
         > Formula used is f(x) = x^3, temperature will be reduced slower over time. Adapted cooling is not yet implemented but might be in the future.
-12. Cooler Power graph
+12. **Cooler Power graph**
     - Displays the last 100 cooler power readouts in a graph
     - Might be missing values when the camera is downloading
-13. Chip Temperature graph
+13. **Chip Temperature graph**
     - Displays the last 100 chip temperature readouts in a graph
     - Might be missing values when the camera is downloading
 
@@ -331,34 +331,34 @@ In the Filter Wheel and Focuser tab you can connect your ASCOM based filter whee
 
 ![Tab: Filter Wheel and Focuser](images/tab-filterwheelfocuser.png)
 
-1. Filter Wheel Drop Down
+1. **Filter Wheel Drop Down**
     - Select the filter wheel to connect
-2. Filter Wheel Settings (ASCOM)
+2. **Filter Wheel Settings (ASCOM)**
     - Start the ASCOM settings software for the selected filter wheel (if available)
-3. Refresh Filter Wheel Devices
+3. **Refresh Filter Wheel Devices**
     - Refreshes the device list and checks for newly connected filter wheels
-4. Connect Filter Wheel
+4. **Connect Filter Wheel**
     - Attempts to connect the filter wheel to NINA
-5. Filter Wheel Information
+5. **Filter Wheel Information**
     - Display of a few information about the filter wheel
-6. Filter Wheel Filters
+6. **Filter Wheel Filters**
     - List of all Filters with Focus Offsets as provided by ASCOM
     - A click on a specific filter will move the filter wheel to that position
         > The ASCOM filter list needs to be imported once to the NINA settings, refer to [Equipment Settings](#equipment-settings)
-7. Focuser Drop Down
+7. **Focuser Drop Down**
     - Select the focuser to connect
-8. Focuser Settings (ASCOM)
+8. **Focuser Settings (ASCOM)**
     - Starts the ASCOM settings software for the selected focuser (if available)
-9. Refresh Focusers
+9. **Refresh Focusers**
     - Refreshes the device list and checks for newly connected focusers
-10. Connect Focuser
+10. **Connect Focuser**
     - Attempts to connect the focuser to NINA
-11. Focuser Information
+11. **Focuser Information**
     - Display of various information about the focuser and its status
-12. Focuser Temperature Compensation
+12. **Focuser Temperature Compensation**
     - Enables compensation for ambient temperature of the focuser if a temperature sensor is available to compensate for focus drift due to temperature change in the night
     - Disables manual movement of the focuser
-13. Focuser Target Position and Move
+13. **Focuser Target Position and Move**
     - Allows you to set a specific focuser target position
     - Is disabled when automatic temperature compensation is enabled
 
@@ -370,26 +370,26 @@ The Telescope tab allows you to connect your ASCOM supported mount, slew it to s
 
 ![Tab: Telescope](images/tab-telescope.png)
 
-1. Telescope Drop Down
+1. **Telescope Drop Down**
     - Select the mount to connect
-2. Telescope Settings (ASCOM)
+2. **Telescope Settings (ASCOM)**
     - Starts the ASCOM settings software for the selected mount (if available)
-3. Refresh Telescope Devices
+3. **Refresh Telescope Devices**
     - Refreshes the device list and checks for newly connected mounts
-4. Connect Telescope
+4. **Connect Telescope**
     - Attempts to connect the mount to NINA
-5. Telescope Information
+5. **Telescope Information**
     - Display of various information about the mount, including most notably Sidereal time and time to meridian
-6. Manual Coordinates
+6. **Manual Coordinates**
     - Allows input of manual coordinates for right ascension and declination in arc-hours, -minutes and -seconds
         > Please note the coordinates are in the J2000 epoch
-7. Slew
+7. **Slew**
     - Slews the mount to the entered coordinates
-8. Manual Controls
+8. **Manual Controls**
     - Allows you to slew the mount manually north, east, south and west
-9. Manual Slew Rate
+9. **Manual Slew Rate**
     - Allows you to set the mounts slewing rate for manual slewing
-10. Park
+10. **Park**
     - Parks the mount to its home position
     - Unparks the mount when parked
 
@@ -401,16 +401,16 @@ With the PHD2 tab you can connect NINA to PHD2 to send dither commands and recei
 
 ![Tab: PHD2](images/tab-phd2.png)
 
-1. Connect PHD2
+1. **Connect PHD2**
     - Attempts to connect PHD2 to NINA
         > You need to enable the server in PHD2 and possibly adjust the PHD2 settings in the [Equipment Settings](#equipment-settings)
-2. PHD2 Information
+2. **PHD2 Information**
     - Displays information about the connection status, pixel scale in PHD2 and the current state of the guider
-3. Y-Axis Scale
+3. **Y-Axis Scale**
     - Allows you to change the scale of the Y-Axis, is affected by( 4)
-4. Y-Axis Scale selection
+4. **Y-Axis Scale selection**
     - Allows you to change the scale of the Y axis between arcseconds (recommended) and pixels. PHD2 natively displays information in arcseconds
-5. Guiding graph
+5. **Guiding graph**
     - Displays the guiding graph as received by PHD2. Colors are identical for RA and Dec as they typically are in PHD2.
 
 ---
@@ -421,12 +421,12 @@ In the Object Browser you can search for various objects in the sky, filter by o
 
 ![Tab: Object Browser](images/tab-objectbrowser.png)
 
-1. Search Field
+1. **Search Field**
     - Here you can search for the object designation
     > Commonly used names (e.g. “Andromeda”) are not implemented at the moment
     - Can be left empty
     > You can press "Enter" to search
-2. Filters
+2. **Filters**
     - Here you can filter your search by various object criteria
         - Object type
             - Galaxy, 2 Stars, 1 Star, Cluster with Nebulosity in a Galaxy, Open Cluster, Planetary Nebula, Galaxy cluster, 3 Stars, Globular Cluster, Asterism, Dark Nebula, Bright Nebula, 8 Stars, Nonexistent, Supernova Remnant, Cluster with Nebulosity, Quasar, 4 Stars, Diffuse Nebula in a Galaxy, various forms of clusters in the LMC and SMC
@@ -437,26 +437,26 @@ In the Object Browser you can search for various objects in the sky, filter by o
         - Apparent magnitude: here you can limit your search to objects with a specific apparent magnitude or a range of it
         - Minimum altitude: here you can limit your search with objects that are at a minimum specified altitude during a specific timeframe
         - Reference date: here you can set the reference date should you plan a sequence for the future
-3. Order settings
+3. **Order settings**
     - Here you can order the objects by various criteria
         - Size, Apparent Magnitude, Constellation, RA, Dec, Surface Brightness and Object Type
     - You can also change the order from Descending to Ascending
     - You can limit the items per page to a specified number
         > Be aware that high numbers can possibly lead to performance issues
-4. Search
+4. **Search**
     - Start the search for objects based on the set parameters
-5. Moon phase
+5. **Moon phase**
     - Displays the moon phase according to the coordinates of Lat/Long as set in the [Settings](#general-settings)
-6. Object information
+6. **Object information**
     - Displays various object information, including name, RA, Dec, Type, Constellation, Apparent magnitude, surface brightness and size. If the [SkyAtlas][SkyAtlas] is installed, it also displays an image from the SkyAtlas.
-7. Object altitude
+7. **Object altitude**
     - Shows the objects altitude, what direction it will transit and the darkness phase of the specified day, including the current time
     > Altitude depends on Latitude and Longitude set in the [Settings](#general-settings)
-8. Set as Sequence
+8. **Set as Sequence**
     - Sets the object as sequence target and uses its name in the [sequence tab](#tab--sequence) as well
-9. Set for Framing Assistant
+9. **Set for Framing Assistant**
     - Sets the object as target for the [framing assistant](#tab--framing-assistant)
-10. Slew
+10. **Slew**
     - Slews the mount to the specified object
 
 ---
@@ -467,7 +467,7 @@ The Framing Assistant allows you to frame your next shot perfectly utilizing DSS
 
 ![Tab: Framing Assistant](images/tab-framingassistant.png)
 
-1. Image Source Drop Down
+1. **Image Source Drop Down**
     - Allows you to change the image source
     - Possible options are
         - Digital Sky Survey: requires an internet connection to download the data
@@ -475,36 +475,36 @@ The Framing Assistant allows you to frame your next shot perfectly utilizing DSS
         - Cache: utilizes the local cache
             > Successfully solved local images and DSS are cached
     - From File will utilize the Blind Solver to determine the coordinates and it can take a while
-2. Coordinates
+2. **Coordinates**
     - You can set the name, RA and Dec coordinates here as well as the field of view in degrees
     - RA, Dec and field of view are unavailable when loading from file
         > Fields will be populated once the image has been solved
-3. Load Image
+3. **Load Image**
     - Starts the image download from DSS
     - Starts the plate solving mechanism when using from file
     - Tries to load the coordinates from cache
-4. Width, Height and Pixel Size
+4. **Width, Height and Pixel Size**
     - Values will be set from a connected camera automatically if available
     - Not available for DSLR users
     - Necessary for the frame size (12)
-5. Focal length and rotation
+5. **Focal length and rotation**
     - Focal length is not synchronized to the Settings page
         > This allows you to play around with various focal lengths to check your framing
     - Rotation can be set freely and should match your cameras orientation as determined by plate solving
     - Necessary for the frame size (12)
-6. Recenter Image
+6. **Recenter Image**
     - Centers the image on the current coordinates as set by the framing window (12)
-7. Slew
+7. **Slew**
     - Slews the mount exactly to the center of the framing window (12)
-8. Set as Sequence Target
+8. **Set as Sequence Target**
     - Sets the coordinates of the RA and Dec of the framing window as the sequence and copies the name over to the [sequence tab](#tab--sequence) as well
-9. Altitude browser
+9. **Altitude browser**
     - Displays the current time, altitude of the target and night cycle
-10. Image display controls
+10. **Image display controls**
     - From left to right: Zoom in, zoom out, fit image to screen, show image in original resolution
-11. Image
+11. **Image**
     - The image as downloaded from DSS, cache or autostretched loaded file
-12. Framing rectangle
+12. **Framing rectangle**
     - Depends on the camera (4) and telescope (5) settings
     - Can be dragged around with the mouse
     - Can be rotated with (5)
@@ -519,37 +519,37 @@ With Sequences you are able to create imaging sequences with various options for
 
 ![Tab: Sequence](images/tab-sequencing.png)
 
-1. Delay start
+1. **Delay start**
     - Allows you to delay the start of the sequence by a specific amount of seconds
-2. Sequence Mode
+2. **Sequence Mode**
     - You can change the sequence mode from “One by another” to “Rotate through”
         - “One by another” would process each sequence entry (10) fully before switching to the next sequence entry
         - “Rotate through” would process one item from a sequence entry and then continue with the next. Allows for example the rotation of LRGB sequences.
-3. Start guiding
+3. **Start guiding**
     - When enabled will try to start guiding with PHD2 after the start of the sequence
     - PHD2 needs to be connected in the [PHD2 Tab](#tab--phd2)
-4. Slew to target
+4. **Slew to target**
     - Slews to the target as specified in RA and Dec
     - Does not Plate Solve to verify it is on target
-5. Auto focus on start
+5. **Auto focus on start**
     - Starts the auto focuser sequence to pinpoint the automatic focus
     > Requires a connected auto focuser
-6. Center target
+6. **Center target**
     - Will center the target given the Ra and Dec coordinates
     - Utilizes the plate solver as specified in the settings
     > Requires a set up [primary plate solver](#plate-solving-settings)
-7. Auto focus on filter change
+7. **Auto focus on filter change**
     - Starts the auto focus routine for every switch of the filter wheel
     > Requires a connected [auto focuser](#tab-filter-wheel-and-focuser)
-8. Estimated Download Time
+8. **Estimated Download Time**
     - You can enter the approximate download time your camera takes to download a single image
     > Will be automatically populated with the average download times as measured by NINA on image download  
     > Will be added to calculations of (9)
-9. Estimated Finish Time
+9. **Estimated Finish Time**
     - Shows you the estimated finish time when your sequence will end
     - Adds the download time (8) to each sequence entry
     > Needs to be manually refreshed using the button on the right of the estimation
-10. Sequence entry
+10. **Sequence entry**
     - Each sequence entry consists out of up to 9 columns which determine how the image will be shot
         - Progress: shows the current progress of the image sequence
         - Total #: the amount of frames for that specific sequence entry
@@ -562,20 +562,20 @@ With Sequences you are able to create imaging sequences with various options for
         - Dither Every # Frame: will dither only every # frame as set when dithering is enabled
         - Gain: Change the gain of the camera for this entry. Only available when camera can set gain
     - Sequences cannot be changed while the sequence is running, you need to pause, abort it or wait until it’s finished to change the amount of frames
-11. Add new Sequence entry
+11. **Add new Sequence entry**
     - Adds a new sequence entry line
-12. Delete Sequence entry
+12. **Delete Sequence entry**
     - Deletes the currently selected sequence line
-13. Save Sequence
+13. **Save Sequence**
     - Allows you to save the sequence as a .xml file
-14. Open Sequence
+14. **Open Sequence**
     - Allows to load a previously saved sequence file.
     - Will overwrite all current sequence settings
-15. Target information
+15. **Target information**
     - Shows you the target name, RA and Dec
     - Can be changed from here
     - RA and Dec will affect slew on start (4) and center target (6)
-16. Start Sequence
+16. **Start Sequence**
     - Starts the sequence
     - Once started morphs into two buttons which allow you to pause or cancel the sequence
         - Pausing will pause the sequence after the current frame
@@ -591,11 +591,11 @@ First a quick overview over the imaging tab.
 
 ![Tab: Imaging](images/tab-imaging.png)
 
-1. The Image itself
+1. **The Image itself**
     - This panel cannot be disabled and will always be displayed
-2. Various panels on the left side of the image
-3. Various panels on the right side of the image
-4. The panel bar where you can enable and disable panels
+2. **Various panels on the left side of the image**
+3. **Various panels on the right side of the image**
+4. **The panel bar where you can enable and disable panels**
     - To enable or disable a panel click on the corresponding icon
 
 ---
@@ -626,17 +626,17 @@ The image panel displays the latest captured image. You can zoom, plate solve or
 
 ![Panel: Image](images/panel-image.png)
 
-1. Image Controls
+1. **Image Controls**
     - From left to right: Zoom in, Zoom out, Fit image to Screen, Show image at 100% scale
-2. Plate Solve current image
+2. **Plate Solve current image**
     - This will trigger the plate solving mechanism that will attempt to plate solve the currently captured image
         > The solved result will be displayed in the [Plate Solve panel](#panel-plate-solving)
-3. Crosshair
+3. **Crosshair**
     - Displays a crosshair overlay over the image
-4. Auto Stretch
+4. **Auto Stretch**
     - Stretches the image should it be too dark to see anything
     > Auto Stretch factor can be set in [Settings](#imaging-settings)
-5. Star Detection and analysis
+5. **Star Detection and analysis**
     > Will also enable (4)
     - Tries to detect the stars in the image to output a [HFR result](#panel--hfr-history)
     - When annotation is enabled in the [Settings](#imaging-settings), will annotate the stars with their respective calculated HFR
@@ -659,13 +659,13 @@ The Camera panel displays various information about the current state of the cam
 
 > Cooling requires a camera with an active cooler that reports to NINA  
 > Requires a connected [camera](#tab--camera) to display information
-1. Display of the current cooler status
+1. **Display of the current cooler status**
     > You cannot enable or disable the cooler with this switch
-2. Target temperature
+2. **Target temperature**
     - You can set the target temperature in C here
-3. Duration
+3. **Duration**
     - You can change the duration for cooldown here (in minutes)
-4. Start cooling
+4. **Start cooling**
     - Will start the cooling of the camera with duration, if set
 
 ---
@@ -686,32 +686,32 @@ The Plate Solving panel allows you to start the plate solving procedure to align
 
 ![Panel: Plate Solve](images/panel-platesolving.png)
 
-1. Information about the latest plate solve
+1. **Information about the latest plate solve**
     - It will display information about the location of the mount and camera rotation after one successful solve has been run
-2. Sync
+2. **Sync**
     - When enabled will sync the plate solve information to the mounts ASCOM driver
     > Should generally be enabled
-3. Reslew to Target
+3. **Reslew to Target**
     - When enabled will reslew to the target where the mount was supposed to be
-4. Repeat until
+4. **Repeat until**
     - When enabled will do plate solving until the error quota in (5) is met
-5. Error < # arcmin
+5. **Error < # arcmin**
     - Allows you to set the maximum error after a plate solving procedure for (4)
     > Is disabled when (4) is not active
-6. Exposure Time
+6. **Exposure Time**
     - Allows you to set the exposure time for the plate solve capture
-7. Filter
+7. **Filter**
     - Allows you to set the filter for the plate solve capture
-8. Binning
+8. **Binning**
     - Allows you to change the binning for the plate solve capture
     > Only really useful for CCD
-9. Gain
+9. **Gain**
     - Allows you to change the Gain for the plate solve capture
     > Might be unavailable depending on camera
-10. Start Plate Solve
+10. **Start Plate Solve**
     - Will capture an image and try to plate solve it using the Plate Solver as defined in Settings
     > Should the plate solve fail it will ask whether to attempt the solve with the Blind Solver as defined in [Settings](#plate-solving-settings)
-11. Platesolve history
+11. **Platesolve history**
     - Display of the last plate solves with various information
 
 ---
@@ -722,34 +722,34 @@ The polar alignment panel gives you two ways to determine how off your polar ali
 
 ![Panel: Polar Alignment](images/panel-polaralignment.png)
 
-1. Polar scope
+1. **Polar scope**
 	- Shows position of polaris when looking through the mount's polar scope
     > Will not work for southern hemisphere. Uses latitude and longitude from settings.
-2. Exposure Time
+2. **Exposure Time**
 	- Defines the exposure time that should be used for a plate solved polar alignment measurement
-3. Filter
+3. **Filter**
 	- The filter for the alignment
-4. Binning
+4. **Binning**
 	- Camera binning
-5. Gain
+5. **Gain**
 	- Camera gain
-6. Measurement location for altitude where the telescope is pointing at
+6. **Measurement location for altitude where the telescope is pointing at**
 	- Can be either east or west	
-7. Measure Altitude Error
+7. **Measure Altitude Error**
 	- Will start a platesolve of current position, then slews half a degree along RA axis, takes another platesolve and compares the result of both to measure the amount of error
 	> Telescope should point east or west at 0 declination 
-8. Meridian Offset and Declination for telescope
+8. **Meridian Offset and Declination for telescope**
     > The values entered here will be saved as settings for using next time
-9. Slew
+9. **Slew**
 	- Slews mount to specified meridian offset and declination
-10. Measure Azimuth Error
+10. **Measure Azimuth Error**
     - Will start a platesolve of current position, then slews half a degree along RA axis, takes another platesolve and compares the result of both to measure the amount of error
     > Telescope should point south near meridian at 0 declination 
-11. Same as Step (8) except for azimuth
+11. **Same as Step (8) except for azimuth**
 	> The values entered here will be saved as settings for using next time
-12. Same as Step (9)
-13. Duration and Rate in which the scope should move for a DARV Slew
-14. Slew
+12. **Same as Step (9)**
+13. **Duration and Rate in which the scope should move for a DARV Slew**
+14. **Slew**
 	- Initiates a DARV Slew by slewing half the specified Duration in one RA direction and then back while taking an exposure.
 
 ---
@@ -762,9 +762,9 @@ Display of latest weather information from the selected weather provider in [Set
 
 > Will only work with an internet connection
 
-1. Weather information
+1. **Weather information**
     - Will only be displayed when refreshed (2) at least once
-2. Refresh
+2. **Refresh**
     - Will toggle automatic refreshing of weather information
 
 ---
@@ -775,8 +775,8 @@ This panel will display information as provided by [PHD2](#tab--phd2).
 
 ![Panel: Guider](images/panel-guiding.png)
 
-1. Guider Status
-2. Guider Graph
+1. **Guider Status**
+2. **Guider Graph**
     - Will utilize the scale as set in the [PHD2 tab](#tab--phd2)
 
 ---
@@ -787,16 +787,16 @@ This panel displays the current active [sequence](#tab--sequence).
 
 ![Panel: Sequence](images/panel-sequence.png)
 
-1. Estimated finish time
+1. **Estimated finish time**
     > Will update itself automatically while the sequence runs
-2. Active Sequence Details
-3. Start Sequence
+2. **Active Sequence Details**
+3. **Start Sequence**
 
 ![Panel: Running Sequence](images/panel-sequence-running.png)
 
-1. Pause Sequence
+1. **Pause Sequence**
     - This will pause the sequence after the current image
-2. Cancel Sequence
+2. **Cancel Sequence**
     - This will cancel the current image capture and pause the sequence
     > Will still allow you to continue the sequence later
 
@@ -809,7 +809,7 @@ Here you can see the current selected filter, the state and are able to change t
 ![Panel: Filter Wheel](images/panel-filterwheel.png)
 
 > Requires a connected [Filter Wheel](#tab--filter-wheel-and-focuser)
-1. Filter Drop Down
+1. **Filter Drop Down**
     - Allows you to change the current filter in the filter wheel
 
 ---
@@ -821,13 +821,13 @@ This panel displays information about the focuser status and allows you to move 
 ![Panel: Focuser](images/panel-focuser.png)
 
 > Requires a connected [focuser](#tab--filter-wheel-and-focuser)
-1. Focuser Status
-2. Temperature Compensation
+1. **Focuser Status**
+2. **Temperature Compensation**
     - When enabled the focuser will try to compensate for ambient temperature if a temperature sensor is available
     > Will disable (3) and (4) when enabled
-3. Target Position
+3. **Target Position**
     - Sets the focuser target position
-4. Move
+4. **Move**
     - Moves the focuser to the target position (3)
 
 ---
@@ -839,22 +839,22 @@ The imaging panel allows you to take snapshots with your camera, for example for
 ![Panel: Imaging](images/panel-imaging.png)
 
 > Requires a connected [camera](#tab-camera)
-1. Exposure time
+1. **Exposure time**
     - You can set here the exposure time in seconds
-2. Filter
+2. **Filter**
     - You can set the filter that should be used for this snapshot
-3. Binning
+3. **Binning**
     - This allows you to change the binning
     > Only makes sense on CCD cameras
-4. Gain
+4. **Gain**
     - Allows you to change the gain
     > Some cameras might not have the ability to change gain
-5. Loop
+5. **Loop**
     - When enabled takes subsequent snapshots until cancelled
-6. Save
+6. **Save**
     - When enabled will save the images to the image path as defined in Settings
     > Image type will be “SNAP” for those images
-7. Start Snapshot
+7. **Start Snapshot**
     - Starts the snapshot
     > When loop (5) is enabled, will loop until pressed again to cancel
     
@@ -867,12 +867,12 @@ Here you can read useful information about your average HFR and the amount of st
 ![Panel: HFR History](images/panel-hfrhistory.png)
 
 > Requires [HFR detection](#panel--image) to be enabled
-1. Display of HFR and Stars in a graph
+1. **Display of HFR and Stars in a graph**
     - Limited to 300 entries by default
     - Right side Y axis displays the amount of stars
     - Left side Y axis displays the HFR
     > You can click on points to read out their absolute value
-2. Legend
+2. **Legend**
     > Colors will depend on the selected active color scheme
 
 ---
@@ -884,9 +884,9 @@ This panel shows you useful statistics about your latest captured or loaded imag
 ![Panel: Statistics](images/panel-statistics.png)
 
 > Will display the statistics only at least one image capture
-1. Display of statistics
+1. **Display of statistics**
     > Stars and HFR will not be calculated unless HFR detection is enabled
-2. Histogram
+2. **Histogram**
     - This will show your exposure histogram
     > Histogram resolution can be set in [Settings](#imaging-settings)
 
@@ -899,9 +899,9 @@ With this panel you can start the auto focus sequence if you have a motorized fo
 ![Panel: Auto Focus](images/panel-autofocus.png)
 
 > Requires a connected [focuser](#tab--filter-wheel-and-focuser)
-1. Display of the focus steps and HFR
+1. **Display of the focus steps and HFR**
     - <something>
-2. Start Auto Focus
+2. **Start Auto Focus**
     - This will start the auto focus procedure
 
 ---
@@ -916,51 +916,51 @@ The General Settings tab allows you to manage NINA in terms of all general setti
 
 ![Settings: General](images/tab-settings-general.png)
 
-1. Profiles
+1. **Profiles**
     - A display of all profiles in NINA
     > Name of a profile can be changed by double clicking on the Name field of the profile
-2. Add or Remove Profile
+2. **Add or Remove Profile**
     - Those buttons allow you to add new profiles or to delete the currently selected profile
     > This action cannot be reversed, so pay attention to what you delete!
-3. Load profile
+3. **Load profile**
     - Loads the currently selected profile
-4. Language Drop Down
+4. **Language Drop Down**
     - Allows you to change the language of NINA
     > Currently only English and German are available, if you want you can contribute to the translation of NINA to your language of choice, contact us on [Discord][Discord]!
-5. Sky Atlas Image Directory
+5. **Sky Atlas Image Directory**
     - The directory to the [Sky Atlas][SkyAtlas] Image Repository
     - Used in [Object Browser](#tab--object-browser)
-6. Log Level
+6. **Log Level**
     - You can change the log level should you encounter issues and want to report a bug
     > Please attach the log with level TRACE then
-7. Device Polling Interval
+7. **Device Polling Interval**
     - Value is in seconds
     - This is the delay between polling all devices for their current information
     > Some cameras don’t cool properly when polled constantly, increasing this value to 5 is safe
-8. Current UI Color Schema
+8. **Current UI Color Schema**
     - Allows you to set the current UI color schema
     > You can edit the colors of the schema below it as well when set to Custom Theme
-9. Alternative UI Color Schema
+9. **Alternative UI Color Schema**
     - Allows you to set the alternative UI color schema as triggered by (0)
     > You can edit the colors of the schema below it as well when set to Custom Theme
-10. Color Schema Toggle
+10. **Color Schema Toggle**
     - Allows you to quickly switch between the current and alternative color schema
     > This can be done from anywhere in the application
-11. Epoch Drop Down
+11. **Epoch Drop Down**
     - The Epoch for your devices
         > This should be set to the epoch set on your mount
-12. Hemisphere Drop Down
+12. **Hemisphere Drop Down**
     - You can set your hemisphere here (North, South)
-13. Latitude and Longitude
+13. **Latitude and Longitude**
     - You can set your Latitude and Longitude here
     > Will be automatically populated when the mount connects and provides those informations  
     > You can get your latitude and longitude easily from https://www.latlong.net/
-14. Weather data Drop Down
+14. **Weather data Drop Down**
     - You can change the weather provider here
     > Currently only openweathermap.org is implemented
-15. Weather Url
+15. **Weather Url**
     - The URL to the weather provider API
-16. Weather API key
+16. **Weather API key**
     - Your weather API key
     - For openweathermap.org you need to register yourself to get an API key
 
@@ -972,38 +972,38 @@ This tab allows you to change settings related to your equipment.
 
 ![Settings: Equipment](images/tab-settings-equipment.png)
 
-1. Camera Pixel Size
+1. **Camera Pixel Size**
     - The Pixel Size of your camera sensor in micrometers
     > Will be automatically populated by the camera, if it provides the information
-2. Camera Bulb Mode
+2. **Camera Bulb Mode**
     - Allows you to change the bulb mode of the camera
     - Native will work in most cases
     - RS232 and Mount is available as well and might be necessary for older Nikon cameras
         > Please refer to Using RS232 or Mount for bulb shutter
-3. Telescope Focal Length
+3. **Telescope Focal Length**
     - Enter your telescope focal length here
     > This will be used for [plate solving](#panel--plate-solving)
-4. Use Filter Wheel Offsets
+4. **Use Filter Wheel Offsets**
     - When enabled the focuser will utilize the filter wheel focus offsets as defined in (6)
-5. Auto Focus Settings
+5. **Auto Focus Settings**
     - Allows you to change how the focuser operates in auto focus mode
-6. Filter Wheel Filter List
+6. **Filter Wheel Filter List**
     - This filter wheel filter list is used for sequences in NINA
     > You should import your filter list from your ASCOM filter wheel at least once using (8)
-7. Add or Remove to/from Filter List
+7. **Add or Remove to/from Filter List**
     - Manually add or remove filters from the filter list
     > Removing always removes the selected filter
-8. Import Filters from Filter Wheel
+8. **Import Filters from Filter Wheel**
     > You should run this once to synchronize your filters from ASCOM to NINA
-9. PHD2 Server URL and Port
+9. **PHD2 Server URL and Port**
     - You can set the PHD2 server settings here
     > Usually the defaults should work fine  
     > You need to enable PHD2 server in PHD2
-10. Dither Pixels amount
+10. **Dither Pixels amount**
     - The amount of pixels to dither in PHD2
-11. Dither RA Only
+11. **Dither RA Only**
     - Enables dithering in the RA axis only
-12. Settle Time after resume
+12. **Settle Time after resume**
     - The time NINA should wait after a dithering process until it starts the next capture
 
 ---
@@ -1014,7 +1014,7 @@ In the Imaging settings you can find various imaging related settings like file 
 
 ![Settings: Imaging](images/tab-settings-imaging.png)
 
-1. Image Save Format Drop Down
+1. **Image Save Format Drop Down**
     - File format to save the image as
         - Available formats: TIFF, TIFF (Zip), TIFF (LZW), XISF, FITS
     - Either format will be saved unbayered as 16bit RAW file
@@ -1022,43 +1022,43 @@ In the Imaging settings you can find various imaging related settings like file 
     > To save space you can use TIFF (Zip) or TIFF (LZW)
     > - Both algorithms are slower to save a file
     > - Compression ratio may vary and you want to test out both algorithms
-2. Image File Path
+2. **Image File Path**
     - The file path where you want to store the saved images
     > Please note you need to use “\\\” instead of a single “\\” for folder separation
-3. Image File Pattern Preview
+3. **Image File Pattern Preview**
     - This button shows you a preview of the file pattern as defined in (4)
-4. Image File Pattern
+4. **Image File Pattern**
     - Here you can define the file name pattern based on the variables in (5)
     > You can also define folders and separate them with “\\\”  
     > Fixed text is also possible
-5. Image File Pattern Variables
-6. Meridian Flip Enable
+5. **Image File Pattern Variables**
+6. **Meridian Flip Enable**
     - This option will enable the automated meridian flip
     - The sequence will check periodically between images when to start the flip sequence
     - See [Automated Meridian Flip](#automated-meridian-flip)
-7. Meridian Flip start point
+7. **Meridian Flip start point**
     - The setting to wait until meridian is passed in minutes
     - The mount will wait until the target is # minutes after the meridian
-8. Recenter after Meridian Flip
+8. **Recenter after Meridian Flip**
     - When enabled will plate solve after the meridian flip and recenter
     > Strongly suggested to enable this option  
     > Requires a set up [plate solver](#plate-solving-settings)
-9. Scope settle time after Meridian Flip
+9. **Scope settle time after Meridian Flip**
     - The wait time until the scope is settled after a flip in seconds
     > If your mount takes a while to getting calm after a flip increase this value
-10. Pause before Meridian Flip
+10. **Pause before Meridian Flip**
     - The amount of time in minutes before the flip where the sequence will pause and wait for the meridian to pass
-11. AutoStretch factor for images
+11. **AutoStretch factor for images**
     - Here you can define the auto stretch factor for the auto stretch in the Imaging tab
     > 0.2 or 0.3 are good values here, usually you do not need to change this  
     > This setting will affect the [plate solver](#plate-solving-settings)!
-12. Annotate images
+12. **Annotate images**
     - When enabled will annotate the images with HFR of the detected stars
     - Only will annotate them when [HFR detection](#panel--image) is active
     > Values are not saved into the image, it’s just for display in the Imaging tab
-13. Histogram Resolution
+13. **Histogram Resolution**
     - This changes the granularity of the histogram resolution in the [statistics](#panel--statistics)
-14. Sequence Template
+14. **Sequence Template**
     - The default sequence template for images
 
 ---
@@ -1069,16 +1069,16 @@ This Setting tab allows you to change the plate solving mechanism. There are 3 p
 
 ![Settings: PlateSolving Astrometry](images/tab-settings-platesolving-astrometry.png)
 
-1. Primary Plate Solver Drop Down
+1. **Primary Plate Solver Drop Down**
     - This is the primary plate solver that is going to be used to plate solve images
     > Recommended is PlateSolve 2 or Local Platesolver
-2. Blind Solver Drop Down
+2. **Blind Solver Drop Down**
     - This is the blind solver for initial solving
     > Will be used for [Framing Assistant](#tab--framing-assistant) and for normal [plate solving](#panel--plate-solving) should the primary fail
-3. Plate Solver Settings Selection
+3. **Plate Solver Settings Selection**
     - Here you can select the various plate solvers
     > Settings for the Plate solver will appear on the right
-4. Astrometry.Net Plate Solver API Key
+4. **Astrometry.Net Plate Solver API Key**
     - This is the main setting for the Astrometry.Net Plate Solver
     > You need an account with astrometry.net to get an API key
 
@@ -1086,17 +1086,17 @@ Plate Solver settings for the Local Platesolver, which you can install on instal
 
 ![Settings: PlateSolving Local Solver](images/tab-settings-platesolving-localplatesolver.png)
 
-1. Local Plate Solver Directory
+1. **Local Plate Solver Directory**
     - The directory where the local plate solver is installed
     > If you installed it manually you need to change this to where it is located  
     > If you installed it bundled with NINA you likely don’t have to change anything
-2. Local Plate Solver Search Radius
+2. **Local Plate Solver Search Radius**
     - This is the search radius in degrees where the local plate solver should search for matches
     > 30 degrees is usually plenty
-3. Local Plate Solver Index Files
+3. **Local Plate Solver Index Files**
     - A list of all index files stored on your PC
     > They should be left at the default location where they have been downloaded to
-4. Download more index files
+4. **Download more index files**
     - Opens the FoV calculator and index file download window
     > You need to download index files for the local plate solver or otherwise it will not work
 
@@ -1104,30 +1104,30 @@ This window allows you download index files corresponding to your telescopes and
 
 ![Settings: PlateSolving Local Solver Index Files Download](images/tab-settings-platesolving-localplatesolver-indexfiles.png)
 
-1. Focal Length of the telescope
+1. **Focal Length of the telescope**
     - You need to set your telescope focal length here
-2. Pixel size of the camera
+2. **Pixel size of the camera**
     - Here you enter the pixel size of your camera
-3. Resolution of the camera
+3. **Resolution of the camera**
     - Here you set the resolution of your images
-4. Narrowest FOV selection
+4. **Narrowest FOV selection**
     - Based on the suggestion below the camera parameters you should set the narrowest FOV index to the suggestion
-5. Widest FOV selection
+5. **Widest FOV selection**
     - Based on the suggestion below the camera parameters you should set the widest FOV index to the suggestion
     > Both indexes will play a role how fast the local plate solver will run
-6. Download index files
+6. **Download index files**
     - Starts the download of the index files
-7. Save and close
+7. **Save and close**
 
 Those are the settings for the PlateSolve 2 platesolver.
 
 ![Settings: PlateSolving PlateSolve 2 Settings](images/tab-settings-platesolving-platesolve2.png)
 
-1. PlateSolve2 Location
+1. **PlateSolve2 Location**
     - You need to enter the path to the executable file of PlateSolve 2
     > For PlateSolve 2 to work you need to run it at least once and point it to the downloaded catalogues  
     > You need to download the catalogues from the PlateSolve 2 homepage as well
-2. PlateSolve2 Regions
+2. **PlateSolve2 Regions**
     - How many regions PlateSolve 2 needs to check for alignment before it fails
     > 1000 regions should be more than plenty depending on your initial alignment
 
