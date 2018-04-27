@@ -7,7 +7,7 @@
 
 Manual for Version 1.4.1.0
 
-![images\image23.png](images\nina-logo.png)
+![NINA Logo](images\nina-logo.png)
 
 ---
 
