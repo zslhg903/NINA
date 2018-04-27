@@ -722,20 +722,35 @@ The polar alignment panel gives you two ways to determine how off your polar ali
 
 ![Panel: Polar Alignment](images/panel-polaralignment.png)
 
-1.
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
-10.
-11.
-12.
-13.
-14.
+1. Polar scope
+	- Shows position of polaris when looking through the mount's polar scope
+    > Will not work for southern hemisphere. Uses latitude and longitude from settings.
+2. Exposure Time
+	- Defines the exposure time that should be used for a plate solved polar alignment measurement
+3. Filter
+	- The filter for the alignment
+4. Binning
+	- Camera binning
+5. Gain
+	- Camera gain
+6. Measurement location for altitude where the telescope is pointing at
+	- Can be either east or west	
+7. Measure Altitude Error
+	- Will start a platesolve of current position, then slews half a degree along RA axis, takes another platesolve and compares the result of both to measure the amount of error
+	> Telescope should point east or west at 0 declination 
+8. Meridian Offset and Declination for telescope
+    > The values entered here will be saved as settings for using next time
+9. Slew
+	- Slews mount to specified meridian offset and declination
+10. Measure Azimuth Error
+    - Will start a platesolve of current position, then slews half a degree along RA axis, takes another platesolve and compares the result of both to measure the amount of error
+    > Telescope should point south near meridian at 0 declination 
+11. Same as Step 8 except for azimuth
+	> The values entered here will be saved as settings for using next time
+12. Same as Step 9
+13. Duration and Rate in which the scope should move for a DARV Slew
+14. Slew
+	- Initiates a DARV Slew by slewing half the specified Duration in one RA direction and then back while taking an exposure.
 
 ---
 
