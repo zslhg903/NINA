@@ -5,7 +5,7 @@
 
 # NINA - Nighttime Imaging ‘N’ Astronomy Manual
 
-Manual for Version 1.4.1.0
+## Version 1.4.1.0
 
 ![NINA Logo](images\nina-logo.png)
 
@@ -15,8 +15,6 @@ Manual for Version 1.4.1.0
 
 <!-- TOC -->
 
-- [NINA - Nighttime Imaging ‘N’ Astronomy Manual](#nina---nighttime-imaging-n-astronomy-manual)
-- [Table of Contents](#table-of-contents)
 - [Manual Revision History](#manual-revision-history)
 - [Manual Editing Guidelines](#manual-editing-guidelines)
 - [Glossary](#glossary)
@@ -83,11 +81,12 @@ Manual for Version 1.4.1.0
 # Manual Revision History
 | Version | Date | Comment |
 | --- | --- | --- |
-| 0.1 | 2018-04-25 | Initial draft with rough outline |
+| 0.1 | 2018-04-25 | Initial draft with rough outline for preliminary version 1.4.1.0 |
 | 0.2 | 2018-04-25 | Added Manual Editing Guidelines, Introduction, Requirements, Quick Start Guide |
 | 0.3 | 2018-04-25 | Added detailed information for following tabs: Camera, Filter wheel+Focuser, Telescope, PHD2, Object Browser; added images to document framing assistant, sequence and settings tab; more glossary items; peer reviewed quick start guide |
 | 0.4 | 2018-04-27 | Completed initial Tabs documentation |
 | 0.5 | 2018-04-27 | Conversion to Markdown, minor changes |
+| 0.6 | 2018-05-02 | Updated to 1.5.0.0, added screenshots and descriptions of new features |
 
 # Manual Editing Guidelines
 - Screenshots with NINA in 1280×720 (minimal window size) resolution to maintain readability
@@ -111,7 +110,7 @@ Manual for Version 1.4.1.0
 | Plate Solving | Using software and a captured image to determine where your scope is pointing at in the sky |
 | Dithering | Moving the guiding output by a few pixels to shift the image by a tiny bit to prevent fixed noise patterns and missing data by hot pixels |
 | HFR | Half-Flux Radius of stars in pixels which determines how focussed the average star is |
-| ADU | Analogue Digital Unit, the lightness value of pixels (max. 2^16) |
+| ADU | Analogue Digital Unit, the lightness value of pixels (max. 2^BitDepth) |
 | ASCOM | AStronomy Common Object Model, a standard protocol for astronomy related device drivers |
 | DSO | Deep Space Object, anything that does not count as a star or planet |
 | DSLR | Digital Single Lens Reflex Camera, typical hand held camera with interchangeable lenses and a mirror for the viewfinder |
@@ -133,6 +132,8 @@ This document is aimed to describe the functionality of NINA so you can utilize 
 
 > Important notes will appear like this throughout the documentation, if you happen to find a note like this don't skimp over it!
 
+> Please note that images in this manual might not 100% reflect what you see, they will only be updated for a specific section if there actually were some updates in this version.
+
 ---
 
 # Prerequisites, Compatibility and System Requirements
@@ -144,22 +145,25 @@ This document is aimed to describe the functionality of NINA so you can utilize 
 - [ASCOM Platform 6.3 or later][ASCOM]
 - At least 2GB RAM
 - A dual core CPU (technically should run on single core too)
-- 70MB of free disk space
+- 70MB of free disk space without SkyAtlas
 
 ## Supported Devices
-- Camera
+- Cameras
     - [ASCOM][ASCOM] supported 64bit camera driver
     - ZWO cameras with native driver
+    - Atik cameras with native driver
     - Canon cameras
         - EOS 1300d not compatible
     - Nikon cameras
         - Some Nikons may require a serial shutter cable for bulb exposures
 - Mounts
-    - All [ASCOM][ASCOM] compatible mounts with 64bit drivers
+    - All [ASCOM][ASCOM] compatible mounts
 - Filter Wheels
-    - All [ASCOM][ASCOM] compatible filter wheels with 64bit drivers
+    - All [ASCOM][ASCOM] compatible filter wheels
 - Focusers
-    - All [ASCOM][ASCOM] compatible focusers with 64bit drivers
+    - All [ASCOM][ASCOM] compatible focusers
+ 
+> Please note that for the 64bit version of NINA you need 64bit drivers for your ASCOM devices.
 
 ## Supported Software
 - [PHD2](https://openphdguiding.org/)
@@ -248,6 +252,8 @@ You can leave those panels enabled, or disable any other at your will. Feel free
 
 Since our target now is to focus our telescope to get pinpoint stars, we have to use the the following currently enabled panels.
 
+> An alternative to focus is to use a Bahtinov Mask. You can try our experimental feature for Bahtinov Detection by enabling the icon in the [Image panel](#panel--image).
+
 With the HFR History (1) you will be able to see how your stars perform in terms of HFR. This is also represented in the Statistics panel (2). The lower your HFR value, the better focused your image will be. To start the manual focus procedure, you have to select the Imaging tab (3) and press on the start capture button (4). Your exposure time for that snapshot can be adjusted as well, should you choose to do so (5).
 
 To enable star detection and HFR analysis, you need to press on the Star Analysis button (6). This will yield a full analysis of the image and will enter the HFR values in the Statistics (2) and HFR History (1). You will notice that the AutoStretch button (7) will be enabled as well once you enable the Star Analysis button (6).
@@ -301,8 +307,10 @@ The Camera panel allows you to connect ASCOM based cameras as well as various ZW
         > Please note that DSLR do not report all necessary data
 6. **Gain, Offset and USB Limit Settings**
     - Allows the change of Gain, Offset and USB Limit
-        > Please note that the specific driver has to support this
+        > Please note that the specific driver has to support this  
+
 > Following settings need the camera to have an active cooler and report its status to NINA
+
 7. **Cooler status and switch**
     - Enable to start cooling the camera to the selected Target Temperature (9)
 8. **Temperature Information**
@@ -407,10 +415,15 @@ With the PHD2 tab you can connect NINA to PHD2 to send dither commands and recei
 2. **PHD2 Information**
     - Displays information about the connection status, pixel scale in PHD2 and the current state of the guider
 3. **Y-Axis Scale**
-    - Allows you to change the scale of the Y-Axis, is affected by( 4)
-4. **Y-Axis Scale selection**
+    - Allows you to change the scale of the Y-Axis, is affected by (4)
+4. **X-Axis Scale**
+    - Allows you to change the scale of the X-Axis
+        > Can also be set in the [Equipment Settings](#equipment-settings)
+5. **Y-Axis Scale units**
     - Allows you to change the scale of the Y axis between arcseconds (recommended) and pixels. PHD2 natively displays information in arcseconds
-5. **Guiding graph**
+6. **RMS Display**
+    - Displays the current Root Mean Square error in RA, Dec and Total
+7. **Guiding graph**
     - Displays the guiding graph as received by PHD2. Colors are identical for RA and Dec as they typically are in PHD2.
 
 ---
@@ -640,6 +653,20 @@ The image panel displays the latest captured image. You can zoom, plate solve or
     > Will also enable (4)
     - Tries to detect the stars in the image to output a [HFR result](#panel--hfr-history)
     - When annotation is enabled in the [Settings](#imaging-settings), will annotate the stars with their respective calculated HFR
+6. **Bahtinov Helper** *(Experimental feature)*
+    - Tries to detect the bahtinov Pattern on an image
+    - Displays a rectangle which can be dragged around
+        > Beta status, might not work as expected, report bugs or issues if you have any!
+    - ![Panel: Image: Bahtinov](images/panel-image-bahtinov.png)
+7. **Subsampling Rectangle** *(Experimental feature)*
+    - If your camera allows subsampling of a frame will display a rectangle, which can be dragged around the image
+    - Enabling subsampling in the [Imaging panel](#panel--imaging) will only download the displayed rectangle as long subsampling is enabled
+        > Currently only implemented for native Atik cameras
+    - ![Panel: Image: SubSampling](images/panel-image-subsampling.png)
+8. **Your captured image**
+     - Display of the last captured frame or a loaded frame from the [Image History](#panel--image-history)
+     - Is affected by (4) and will be displayed autostretched when enabled
+
 
 ---
 
@@ -660,7 +687,6 @@ The Camera panel displays various information about the current state of the cam
 > Cooling requires a camera with an active cooler that reports to NINA  
 > Requires a connected [camera](#tab--camera) to display information
 1. **Display of the current cooler status**
-    > You cannot enable or disable the cooler with this switch
 2. **Target temperature**
     - You can set the target temperature in C here
 3. **Duration**
@@ -776,8 +802,10 @@ This panel will display information as provided by [PHD2](#tab--phd2).
 ![Panel: Guider](images/panel-guiding.png)
 
 1. **Guider Status**
-2. **Guider Graph**
+2. **RMS Display**
+3. **Guider Graph**
     - Will utilize the scale as set in the [PHD2 tab](#tab--phd2)
+    - X-Scale can be changed in the [Settings](#equipment-settings)
 
 ---
 
@@ -846,7 +874,7 @@ The imaging panel allows you to take snapshots with your camera, for example for
 3. **Binning**
     - This allows you to change the binning
     > Only makes sense on CCD cameras
-4. **Gain**
+4. **Gain (not shown)**
     - Allows you to change the gain
     > Some cameras might not have the ability to change gain
 5. **Loop**
@@ -854,7 +882,11 @@ The imaging panel allows you to take snapshots with your camera, for example for
 6. **Save**
     - When enabled will save the images to the image path as defined in Settings
     > Image type will be “SNAP” for those images
-7. **Start Snapshot**
+7. **Enable SubSampling** *(Experimental feature)*
+    - Toggles the capture of only the subsampled frame as defined in the [image panel](#panel--image)
+        > Currently only supported by native Atik cameras  
+        > To get the full sized frame again disable subsampling
+8. **Start Snapshot**
     - Starts the snapshot
     > When loop (5) is enabled, will loop until pressed again to cancel
     
@@ -886,7 +918,13 @@ This panel shows you useful statistics about your latest captured or loaded imag
 > Will display the statistics only at least one image capture
 1. **Display of statistics**
     > Stars and HFR will not be calculated unless HFR detection is enabled
-2. **Histogram**
+2. **Optimal Exposure Calculator** *(Experimental feature)*
+    - Based on your camera values as defined in the [settings](#settings-equipment) will try and determine the necessary exposure time for a decently exposed image
+    - Calculations will be done once an image has been captured
+        > You should expose for at least 30s for this to work properly  
+        > You need to set the correct values in the settings, please refer to the PixInsight script ccdparameters or sensorgen.info for your cameras' values  
+        > *This is only a rough guideline and should work if you enter the correct values in the settings*  
+3. **Histogram**
     - This will show your exposure histogram
     > Histogram resolution can be set in [Settings](#imaging-settings)
 
@@ -974,37 +1012,64 @@ This tab allows you to change settings related to your equipment.
 
 1. **Camera Pixel Size**
     - The Pixel Size of your camera sensor in micrometers
-    > Will be automatically populated by the camera, if it provides the information
-2. **Camera Bulb Mode**
+      > Will be automatically populated by the camera, if it provides the information
+
+> For entries 2-5 refer to sensorgen.info or ccdparameters script in PixInsight
+
+2. **Camera Read noise in e**
+    - The read noise in electrons of your camera device
+3. **BIAS mean (native)**
+    - The mean value of your BIAS (shortest exposure) at your cameras native bit depth (4)
+4. **Bit depth**
+     - Your cameras native ADC bit depth
+5. **Full Well Capacity in e**
+    - Your cameras full well capacity in electrons
+6. **Download to Data ratio**
+    - The ratio the optimal exposure calculator will utilize to calculate the maximum adequately possible exposures
+7. **Camera Bulb Mode**
     - Allows you to change the bulb mode of the camera
     - Native will work in most cases
     - RS232 and Mount is available as well and might be necessary for older Nikon cameras
         > Please refer to Using RS232 or Mount for bulb shutter
-3. **Telescope Focal Length**
+8. **Raw converter**
+    - You can change the raw converter here
+    - Only applies to DSLR
+    - Available converters: DCRaw and FreeImage
+        - DCRaw will utilize DCRaw and stretch your images to 16bit, applying the cameras specific color bias profile
+        - FreeImage will deliver the frame exactly as your camera provided it and can be slightly faster for image download on slower machines
+            > Note that both raw converters will deliver you the raw frame of your DSLR. but they might vary in color. Saving the raw frame without adding the camera specific profile with FreeImage can deliver more faint and less colorful raw images than you are used to.
+9. **Telescope Focal Length**
     - Enter your telescope focal length here
     > This will be used for [plate solving](#panel--plate-solving)
-4. **Use Filter Wheel Offsets**
+10. **Settle time after slew**
+    - After slewing NINA will wait the specified amount before starting an exposure
+    - Value is in seconds
+11. **Use Filter Wheel Offsets**
     - When enabled the focuser will utilize the filter wheel focus offsets as defined in (6)
-5. **Auto Focus Settings**
+12. **Auto Focus Settings**
     - Allows you to change how the focuser operates in auto focus mode
-6. **Filter Wheel Filter List**
+13. **Filter Wheel Filter List**
     - This filter wheel filter list is used for sequences in NINA
     > You should import your filter list from your ASCOM filter wheel at least once using (8)
-7. **Add or Remove to/from Filter List**
+14. **Add or Remove to/from Filter List**
     - Manually add or remove filters from the filter list
     > Removing always removes the selected filter
-8. **Import Filters from Filter Wheel**
+15. **Import Filters from Filter Wheel**
     > You should run this once to synchronize your filters from ASCOM to NINA
-9. **PHD2 Server URL and Port**
+16. **PHD2 Server URL and Port**
     - You can set the PHD2 server settings here
     > Usually the defaults should work fine  
     > You need to enable PHD2 server in PHD2
-10. **Dither Pixels amount**
+17. **Dither Pixels amount**
     - The amount of pixels to dither in PHD2
-11. **Dither RA Only**
+18. **Dither RA Only**
     - Enables dithering in the RA axis only
-12. **Settle Time after resume**
+19. **Settle Time after resume**
     - The time NINA should wait after a dithering process until it starts the next capture
+20. **PHD2 History Size**
+    - The amount of PHD2 guide values NINA will save in the History of the [PHD2 Tab](#tabs--phd2)
+21. **PHD2 History Size (Imaging)**
+    - The amount of PHD2 guide values NINA will save in the history of the [PHD2 Panel](#panels--guider)
 
 ---
 
@@ -1016,7 +1081,7 @@ In the Imaging settings you can find various imaging related settings like file 
 
 1. **Image Save Format Drop Down**
     - File format to save the image as
-        - Available formats: TIFF, TIFF (Zip), TIFF (LZW), XISF, FITS
+        - Available formats: TIFF, TIFF (zip-compressed), TIFF (lzw-compressed), XISF, FITS
     - Either format will be saved unbayered as 16bit RAW file
     - TIFF can be left as default
     > To save space you can use TIFF (Zip) or TIFF (LZW)
@@ -1075,10 +1140,16 @@ This Setting tab allows you to change the plate solving mechanism. There are 3 p
 2. **Blind Solver Drop Down**
     - This is the blind solver for initial solving
     > Will be used for [Framing Assistant](#tab--framing-assistant) and for normal [plate solving](#panel--plate-solving) should the primary fail
-3. **Plate Solver Settings Selection**
+3. **Exposure Time**
+    - The default exposure time for Plate Solving
+4. **Filter**
+    - The default filter for Plate Solving
+5. **error <**
+    - The default error in arcmin for repeated Plate Solving
+6. **Plate Solver Settings Selection**
     - Here you can select the various plate solvers
     > Settings for the Plate solver will appear on the right
-4. **Astrometry.Net Plate Solver API Key**
+7. **Astrometry.Net Plate Solver API Key**
     - This is the main setting for the Astrometry.Net Plate Solver
     > You need an account with astrometry.net to get an API key
 
@@ -1176,6 +1247,12 @@ Those are the settings for the PlateSolve 2 platesolver.
 
 ## Bugs
 
+Should you encounter any bugs during your usage of NINA please report them to the [Issues Tracker][IssuesTracker] or directly to us on our [Discord][Discord]. If possible attach the latest Log file from the day on which you encountered the issue.
+
+Log files can be found in ```%LOCALAPPDATA%%\NINA\Logs\```
+
 ---
 
 ## Comments and Suggestions
+
+We are always happy to take new comments and suggestions to improve your and our experience with NINA. As with Bugs feel free to drop them by us on our [Issues Tracker][Issues Tracker] or [Discord][Discord]. You are always welcome and your voice will be heard - or you get your money back.
