@@ -1272,6 +1272,66 @@ Once enabled in the sequence, the sequence is running and PHD2 is connected the 
 
 ## Using RS232 or Mount for Bulb Shutter
 
+If you have a DSLR that does not allow BULB exposure time over USB this is a solution for you. Instead of native USB mode you can use a selfmade RS232-Shutter cable or use the mounts port for shutter (if available). You can test whether you need or don't need an external shutter cable by trying taking an exposure of more than 30s. This will trigger bulb mode on DSLR. If your camera won't take a picture you need to look at this section.
+
+> Prerequsite for any method of this functionality is that your DSLR has a shutter port!
+
+You can find the necessary settings in the [Equipment Settings](#settings-equipment).
+
+![Bulb Shutter Settings](images/usage-bulbshutter-settings.png)
+
+If your mount has a SNAP port we advise to test out the [Mount for Bulb Shutter](#mount-for-bulb-shutter) functionality before the RS232 for Bulb Shutter.
+
+### RS232 for Bulb Shutter
+
+One way to trigger the shutter mechanism of your DSLR is utilizing a self-made RS232 to Bulb shutter cable. There are already some pre-made cables to be bought online for this issue or you can DIY.
+
+> DSUSB cables are not supported since they don't expose a COM Port!
+
+You can find some tutorials on how to build a DIY shutter cable here:
+
+- [Nikon MC-DC2](https://www.cloudynights.com/topic/457536-usb-corded-shutter-control-for-nikon/)
+- [Canon #1](http://www.beskeen.com/projects/dslr_serial/dslr_serial.shtml)
+- [Canon #2](http://www.covingtoninnovations.com/dslr/CanonRelease.html)
+
+Once you have a RS232-Shutter cable built you need to connect it to the PC, install drivers for your RS232 adapter and check for the COM port used.
+
+In NINA you need to select `Serial Port` for the Bulb Mode and change the COM port to the port your RS232 is using.
+
+![Bulb Shutter Serial](images/usage-bulbshutter-serial.png)
+
+After that you can try and snap an image with an exposure time of longer than 30s. If it works you are done and can now expose for any time that you wish.
+
+Should you face issues with the RS232-Shutter exposure in NINA feel free to contact us on our [Discord][Discord].
+
+> Please not we have no experience with DIY of shutter cables!
+
+### Mount for Bulb Shutter
+
+If you are lucky enough that your mount runs with EQMOD and has a shutter port you can use that to trigger the bulb shutter mechanism.
+
+![Bulb Shutter Mount Port](images/usage-bulbshutter-mountsnapport.png)
+
+To try use that select the `Telescope Snap Port` from the settings drop down.
+
+> Currently confirmed and tested mounts for Mount Bulb Shutter are the SkyWatcher EQ6-R and AZ-EQ-6-GT.
+
+First you need to connect a shutter cable from the SNAP port of your mount to your DSLR. For that you will likely need a 3.5mm jack to your cameras specific shutter port cable. 
+
+Once everything is physically connected you need to connect the mount to NINA and the Camera as well.
+
+> If your mount has two SNAP ports you can use either. Both will work depending on the next setting.
+
+The next step is to experiment with the command setting that is sent to the mount. 
+
+![Bulb Shutter Port Command](images/usage-bulbshutter-snapport.png)
+
+The default settings might already work for you already, so feel free to try and take a snap shot that is longer than 30s in NINA. If the shutter is triggered, you are done and can take longer exposures than 30s now.
+
+Should this not work please try the commands `:SNAP2,1#` to start and `:SNAP2,0#` to stop the snap port. 
+
+Should your bulb exposure still not trigger please contact us on our [Discord][Discord].
+
 ---
 
 
