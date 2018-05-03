@@ -66,7 +66,6 @@
     - [Dithering with PHD2](#dithering-with-phd2)
     - [Framing with the Framing Assistant](#framing-with-the-framing-assistant)
     - [Automated Meridian Flip](#automated-meridian-flip)
-    - [Automatic Refocusing During a Sequence](#automatic-refocusing-during-a-sequence)
     - [Advanced Sequencing](#advanced-sequencing)
     - [Using RS232 or Mount for Bulb Shutter](#using-rs232-or-mount-for-bulb-shutter)
 - [Troubleshooting](#troubleshooting)
@@ -105,8 +104,8 @@
 # Glossary
 | Term | Description |
 | --- | --- |
-| Bahtinov | A specific mask to align the focus, see Bahtinov Mask |
-| Guiding | A way to use a second camera to guide along stars to prevent the mount from having errors, see [Autoguiding] |
+| Bahtinov | A specific mask to align the focus |
+| Guiding | A way to use a second camera to guide along stars to prevent the mount from having errors |
 | Plate Solving | Using software and a captured image to determine where your scope is pointing at in the sky |
 | Dithering | Moving the guiding output by a few pixels to shift the image by a tiny bit to prevent fixed noise patterns and missing data by hot pixels |
 | HFR | Half-Flux Radius of stars in pixels which determines how focussed the average star is |
@@ -115,6 +114,8 @@
 | DSO | Deep Space Object, anything that does not count as a star or planet |
 | DSLR | Digital Single Lens Reflex Camera, typical hand held camera with interchangeable lenses and a mirror for the viewfinder |
 | J2000/JNOW | Different epochs based on the current time or the year 2000. Used for mount location synchronization |
+| OSC | One Shot Color, typical DSLR or color astro camera |
+| LRGB | Lightness, Red, Green, Blue - a typical color combination for color images from a monochrome camera |
 
 ---
 
@@ -1216,6 +1217,45 @@ Those are the settings for the PlateSolve 2 platesolver.
 
 ## Dithering with PHD2
 
+Dithering is an important part of the imaging process. The benefit of dithering will be a clearer image with less pattern noise and more detail since the image will be shifted by a few pixels with a dithering request.
+
+NINA supports dithering out of the box utilizing PHD2 and makes it easy to set up and have it running. There are a few prerequisites to be able to dither your images during a sequence.
+
+- A mount needs to be connected
+- PHD2 needs to be be running, guiding and also connected to NINA
+  - The PHD2 settings in the [Equipment Settings](#settings-equipment) need to be set up
+- Dithering needs to be enabled in the sequence
+
+### PHD2 Settings
+
+You need to enable the Option "Enable Server" in PHD2 so NINA can connect to PHD2 to get the current guiding and RMS data as well as send dithering commands.
+
+> The setting to enable it is in PHD2 under ```Tools -> Enable Server```
+
+![PHD2 Settings](images/usage-dithering-settings-phd2.png)
+
+The settings for NINA in the [Equipment Settings](#settings-equipment) can be left at their defaults. The PHD2 Server Port of `4400` is correct and so is the the server URL of `localhost` since we assume PHD2 is running on the local computer.
+
+> If you use a different computer to guide you need to change the server URL to the IP or Hostname of the guiding server.
+
+The other two important settings are `Dither Pixels` and `Dither RA only`. You can leave the Dither Pixels to 5 or reduce it if you shoot at a high focal length. The default works fine for most focal lengths. It depends on the guide camera and focal length of the guidescope as well.
+
+> You can calculate how much arcseconds a single pixel of your camera is by calculating the FOV of your guide scope with guide camera and getting the arcseconds per pixel values. A calculator for this is for example the [Astronomy Tools Field of View Calculator](https://astronomy.tools/calculators/field_of_view/).
+
+Dithering RA only should be disabled in general so PHD2 will dither in all directions instead of only RA. If you have a high backlash and it takes a long time for the dither to settle, you can disable this option. This is generally not recommended.
+
+### Sequence Settings
+
+Once you have set up your PHD2 you will need to connect it first in the [PHD2 Tab](#tab--phd2). Once connected and verified that it sends data you can enable Dithering in the [Sequence tab](#tab--sequence).
+
+![Seqence Settings](images/usage-dithering-sequence.png)
+
+In the sequence tab you have two settings that affect dithering. The first and obvious is `Dither` for any given sequence entry. If you enable `Dither` PHD2 will start dithering every frame. You might want to consider dithering less than every frame or dither only for specific sequence entries. For example, if you use a LRGB rotational sequence (see: [Advanced Sequencing](#advanced-sequencing)) you might only want to dither on every L frame. If you use a OSC Camera it is suggested to dither every frame.
+
+> The dithering will happen while the camera downloads the image, so depending on how long your download is and how long it takes the guiding to settle you might not even lose time.
+
+Once enabled in the sequence, the sequence is running and PHD2 is connected the dithering will happen automatically. You don't need to enable anything else.
+
 ---
 
 ## Framing with the Framing Assistant
@@ -1223,10 +1263,6 @@ Those are the settings for the PlateSolve 2 platesolver.
 ---
 
 ## Automated Meridian Flip
-
----
-
-## Automatic Refocusing During a Sequence
 
 ---
 
