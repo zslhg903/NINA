@@ -5,7 +5,7 @@
 
 # NINA - Nighttime Imaging ‘N’ Astronomy Manual
 
-## Version 1.4.1.0
+## Version 1.5.0.0
 
 ![NINA Logo](images\nina-logo.png)
 
