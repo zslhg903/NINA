@@ -201,7 +201,7 @@ Here are two examples of a focused and defocused star field.
 
 As you can see, the values for HFR have been entered in the HFR history and are displayed in the Statistics as well. The second image is definitely defocused with a HFR of 2.14, while the first image is in as good focus as possible. Your HFR values will vary because they depend on the focal length of the telescope as well as on the pixel size of the sensor, but you should try and focus your telescope until the HFR is as low as possible.
 
-## Starting a Sequence
+## Quick Start: Starting a Sequence
 
 Once you nailed your focus you can switch to the Sequence tab (1).
 
