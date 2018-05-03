@@ -1264,6 +1264,45 @@ Once enabled in the sequence, the sequence is running and PHD2 is connected the 
 
 ## Automated Meridian Flip
 
+Automated Meridian flips are important once your mount passes the meridian while imaging. They prevent that your telescope and camera bump into the mount and do major damage to your equipment. NINA has built-in functionality for the automated flip, even if your mount does not support it in firmware.
+
+> Prerequisite for this functionality is that your mount is connected to NINA and the setting for flipping is enabled.
+
+To enable the Automated Meridian Flip you need to enable it in the imaging settings.
+
+![Automated Meridian Flip Settings](images/usage-autoflip-settings.png)
+
+There are a few settings that you can change here that will affect what the meridian flip will do. 
+
+Minutes after meridian is when the flip actually will happen. 1 Minute as the default is a good time for the mount to actually notice it's past the meridian and flip automatically.
+
+Recenter after flip will use plate solving to determine where your mount is and recenter it after the flip.
+
+Scope settle time after flip will wait for the specified time after the flip and center.
+
+Pause before meridian is when the mount will stop imaging and wait for the time to pass until minutes after meridian.
+
+The whole Sequence of the Automated Meridian Flip works like this:
+
+1. Camera shoots and downloads an image
+2. Check if next image time + time to meridian is less than pause before meridian
+   1. If there is still time go to 1.
+   2. Otherwise continue with 3.
+3. Show the Meridian Flip UI
+4. Stop guiding in PHD2 and mount tracking
+5. Wait until meridian passes + minutes after meridian setting
+6. Give a slew command to the same RA/Dec coordinates where it was before so the mount flips
+7. Start mount tracking
+8. Wait for Scope settle time
+9. If Recenter after flip is disabled go to 10.
+   1. Otherwise take a snap shot and plate solve it
+   2. Recenter according to the plate solve to the correct mount location
+10. Auto Select star in PHD2 and resume guiding
+11. Wait for guiding to settle
+12. Continue with 1.
+
+> Please note that some steps might fail or your mount can entangle itself during the automated meridian flip. **Always supervise your mount and NINA while flipping to ensure that there are no issues.**
+
 ---
 
 ## Advanced Sequencing
