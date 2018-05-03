@@ -7,7 +7,7 @@
 
 ## Version 1.5.0.0
 
-![NINA Logo](images\nina-logo.png)
+![NINA Logo](images/nina-logo.png)
 
 ---
 
@@ -253,7 +253,7 @@ You can leave those panels enabled, or disable any other at your will. Feel free
 
 Since our target now is to focus our telescope to get pinpoint stars, we have to use the the following currently enabled panels.
 
-> An alternative to focus is to use a Bahtinov Mask. You can try our experimental feature for Bahtinov Detection by enabling the icon in the [Image panel](#panel--image).
+> An alternative to focus is to use a Bahtinov Mask. You can try our experimental feature for Bahtinov Detection by enabling the icon in the [Image panel](#panel-image).
 
 With the HFR History (1) you will be able to see how your stars perform in terms of HFR. This is also represented in the Statistics panel (2). The lower your HFR value, the better focused your image will be. To start the manual focus procedure, you have to select the Imaging tab (3) and press on the start capture button (4). Your exposure time for that snapshot can be adjusted as well, should you choose to do so (5).
 
@@ -467,9 +467,9 @@ In the Object Browser you can search for various objects in the sky, filter by o
     - Shows the objects altitude, what direction it will transit and the darkness phase of the specified day, including the current time
     > Altitude depends on Latitude and Longitude set in the [Settings](#general-settings)
 8. **Set as Sequence**
-    - Sets the object as sequence target and uses its name in the [sequence tab](#tab--sequence) as well
+    - Sets the object as sequence target and uses its name in the [sequence tab](#tab-sequence) as well
 9. **Set for Framing Assistant**
-    - Sets the object as target for the [framing assistant](#tab--framing-assistant)
+    - Sets the object as target for the [framing assistant](#tab-framing-assistant)
 10. **Slew**
     - Slews the mount to the specified object
 
@@ -511,7 +511,7 @@ The Framing Assistant allows you to frame your next shot perfectly utilizing DSS
 7. **Slew**
     - Slews the mount exactly to the center of the framing window (12)
 8. **Set as Sequence Target**
-    - Sets the coordinates of the RA and Dec of the framing window as the sequence and copies the name over to the [sequence tab](#tab--sequence) as well
+    - Sets the coordinates of the RA and Dec of the framing window as the sequence and copies the name over to the [sequence tab](#tab-sequence) as well
 9. **Altitude browser**
     - Displays the current time, altitude of the target and night cycle
 10. **Image display controls**
@@ -523,7 +523,7 @@ The Framing Assistant allows you to frame your next shot perfectly utilizing DSS
     - Can be dragged around with the mouse
     - Can be rotated with (5)
     - Displays the coordinates of the center
-    - Center of the framing rectangle can be slewed to (7) or set as [sequence](#tab--sequence) target (8)
+    - Center of the framing rectangle can be slewed to (7) or set as [sequence](#tab-sequence) target (8)
 
 ---
 
@@ -541,7 +541,7 @@ With Sequences you are able to create imaging sequences with various options for
         - “Rotate through” would process one item from a sequence entry and then continue with the next. Allows for example the rotation of LRGB sequences.
 3. **Start guiding**
     - When enabled will try to start guiding with PHD2 after the start of the sequence
-    - PHD2 needs to be connected in the [PHD2 Tab](#tab--phd2)
+    - PHD2 needs to be connected in the [PHD2 Tab](#tab-phd2)
 4. **Slew to target**
     - Slews to the target as specified in RA and Dec
     - Does not Plate Solve to verify it is on target
@@ -652,7 +652,7 @@ The image panel displays the latest captured image. You can zoom, plate solve or
     > Auto Stretch factor can be set in [Settings](#imaging-settings)
 5. **Star Detection and analysis**
     > Will also enable (4)
-    - Tries to detect the stars in the image to output a [HFR result](#panel--hfr-history)
+    - Tries to detect the stars in the image to output a [HFR result](#panel-hfr-history)
     - When annotation is enabled in the [Settings](#imaging-settings), will annotate the stars with their respective calculated HFR
 6. **Bahtinov Helper** *(Experimental feature)*
     - Tries to detect the bahtinov Pattern on an image
@@ -661,11 +661,11 @@ The image panel displays the latest captured image. You can zoom, plate solve or
     - ![Panel: Image: Bahtinov](images/panel-image-bahtinov.png)
 7. **Subsampling Rectangle** *(Experimental feature)*
     - If your camera allows subsampling of a frame will display a rectangle, which can be dragged around the image
-    - Enabling subsampling in the [Imaging panel](#panel--imaging) will only download the displayed rectangle as long subsampling is enabled
+    - Enabling subsampling in the [Imaging panel](#panel-imaging) will only download the displayed rectangle as long subsampling is enabled
         > Currently only implemented for native Atik cameras
     - ![Panel: Image: SubSampling](images/panel-image-subsampling.png)
 8. **Your captured image**
-     - Display of the last captured frame or a loaded frame from the [Image History](#panel--image-history)
+     - Display of the last captured frame or a loaded frame from the [Image History](#panel-image-history)
      - Is affected by (4) and will be displayed autostretched when enabled
 
 
@@ -686,7 +686,7 @@ The Camera panel displays various information about the current state of the cam
 ![Panel: Camera](images/panel-camera.png)
 
 > Cooling requires a camera with an active cooler that reports to NINA  
-> Requires a connected [camera](#tab--camera) to display information
+> Requires a connected [camera](#tab-camera) to display information
 1. **Display of the current cooler status**
 2. **Target temperature**
     - You can set the target temperature in C here
@@ -703,7 +703,7 @@ The Telescope panel displays various information about the current state of the 
 
 ![Panel: Telescope](images/panel-telescope.png)
 
-> Requires a connected [telescope](#tab--telescope) to display information
+> Requires a connected [telescope](#tab-telescope) to display information
 
 ---
 
@@ -798,21 +798,21 @@ Display of latest weather information from the selected weather provider in [Set
 
 ### Panel: Guider
 
-This panel will display information as provided by [PHD2](#tab--phd2). 
+This panel will display information as provided by [PHD2](#tab-phd2). 
 
 ![Panel: Guider](images/panel-guiding.png)
 
 1. **Guider Status**
 2. **RMS Display**
 3. **Guider Graph**
-    - Will utilize the scale as set in the [PHD2 tab](#tab--phd2)
+    - Will utilize the scale as set in the [PHD2 tab](#tab-phd2)
     - X-Scale can be changed in the [Settings](#equipment-settings)
 
 ---
 
 ### Panel: Sequence
 
-This panel displays the current active [sequence](#tab--sequence).
+This panel displays the current active [sequence](#tab-sequence).
 
 ![Panel: Sequence](images/panel-sequence.png)
 
@@ -837,7 +837,7 @@ Here you can see the current selected filter, the state and are able to change t
 
 ![Panel: Filter Wheel](images/panel-filterwheel.png)
 
-> Requires a connected [Filter Wheel](#tab--filter-wheel-and-focuser)
+> Requires a connected [Filter Wheel](#tab-filter-wheel-and-focuser)
 1. **Filter Drop Down**
     - Allows you to change the current filter in the filter wheel
 
@@ -849,7 +849,7 @@ This panel displays information about the focuser status and allows you to move 
 
 ![Panel: Focuser](images/panel-focuser.png)
 
-> Requires a connected [focuser](#tab--filter-wheel-and-focuser)
+> Requires a connected [focuser](#tab-filter-wheel-and-focuser)
 1. **Focuser Status**
 2. **Temperature Compensation**
     - When enabled the focuser will try to compensate for ambient temperature if a temperature sensor is available
@@ -884,7 +884,7 @@ The imaging panel allows you to take snapshots with your camera, for example for
     - When enabled will save the images to the image path as defined in Settings
     > Image type will be “SNAP” for those images
 7. **Enable SubSampling** *(Experimental feature)*
-    - Toggles the capture of only the subsampled frame as defined in the [image panel](#panel--image)
+    - Toggles the capture of only the subsampled frame as defined in the [image panel](#panel-image)
         > Currently only supported by native Atik cameras  
         > To get the full sized frame again disable subsampling
 8. **Start Snapshot**
@@ -899,7 +899,7 @@ Here you can read useful information about your average HFR and the amount of st
 
 ![Panel: HFR History](images/panel-hfrhistory.png)
 
-> Requires [HFR detection](#panel--image) to be enabled
+> Requires [HFR detection](#panel-image) to be enabled
 1. **Display of HFR and Stars in a graph**
     - Limited to 300 entries by default
     - Right side Y axis displays the amount of stars
@@ -937,7 +937,7 @@ With this panel you can start the auto focus sequence if you have a motorized fo
 
 ![Panel: Auto Focus](images/panel-autofocus.png)
 
-> Requires a connected [focuser](#tab--filter-wheel-and-focuser)
+> Requires a connected [focuser](#tab-filter-wheel-and-focuser)
 1. **Display of the focus steps and HFR**
     - <something>
 2. **Start Auto Focus**
@@ -968,7 +968,7 @@ The General Settings tab allows you to manage NINA in terms of all general setti
     > Currently only English and German are available, if you want you can contribute to the translation of NINA to your language of choice, contact us on [Discord][Discord]!
 5. **Sky Atlas Image Directory**
     - The directory to the [Sky Atlas][SkyAtlas] Image Repository
-    - Used in [Object Browser](#tab--object-browser)
+    - Used in [Object Browser](#tab-object-browser)
 6. **Log Level**
     - You can change the log level should you encounter issues and want to report a bug
     > Please attach the log with level TRACE then
@@ -1041,7 +1041,7 @@ This tab allows you to change settings related to your equipment.
             > Note that both raw converters will deliver you the raw frame of your DSLR. but they might vary in color. Saving the raw frame without adding the camera specific profile with FreeImage can deliver more faint and less colorful raw images than you are used to.
 9. **Telescope Focal Length**
     - Enter your telescope focal length here
-    > This will be used for [plate solving](#panel--plate-solving)
+    > This will be used for [plate solving](#panel-plate-solving)
 10. **Settle time after slew**
     - After slewing NINA will wait the specified amount before starting an exposure
     - Value is in seconds
@@ -1120,10 +1120,10 @@ In the Imaging settings you can find various imaging related settings like file 
     > This setting will affect the [plate solver](#plate-solving-settings)!
 12. **Annotate images**
     - When enabled will annotate the images with HFR of the detected stars
-    - Only will annotate them when [HFR detection](#panel--image) is active
+    - Only will annotate them when [HFR detection](#panel-image) is active
     > Values are not saved into the image, it’s just for display in the Imaging tab
 13. **Histogram Resolution**
-    - This changes the granularity of the histogram resolution in the [statistics](#panel--statistics)
+    - This changes the granularity of the histogram resolution in the [statistics](#panel-statistics)
 14. **Sequence Template**
     - The default sequence template for images
 
@@ -1140,7 +1140,7 @@ This Setting tab allows you to change the plate solving mechanism. There are 3 p
     > Recommended is PlateSolve 2 or Local Platesolver
 2. **Blind Solver Drop Down**
     - This is the blind solver for initial solving
-    > Will be used for [Framing Assistant](#tab--framing-assistant) and for normal [plate solving](#panel--plate-solving) should the primary fail
+    > Will be used for [Framing Assistant](#tab-framing-assistant) and for normal [plate solving](#panel-plate-solving) should the primary fail
 3. **Exposure Time**
     - The default exposure time for Plate Solving
 4. **Filter**
@@ -1246,7 +1246,7 @@ Dithering RA only should be disabled in general so PHD2 will dither in all direc
 
 ### Sequence Settings
 
-Once you have set up your PHD2 you will need to connect it first in the [PHD2 Tab](#tab--phd2). Once connected and verified that it sends data you can enable Dithering in the [Sequence tab](#tab--sequence).
+Once you have set up your PHD2 you will need to connect it first in the [PHD2 Tab](#tab-phd2). Once connected and verified that it sends data you can enable Dithering in the [Sequence tab](#tab-sequence).
 
 ![Seqence Settings](images/usage-dithering-sequence.png)
 
