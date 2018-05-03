@@ -43,9 +43,6 @@
   
     img {
       max-width: 100% !important;
-      margin-left: auto !important;
-      margin-right: auto !important;
-      display: block;
     }
   
     p,
@@ -172,6 +169,9 @@
   select,
   textarea {
     max-width: 100%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block !important;
   }
   
   @import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700);
