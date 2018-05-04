@@ -85,18 +85,18 @@
   }
   
   html {
-    font-size: 12px;
+    font-size: 11px;
   }
   
   @media screen and (min-width: 32rem) and (max-width: 48rem) {
     html {
-      font-size: 15px;
+      font-size: 14px;
     }
   }
   
   @media screen and (min-width: 48rem) {
     html {
-      font-size: 16px;
+      font-size: 15px;
     }
   }
   
@@ -106,7 +106,7 @@
   
   p,
   .modest-p {
-    font-size: 1rem;
+    font-size: 0.9rem;
     margin-bottom: 1.3rem;
   }
   
@@ -126,32 +126,32 @@
   h1,
   .modest-h1 {
     margin-top: 0;
-    font-size: 3.998rem;
+    font-size: 3.5rem;
   }
   
   h2,
   .modest-h2 {
-    font-size: 2.827rem;
+    font-size: 2.5rem;
   }
   
   h3,
   .modest-h3 {
-    font-size: 1.999rem;
+    font-size: 2rem;
   }
   
   h4,
   .modest-h4 {
-    font-size: 1.414rem;
+    font-size: 1.5rem;
   }
   
   h5,
   .modest-h5 {
-    font-size: 1.121rem;
+    font-size: 1.125rem;
   }
   
   h6,
   .modest-h6 {
-    font-size: .88rem;
+    font-size: 1rem;
   }
   
   small,
@@ -212,9 +212,16 @@
   }
   
   blockquote {
-    border-left: 8px solid #fafafa;
-    padding: 1rem;
+    border-left: 8px solid #ff5454;
+    padding: 0.1rem;
+    padding-left: 1.5rem;
+    padding-right: 1rem;
     background: #efefef;
+  }
+  blockquote p {
+    padding: 0 !important;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
   }
   
   pre,

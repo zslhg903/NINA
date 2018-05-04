@@ -73,11 +73,15 @@ This document is aimed to describe the functionality of NINA so you can utilize 
 
 # Prerequisites, Compatibility and System Requirements
 
+## NINA Download
+- [Download Latest Version](https://bitbucket.org/Isbeorn/nina/downloads/)
+
 ## Minimum System Requirements
 - 64bit Windows 7 or later
     - 32bit builds are available, but might be unstable and less tested
 - [.NET Framework 4.6.2 or later](https://www.microsoft.com/en-us/download/details.aspx?id=48130)
 - [ASCOM Platform 6.3 or later][ASCOM]
+- [Visual C++ Redistributable Runtime 2013](https://www.microsoft.com/en-us/download/details.aspx?id=40784)
 - At least 2GB RAM
 - A dual core CPU (technically should run on single core too)
 - 70MB of free disk space without SkyAtlas
@@ -161,7 +165,7 @@ We have a few small steps to do before we can start with imaging. For that we ne
 
 In the settings we go directly to the Equipment tab (1) and have to set a few things first. You should set your pixel size to the pixel size that your camera has, if it has not been set automatically, which is the case with most DSLR. Search online for the pixel size of your camera and enter the value in (2). 
 
-> If you have an older Nikon camera you might not be able to use the native bulb mode for long exposures (>30s) via USB. If you have a RS232-Shutter cable or your mount has a shutter port which is connected to the camera change the setting in (3). Please refer to the Advanced topic using RS232 or mount for bulb shutter.
+> If you have an older Nikon camera you might not be able to use the native bulb mode for long exposures (>30s) via USB. If you have a RS232-Shutter cable or your mount has a shutter port which is connected to the camera change the setting in (3). Please refer to the Advanced topic [using RS232 or mount for bulb shutter](#using-rs232-or-mount-for-bulb-shutter).
 
 Finally, you will need to set your Telescope or lens focal length in (4).
 
@@ -340,7 +344,11 @@ The Telescope tab allows you to connect your ASCOM supported mount, slew it to s
 
 ## Tab: PHD2
 
-With the PHD2 tab you can connect NINA to PHD2 to send dither commands and receive current guiding information in the User Interface. It consists out of following elements:
+With the PHD2 tab you can connect NINA to PHD2 to send dither commands and receive current guiding information in the User Interface. 
+
+> For further information about PHD2 and dithering refer to [Usage: Dithering with PHD2](#dithering-with-phd2)
+
+It consists out of following elements:
 
 ![Tab: PHD2](images/tab-phd2.png)
 
@@ -365,7 +373,12 @@ With the PHD2 tab you can connect NINA to PHD2 to send dither commands and recei
 
 ## Tab: Object Browser
 
-In the Object Browser you can search for various objects in the sky, filter by object type and other various criteria, set them as sequence target or for the framing assistant. The UI consists out of following elements:
+In the Object Browser you can search for various objects in the sky, filter by object type and other various criteria, set them as sequence target or for the framing assistant. 
+
+> For further information about the object browser refer to [Usage: Using the Object Browser](#using-the-object-browser)
+
+
+The UI consists out of following elements:
 
 ![Tab: Object Browser](images/tab-objectbrowser.png)
 
@@ -412,6 +425,8 @@ In the Object Browser you can search for various objects in the sky, filter by o
 ## Tab: Framing Assistant
 
 The Framing Assistant allows you to frame your next shot perfectly utilizing DSS data or images from the previous night. It can utilize plate solving to perfectly align your telescope to the rectangle you select.
+
+> For further information about using the Framing Asisstant refer to [Usage: Framing with the Framing Assistant](#framing-with-the-framing-assistant)
 
 ![Tab: Framing Assistant](images/tab-framingassistant.png)
 
@@ -464,6 +479,8 @@ The Framing Assistant allows you to frame your next shot perfectly utilizing DSS
 ## Tab: Sequence
 
 With Sequences you are able to create imaging sequences with various options for automation. The main usage is to set exposure times, filters and other settings for a total amount of frames to not have to shoot manually and have it stop after a specific amount of frames.
+
+> For further information about sequencing refer to [Usage: Advanced Sequencing](#advanced-sequencing) and [Usage: Automated Meridian Flip](#automated-meridian-flip).
 
 ![Tab: Sequence](images/tab-sequencing.png)
 
@@ -578,7 +595,8 @@ The image panel displays the latest captured image. You can zoom, plate solve or
     - From left to right: Zoom in, Zoom out, Fit image to Screen, Show image at 100% scale
 2. **Plate Solve current image**
     - This will trigger the plate solving mechanism that will attempt to plate solve the currently captured image
-        > The solved result will be displayed in the [Plate Solve panel](#panel-plate-solving)
+        > The solved result will be displayed in the [Plate Solve panel](#panel-plate-solving)  
+        > For Usage of the Plate Solver refer to [Usage: Plate Solving](#plate-solving)
 3. **Crosshair**
     - Displays a crosshair overlay over the image
 4. **Auto Stretch**
@@ -644,6 +662,8 @@ The Telescope panel displays various information about the current state of the 
 ### Panel: Plate Solving
 
 The Plate Solving panel allows you to start the plate solving procedure to align your mount to its actual location in the sky, making framing and finding targets way easier without utilizing star alignment.
+
+> For Usage of the Plate Solver refer to [Usage: Plate Solving](#plate-solving)
 
 ![Panel: Plate Solve](images/panel-platesolving.png)
 
@@ -873,7 +893,6 @@ With this panel you can start the auto focus sequence if you have a motorized fo
 
 > Requires a connected [focuser](#tab-filter-wheel-and-focuser)
 1. **Display of the focus steps and HFR**
-    - <something>
 2. **Start Auto Focus**
     - This will start the auto focus procedure
 
@@ -965,7 +984,7 @@ This tab allows you to change settings related to your equipment.
     - Allows you to change the bulb mode of the camera
     - Native will work in most cases
     - RS232 and Mount is available as well and might be necessary for older Nikon cameras
-        > Please refer to Using RS232 or Mount for bulb shutter
+        > For usage of RS232 and Monunt shutter refer to [Usage: Using RS232 or Mount for bulb shutter](#using-rs232-or-mount-for-bulb-shutter)
 8. **Raw converter**
     - You can change the raw converter here
     - Only applies to DSLR
@@ -1035,7 +1054,7 @@ In the Imaging settings you can find various imaging related settings like file 
 6. **Meridian Flip Enable**
     - This option will enable the automated meridian flip
     - The sequence will check periodically between images when to start the flip sequence
-    - See [Automated Meridian Flip](#automated-meridian-flip)
+    > For usage of the automated meridian flip refer to [Usage: Automated Meridian Flip](#automated-meridian-flip)
 7. **Meridian Flip start point**
     - The setting to wait until meridian is passed in minutes
     - The mount will wait until the target is # minutes after the meridian
@@ -1066,6 +1085,8 @@ In the Imaging settings you can find various imaging related settings like file 
 ### Plate Solving Settings
 
 This Setting tab allows you to change the plate solving mechanism. There are 3 plate solvers you can use in NINA. Selected Plate solver settings in this screenshot are for Astrometry.Net plate solver.
+
+> For usage of the Plate Solver refer to [Usage: Plate Solving](#plate-solving)
 
 ![Settings: PlateSolving Astrometry](images/tab-settings-platesolving-astrometry.png)
 
@@ -1143,9 +1164,112 @@ Those are the settings for the PlateSolve 2 platesolver.
 
 ## Plate Solving
 
+Plate solving is a great way to determine where your scope is pointing at exactly in the sky and an important aspect for fast and easy framing. Essentially what it does is taking a shot with your camera, extract the stars and tries to triangulate the current position based on an internal sky atlas of the plate solver.
+
+> To utilize the full potential of plate solving it is required that your mount and camera are both connected to NINA.
+
+> It is required that your camera and telescope settings in the [equipment settings](#settings-equipment) are set correctly. The two important aspects are `Camera Pixel Size` for the camera and `Focal Length` for the telescope.
+
+NINA allows you to use the three most popular external plate solvers, each of which has its own benefits and drawbacks. Those plate solvers are Astrometry.Net, Local Astrometry and PlateSolve 2.
+
+### General Plate Solving
+
+To plate solve an image you need to capture an image and use the `Plate solve current image` button in the [image panel](#image-panel). This will start the procedure of plate solving your image with the Plate Solver as set in the [plate solving settings](#plate-solving-settings). Should that plate solve attempt fail the mechanism will try to use the Blind Solver to solve the image.
+
+> Before being able to plate solve you need to configure the settings, primary solver and blind solver.
+
+> Should it happen that both plate solving mechanisms fail please verify that your image is somewhat in focus and if necessary change the exposure time or filter for that single image.
+
+To apply the plate solving you need to enable the options `Sync` and if you want to, `Reslew to target` in the [plate solving panel](#panel-plate-solving). The former will synchronize your mounts location to the location that the plate solver has determined you're at. The latter will reslew your mount to the location where it was supposed to be in the first place.
+
+> This allows you to skip the whole star alignment process at your mounts start-up.
+
+Plate Solving is also utilized in the [Automated Meridian Flip](#automated-meridian-flip) to recenter your image after a flip has been performed. This is essential for a hands-off experience of NINA.
+
+> *Our recommendation is to set up all Plate Solvers to have a backup should one plate solver not work as expected in the field.*
+
+### Astrometry.net Plate Solver
+
+The Astrometry.net plate solver will utilize the internet page Astrometry.Net to plate solve an image. It requires registration on [astrometry.net](http://nova.astrometry.net) to get an API key that you need to enter in the settings.
+
+#### Benefits
+- Fast when the mounts location is unknown or far off
+- Does not need to know the cameras pixel size or telescopes focal length
+#### Drawbacks
+- Requires an internet connection
+- Slow when the mounts location is close
+#### Recommendation
+- Primary Solver: not recommended
+- Blind Solver: recommended when an internet connection is available
+
+### Local Astrometry Plate Solver
+
+The local Astrometry plate solver is bundled with NINA and can be installed with the NINA setup. It requires download of index files which can be installed through NINA as well to get the required index files that you need for your combination of focal length and pixel size. See [plate solving settings](#plate-solving-settings).
+
+#### Benefits
+- Adequately fast when the mounts location is unknown or far off
+- Fast when the mounts location is close
+- Does not need an internet connection to work
+#### Drawbacks
+- Download of the correct index files is crucial for the plate solving performance
+- Can pick up hot pixels as stars (especially an issue with DSLR)
+#### Recommendation
+- Primary Solver: recommended with the right index files
+- Blind Solver: recommended
+
+### PlateSolve 2
+
+PlateSolve 2 is a standalone executable which can be downloaded from the [PlateSolve 2 home page](http://planewave.com/downloads/software/). It requires the download of at least one catalogue of stars so it can properly work. You need to start the executable once standalone and set the catalog location of the catalog that you want to use. Both the APM or UCAC3 catalogues will work just fine, but it is recommended to download both of them should you encounter issues with any one of them.
+
+#### Benefits
+- Very fast when the mounts location is close to the target
+- Does not need an internet connection to work
+#### Drawbacks
+- Slow when the mounts location is far off and the focal length of the scope is long
+#### Recommendation
+- Primary Solver: recommended
+- Blind Solver: not recommended (not possible)
+
 ---
 
 ## Using the Object Browser
+
+With the [object browser](#tab-object-browser) you can easily determine targets to shoot for the evening. It seamlessly connects into the [framing assistant](#tab-framing-assistant) and the [sequence](#tab-sequence).
+
+> To being able to utilize the object browser you need to configure your current location in the Astrometry settings in the [general settings](#general-settings). That includes Epoch, Hemisphere, Latitude and Longitude. *Otherwise the object browser will show you wrong data!*
+
+> You also might want to consider to download the [SkyAtlas][SkyAtlas] and configure the location of it in the [general settings](#general-settings) so that the object browser shows you previews of the objects in question.
+
+The idea of the object browser is to show you targets that are relevant to you for this evening. You can set various filters for the object type or maximum altitude. Should you have not decided yet what you want to shoot following filters are suggested to use:
+- Object Type: set it to whatever you would like to photograph
+- Apparent size: important to get your framing right and make sure that you can actually fit the object into the frame and/or have enough resolution for the object in question
+- Minimum altitude: Generally you don't want to shoot anything that is below 45 degrees at its peak due to atmospheric disturbance
+
+The Moon Phase in the Object Browser will tell you the current phase of the moon, when it will rise and set so you don't have to guess or rely on the internet.
+
+> The object browser heavily depends on your imaging location, you will need to experiment with various filters to see their effects.
+
+### Object Display
+
+All objects that are in the object browser are displayed the same way. Once you understand how to read the display it becomes very easy and tremendeously helpful for you to determine whether the target is worth shooting for you.
+
+![Usage: Object Browser Object Display](images/usage-objectbrowser-object.png)
+
+1. The name of the object in question with any available alternatives. Spoken names like "Whirlpool Galaxy" are not implemented yet.
+2. The Coordinates of the object in RA and Dec, should you want to save the coordinates or slew manually to them
+3. The object type which is GALXY (Galaxy) in this case. Those types are abbreviations to save space. In the filter it will use the full description instead of the abbreviation.
+4. The objects constellation
+5. Apparent magnitude of the object, if available. Determines the peak brightness.
+6. Surface brightness of the object, if available (if not, it's 99.9). The actual full brightness of the object.
+7. Apparent size of the object, if available. Shows you the apparent size in arcminutes or degrees, depending on size.
+8. The altitude of the object, current time and darkness meter.
+    - This one is a bit more complex to explain; the line with a specific peak is the actual altitude of the object at any given time, generally: the higher, the better. Transit north or south tells you whether the object will pass to your south or north.
+    - The Now line shows you your current time so you can crossreference the current altitude of the object.
+    - The darker lines are show you the start of the nautical and astro dark.
+9. Sets the object as the target for the sequence, see [Usage: Advanced sequencing](#advanced-sequencing)
+10. Sets the object as the target for the framing assistant, see [Usage: Framing with the Framing Assistant](#framing-with-the-framing-assistant)
+11. Slews to the target in question so you can frame and align manually or with plate solving, see [Usage: Plate Solving](#plate-solving)
+
 
 ---
 

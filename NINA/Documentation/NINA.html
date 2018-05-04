@@ -14,6 +14,7 @@
                 <li><a href="#introduction">Introduction</a></li>
                 <li><a href="#prerequisites-compatibility-and-system-requirements">Prerequisites, Compatibility and System Requirements</a>
                 <ul>
+				<li><a href="#nina-download">NINA Download</a></li>
                 <li><a href="#minimum-system-requirements">Minimum System Requirements</a></li>
                 <li><a href="#supported-devices">Supported Devices</a></li>
                 <li><a href="#supported-software">Supported Software</a></li>
@@ -233,6 +234,10 @@
 </blockquote>
 <hr />
 <h1 id="prerequisites-compatibility-and-system-requirements">Prerequisites, Compatibility and System Requirements</h1>
+<h2 id="nina-download">NINA Download</h2>
+<ul>
+<li><a href="https://bitbucket.org/Isbeorn/nina/downloads/">Download Latest Version</a></li>
+</ul>
 <h2 id="minimum-system-requirements">Minimum System Requirements</h2>
 <ul>
 <li>64bit Windows 7 or later
@@ -242,6 +247,7 @@
 </li>
 <li><a href="https://www.microsoft.com/en-us/download/details.aspx?id=48130">.NET Framework 4.6.2 or later</a></li>
 <li><a href="https://ascom-standards.org/">ASCOM Platform 6.3 or later</a></li>
+<li><a href="https://www.microsoft.com/en-us/download/details.aspx?id=40784">Visual C++ Redistributable Runtime 2013</a></li>
 <li>At least 2GB RAM</li>
 <li>A dual core CPU (technically should run on single core too)</li>
 <li>70MB of free disk space without SkyAtlas</li>
@@ -331,7 +337,7 @@
 <p><img src="images/quickstart-settings-equipment.png" alt="Quickstart Settings Equipment" /></p>
 <p>In the settings we go directly to the Equipment tab (1) and have to set a few things first. You should set your pixel size to the pixel size that your camera has, if it has not been set automatically, which is the case with most DSLR. Search online for the pixel size of your camera and enter the value in (2).</p>
 <blockquote>
-<p>If you have an older Nikon camera you might not be able to use the native bulb mode for long exposures (&gt;30s) via USB. If you have a RS232-Shutter cable or your mount has a shutter port which is connected to the camera change the setting in (3). Please refer to the Advanced topic using RS232 or mount for bulb shutter.</p>
+<p>If you have an older Nikon camera you might not be able to use the native bulb mode for long exposures (&gt;30s) via USB. If you have a RS232-Shutter cable or your mount has a shutter port which is connected to the camera change the setting in (3). Please refer to the Advanced topic <a href="#using-rs232-or-mount-for-bulb-shutter">using RS232 or mount for bulb shutter</a>.</p>
 </blockquote>
 <p>Finally, you will need to set your Telescope or lens focal length in (4).</p>
 <p><img src="images/quickstart-settings-imaging.png" alt="Quickstart Settings Imaging" /></p>
@@ -602,7 +608,11 @@
 </ol>
 <hr />
 <h2 id="tab-phd2">Tab: PHD2</h2>
-<p>With the PHD2 tab you can connect NINA to PHD2 to send dither commands and receive current guiding information in the User Interface. It consists out of following elements:</p>
+<p>With the PHD2 tab you can connect NINA to PHD2 to send dither commands and receive current guiding information in the User Interface.</p>
+<blockquote>
+<p>For further information about PHD2 and dithering refer to <a href="#dithering-with-phd2">Usage: Dithering with PHD2</a></p>
+</blockquote>
+<p>It consists out of following elements:</p>
 <p><img src="images/tab-phd2.png" alt="Tab: PHD2" /></p>
 <ol>
 <li><strong>Connect PHD2</strong>
@@ -651,7 +661,11 @@
 </ol>
 <hr />
 <h2 id="tab-object-browser">Tab: Object Browser</h2>
-<p>In the Object Browser you can search for various objects in the sky, filter by object type and other various criteria, set them as sequence target or for the framing assistant. The UI consists out of following elements:</p>
+<p>In the Object Browser you can search for various objects in the sky, filter by object type and other various criteria, set them as sequence target or for the framing assistant.</p>
+<blockquote>
+<p>For further information about the object browser refer to <a href="#using-the-object-browser">Usage: Using the Object Browser</a></p>
+</blockquote>
+<p>The UI consists out of following elements:</p>
 <p><img src="images/tab-objectbrowser.png" alt="Tab: Object Browser" /></p>
 <ol>
 <li><strong>Search Field</strong>
@@ -745,6 +759,9 @@
 <hr />
 <h2 id="tab-framing-assistant">Tab: Framing Assistant</h2>
 <p>The Framing Assistant allows you to frame your next shot perfectly utilizing DSS data or images from the previous night. It can utilize plate solving to perfectly align your telescope to the rectangle you select.</p>
+<blockquote>
+<p>For further information about using the Framing Asisstant refer to <a href="#framing-with-the-framing-assistant">Usage: Framing with the Framing Assistant</a></p>
+</blockquote>
 <p><img src="images/tab-framingassistant.png" alt="Tab: Framing Assistant" /></p>
 <ol>
 <li><strong>Image Source Drop Down</strong>
@@ -842,6 +859,9 @@
 <hr />
 <h2 id="tab-sequence">Tab: Sequence</h2>
 <p>With Sequences you are able to create imaging sequences with various options for automation. The main usage is to set exposure times, filters and other settings for a total amount of frames to not have to shoot manually and have it stop after a specific amount of frames.</p>
+<blockquote>
+<p>For further information about sequencing refer to <a href="#advanced-sequencing">Usage: Advanced Sequencing</a> and <a href="#automated-meridian-flip">Usage: Automated Meridian Flip</a>.</p>
+</blockquote>
 <p><img src="images/tab-sequencing.png" alt="Tab: Sequence" /></p>
 <ol>
 <li><strong>Delay start</strong>
@@ -1019,7 +1039,8 @@ Will be added to calculations of (9)</p>
 <ul>
 <li>This will trigger the plate solving mechanism that will attempt to plate solve the currently captured image
 <blockquote>
-<p>The solved result will be displayed in the <a href="#panel-plate-solving">Plate Solve panel</a></p>
+<p>The solved result will be displayed in the <a href="#panel-plate-solving">Plate Solve panel</a><br />
+For Usage of the Plate Solver refer to <a href="#plate-solving">Usage: Plate Solving</a></p>
 </blockquote>
 </li>
 </ul>
@@ -1115,6 +1136,9 @@ Requires a connected <a href="#tab-camera">camera</a> to display information</p>
 <hr />
 <h3 id="panel-plate-solving">Panel: Plate Solving</h3>
 <p>The Plate Solving panel allows you to start the plate solving procedure to align your mount to its actual location in the sky, making framing and finding targets way easier without utilizing star alignment.</p>
+<blockquote>
+<p>For Usage of the Plate Solver refer to <a href="#plate-solving">Usage: Plate Solving</a></p>
+</blockquote>
 <p><img src="images/panel-platesolving.png" alt="Panel: Plate Solve" /></p>
 <ol>
 <li><strong>Information about the latest plate solve</strong>
@@ -1501,12 +1525,7 @@ You need to set the correct values in the settings, please refer to the PixInsig
 <p>Requires a connected <a href="#tab-filter-wheel-and-focuser">focuser</a></p>
 </blockquote>
 <ol>
-<li><strong>Display of the focus steps and HFR</strong>
-<ul>
-<li><something>
-</li>
-</ul>
-</li>
+<li><strong>Display of the focus steps and HFR</strong></li>
 <li><strong>Start Auto Focus</strong>
 <ul>
 <li>This will start the auto focus procedure</li>
@@ -1689,7 +1708,7 @@ You can get your latitude and longitude easily from <a href="https://www.latlong
 <li>Native will work in most cases</li>
 <li>RS232 and Mount is available as well and might be necessary for older Nikon cameras
 <blockquote>
-<p>Please refer to Using RS232 or Mount for bulb shutter</p>
+<p>For usage of RS232 and Monunt shutter refer to <a href="#using-rs232-or-mount-for-bulb-shutter">Usage: Using RS232 or Mount for bulb shutter</a></p>
 </blockquote>
 </li>
 </ul>
@@ -1840,8 +1859,10 @@ Fixed text is also possible</p>
 <ul>
 <li>This option will enable the automated meridian flip</li>
 <li>The sequence will check periodically between images when to start the flip sequence</li>
-<li>See <a href="#automated-meridian-flip">Automated Meridian Flip</a></li>
 </ul>
+<blockquote>
+<p>For usage of the automated meridian flip refer to <a href="#automated-meridian-flip">Usage: Automated Meridian Flip</a></p>
+</blockquote>
 </li>
 <li><strong>Meridian Flip start point</strong>
 <ul>
@@ -1903,6 +1924,9 @@ This setting will affect the <a href="#plate-solving-settings">plate solver</a>!
 <hr />
 <h3 id="plate-solving-settings">Plate Solving Settings</h3>
 <p>This Setting tab allows you to change the plate solving mechanism. There are 3 plate solvers you can use in NINA. Selected Plate solver settings in this screenshot are for Astrometry.Net plate solver.</p>
+<blockquote>
+<p>For usage of the Plate Solver refer to <a href="#plate-solving">Usage: Plate Solving</a></p>
+</blockquote>
 <p><img src="images/tab-settings-platesolving-astrometry.png" alt="Settings: PlateSolving Astrometry" /></p>
 <ol>
 <li><strong>Primary Plate Solver Drop Down</strong>
@@ -2052,8 +2076,122 @@ You need to download the catalogues from the PlateSolve 2 homepage as well</p>
 <hr />
 <h1 id="usage">Usage</h1>
 <h2 id="plate-solving">Plate Solving</h2>
+<p>Plate solving is a great way to determine where your scope is pointing at exactly in the sky and an important aspect for fast and easy framing. Essentially what it does is taking a shot with your camera, extract the stars and tries to triangulate the current position based on an internal sky atlas of the plate solver.</p>
+<blockquote>
+<p>To utilize the full potential of plate solving it is required that your mount and camera are both connected to NINA.</p>
+</blockquote>
+<blockquote>
+<p>It is required that your camera and telescope settings in the <a href="#settings-equipment">equipment settings</a> are set correctly. The two important aspects are <code>Camera Pixel Size</code> for the camera and <code>Focal Length</code> for the telescope.</p>
+</blockquote>
+<p>NINA allows you to use the three most popular external plate solvers, each of which has its own benefits and drawbacks. Those plate solvers are Astrometry.Net, Local Astrometry and PlateSolve 2.</p>
+<h3 id="general-plate-solving">General Plate Solving</h3>
+<p>To plate solve an image you need to capture an image and use the <code>Plate solve current image</code> button in the <a href="#image-panel">image panel</a>. This will start the procedure of plate solving your image with the Plate Solver as set in the <a href="#plate-solving-settings">plate solving settings</a>. Should that plate solve attempt fail the mechanism will try to use the Blind Solver to solve the image.</p>
+<blockquote>
+<p>Before being able to plate solve you need to configure the settings, primary solver and blind solver.</p>
+</blockquote>
+<blockquote>
+<p>Should it happen that both plate solving mechanisms fail please verify that your image is somewhat in focus and if necessary change the exposure time or filter for that single image.</p>
+</blockquote>
+<p>To apply the plate solving you need to enable the options <code>Sync</code> and if you want to, <code>Reslew to target</code> in the <a href="#panel-plate-solving">plate solving panel</a>. The former will synchronize your mounts location to the location that the plate solver has determined you're at. The latter will reslew your mount to the location where it was supposed to be in the first place.</p>
+<blockquote>
+<p>This allows you to skip the whole star alignment process at your mounts start-up.</p>
+</blockquote>
+<p>Plate Solving is also utilized in the <a href="#automated-meridian-flip">Automated Meridian Flip</a> to recenter your image after a flip has been performed. This is essential for a hands-off experience of NINA.</p>
+<blockquote>
+<p><em>Our recommendation is to set up all Plate Solvers to have a backup should one plate solver not work as expected in the field.</em></p>
+</blockquote>
+<h3 id="astrometry.net-plate-solver">Astrometry.net Plate Solver</h3>
+<p>The Astrometry.net plate solver will utilize the internet page Astrometry.Net to plate solve an image. It requires registration on <a href="http://nova.astrometry.net">astrometry.net</a> to get an API key that you need to enter in the settings.</p>
+<h4 id="benefits">Benefits</h4>
+<ul>
+<li>Fast when the mounts location is unknown or far off</li>
+<li>Does not need to know the cameras pixel size or telescopes focal length</li>
+</ul>
+<h4 id="drawbacks">Drawbacks</h4>
+<ul>
+<li>Requires an internet connection</li>
+<li>Slow when the mounts location is close</li>
+</ul>
+<h4 id="recommendation">Recommendation</h4>
+<ul>
+<li>Primary Solver: not recommended</li>
+<li>Blind Solver: recommended when an internet connection is available</li>
+</ul>
+<h3 id="local-astrometry-plate-solver">Local Astrometry Plate Solver</h3>
+<p>The local Astrometry plate solver is bundled with NINA and can be installed with the NINA setup. It requires download of index files which can be installed through NINA as well to get the required index files that you need for your combination of focal length and pixel size. See <a href="#plate-solving-settings">plate solving settings</a>.</p>
+<h4 id="benefits-1">Benefits</h4>
+<ul>
+<li>Adequately fast when the mounts location is unknown or far off</li>
+<li>Fast when the mounts location is close</li>
+<li>Does not need an internet connection to work</li>
+</ul>
+<h4 id="drawbacks-1">Drawbacks</h4>
+<ul>
+<li>Download of the correct index files is crucial for the plate solving performance</li>
+<li>Can pick up hot pixels as stars (especially an issue with DSLR)</li>
+</ul>
+<h4 id="recommendation-1">Recommendation</h4>
+<ul>
+<li>Primary Solver: recommended with the right index files</li>
+<li>Blind Solver: recommended</li>
+</ul>
+<h3 id="platesolve-2">PlateSolve 2</h3>
+<p>PlateSolve 2 is a standalone executable which can be downloaded from the <a href="http://planewave.com/downloads/software/">PlateSolve 2 home page</a>. It requires the download of at least one catalogue of stars so it can properly work. You need to start the executable once standalone and set the catalog location of the catalog that you want to use. Both the APM or UCAC3 catalogues will work just fine, but it is recommended to download both of them should you encounter issues with any one of them.</p>
+<h4 id="benefits-2">Benefits</h4>
+<ul>
+<li>Very fast when the mounts location is close to the target</li>
+<li>Does not need an internet connection to work</li>
+</ul>
+<h4 id="drawbacks-2">Drawbacks</h4>
+<ul>
+<li>Slow when the mounts location is far off and the focal length of the scope is long</li>
+</ul>
+<h4 id="recommendation-2">Recommendation</h4>
+<ul>
+<li>Primary Solver: recommended</li>
+<li>Blind Solver: not recommended (not possible)</li>
+</ul>
 <hr />
 <h2 id="using-the-object-browser">Using the Object Browser</h2>
+<p>With the <a href="#tab-object-browser">object browser</a> you can easily determine targets to shoot for the evening. It seamlessly connects into the <a href="#tab-framing-assistant">framing assistant</a> and the <a href="#tab-sequence">sequence</a>.</p>
+<blockquote>
+<p>To being able to utilize the object browser you need to configure your current location in the Astrometry settings in the <a href="#general-settings">general settings</a>. That includes Epoch, Hemisphere, Latitude and Longitude. <em>Otherwise the object browser will show you wrong data!</em></p>
+</blockquote>
+<blockquote>
+<p>You also might want to consider to download the <a href="https://www.dropbox.com/s/lgjoipj1q22fds5/SkyAtlasImageRepository.zip?dl=0">SkyAtlas</a> and configure the location of it in the <a href="#general-settings">general settings</a> so that the object browser shows you previews of the objects in question.</p>
+</blockquote>
+<p>The idea of the object browser is to show you targets that are relevant to you for this evening. You can set various filters for the object type or maximum altitude. Should you have not decided yet what you want to shoot following filters are suggested to use:</p>
+<ul>
+<li>Object Type: set it to whatever you would like to photograph</li>
+<li>Apparent size: important to get your framing right and make sure that you can actually fit the object into the frame and/or have enough resolution for the object in question</li>
+<li>Minimum altitude: Generally you don't want to shoot anything that is below 45 degrees at its peak due to atmospheric disturbance</li>
+</ul>
+<p>The Moon Phase in the Object Browser will tell you the current phase of the moon, when it will rise and set so you don't have to guess or rely on the internet.</p>
+<blockquote>
+<p>The object browser heavily depends on your imaging location, you will need to experiment with various filters to see their effects.</p>
+</blockquote>
+<h3 id="object-display">Object Display</h3>
+<p>All objects that are in the object browser are displayed the same way. Once you understand how to read the display it becomes very easy and tremendeously helpful for you to determine whether the target is worth shooting for you.</p>
+<p><img src="images/usage-objectbrowser-object.png" alt="Usage: Object Browser Object Display" /></p>
+<ol>
+<li>The name of the object in question with any available alternatives. Spoken names like &quot;Whirlpool Galaxy&quot; are not implemented yet.</li>
+<li>The Coordinates of the object in RA and Dec, should you want to save the coordinates or slew manually to them</li>
+<li>The object type which is GALXY (Galaxy) in this case. Those types are abbreviations to save space. In the filter it will use the full description instead of the abbreviation.</li>
+<li>The objects constellation</li>
+<li>Apparent magnitude of the object, if available. Determines the peak brightness.</li>
+<li>Surface brightness of the object, if available (if not, it's 99.9). The actual full brightness of the object.</li>
+<li>Apparent size of the object, if available. Shows you the apparent size in arcminutes or degrees, depending on size.</li>
+<li>The altitude of the object, current time and darkness meter.
+<ul>
+<li>This one is a bit more complex to explain; the line with a specific peak is the actual altitude of the object at any given time, generally: the higher, the better. Transit north or south tells you whether the object will pass to your south or north.</li>
+<li>The Now line shows you your current time so you can crossreference the current altitude of the object.</li>
+<li>The darker lines are show you the start of the nautical and astro dark.</li>
+</ul>
+</li>
+<li>Sets the object as the target for the sequence, see <a href="#advanced-sequencing">Usage: Advanced sequencing</a></li>
+<li>Sets the object as the target for the framing assistant, see <a href="#framing-with-the-framing-assistant">Usage: Framing with the Framing Assistant</a></li>
+<li>Slews to the target in question so you can frame and align manually or with plate solving, see <a href="#plate-solving">Usage: Plate Solving</a></li>
+</ol>
 <hr />
 <h2 id="dithering-with-phd2">Dithering with PHD2</h2>
 <p>Dithering is an important part of the imaging process. The benefit of dithering will be a clearer image with less pattern noise and more detail since the image will be shifted by a few pixels with a dithering request.</p>
