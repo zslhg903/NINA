@@ -7,6 +7,12 @@
       box-shadow: none !important;
       text-shadow: none !important;
     }
+
+    @media print {
+      .navbar_collapsed {
+        display: none;
+      }
+    }
   
     a,
     a:visited {
