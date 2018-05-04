@@ -5,7 +5,7 @@
 
 # NINA - Nighttime Imaging ‘N’ Astronomy Manual
 
-## Version 1.5.0.0
+## Version 1.5.0.X
 
 ![NINA Logo](images/nina-logo.png)
 
@@ -20,6 +20,7 @@
 | 0.4 | 2018-04-27 | Completed initial Tabs documentation |
 | 0.5 | 2018-04-27 | Conversion to Markdown, minor changes |
 | 0.6 | 2018-05-02 | Updated to 1.5.0.0, added screenshots and descriptions of new features |
+| 0.7 | 2018-05-04 | Added more usage topics, added links to usage topics where applicable, changed version to 1.5.0.X |
 
 # Manual Editing Guidelines
 - Screenshots with NINA in 1280×720 (minimal window size) resolution to maintain readability
