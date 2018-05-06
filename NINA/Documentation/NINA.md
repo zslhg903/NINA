@@ -1443,7 +1443,7 @@ Should your bulb exposure still not trigger please contact us on our [Discord][D
 
 Should you encounter any bugs during your usage of NINA please report them to the [Issues Tracker][IssuesTracker] or directly to us on our [Discord][Discord]. If possible attach the latest Log file from the day on which you encountered the issue.
 
-Log files can be found in ```%LOCALAPPDATA%%\NINA\Logs\```
+Log files can be found in ```%LOCALAPPDATA%\NINA\Logs\```
 
 ---
 
