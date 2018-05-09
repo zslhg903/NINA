@@ -93,7 +93,6 @@ This document is aimed to describe the functionality of NINA so you can utilize 
     - ZWO cameras with native driver
     - Atik cameras with native driver
     - Canon cameras
-        - EOS 1300d not compatible
     - Nikon cameras
         - Some Nikons may require a serial shutter cable for bulb exposures
 - Mounts
