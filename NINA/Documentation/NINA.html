@@ -896,14 +896,6 @@
 <li>Does not Plate Solve to verify it is on target</li>
 </ul>
 </li>
-<li><strong>Auto focus on start</strong>
-<ul>
-<li>Starts the auto focuser sequence to pinpoint the automatic focus</li>
-</ul>
-<blockquote>
-<p>Requires a connected auto focuser</p>
-</blockquote>
-</li>
 <li><strong>Center target</strong>
 <ul>
 <li>Will center the target given the Ra and Dec coordinates</li>
@@ -911,14 +903,6 @@
 </ul>
 <blockquote>
 <p>Requires a set up <a href="#plate-solving-settings">primary plate solver</a></p>
-</blockquote>
-</li>
-<li><strong>Auto focus on filter change</strong>
-<ul>
-<li>Starts the auto focus routine for every switch of the filter wheel</li>
-</ul>
-<blockquote>
-<p>Requires a connected <a href="#tab-filter-wheel-and-focuser">auto focuser</a></p>
 </blockquote>
 </li>
 <li><strong>Estimated Download Time</strong>
@@ -937,6 +921,57 @@ Will be added to calculations of (9)</p>
 </ul>
 <blockquote>
 <p>Needs to be manually refreshed using the button on the right of the estimation</p>
+</blockquote>
+</li>
+<li><strong>Auto Focus Expander</strong>
+<ul>
+<li>Will show all enabled auto focus options when not expanded</li>
+</ul>
+<blockquote>
+<p>All settings inside require a connected <a href="#tab-filter-wheel-and-focuser">auto focuser</a></p>
+</blockquote>
+</li>
+<li><strong>Auto focus on start</strong>
+<ul>
+<li>Starts the auto focuser sequence to pinpoint the automatic focus</li>
+</ul>
+</li>
+<li><strong>Auto focus on filter change</strong>
+<ul>
+<li>Starts the auto focus routine for every switch of the filter wheel</li>
+</ul>
+</li>
+<li><strong>Auto focus after elapsed time</strong>
+<ul>
+<li>Starts the auto focus routine after a set amount of time has passed since the last auto focus routine</li>
+</ul>
+</li>
+<li><strong>Time that has to pass</strong>
+<ul>
+<li>Specifies the time in minutes that have to pass to trigger the auto focus routine</li>
+</ul>
+</li>
+<li><strong>Auto focus after a number of exposures</strong>
+<ul>
+<li>Starts the auto focus routine after a set amount of exposures have been taken since the last auto focus routine</li>
+</ul>
+</li>
+<li><strong>Amount of exposures</strong>
+<ul>
+<li>Specifies the number of exposures that have to be taken to trigger the auto focus routine</li>
+</ul>
+</li>
+<li><strong>Auto focus after a temperature change</strong>
+<ul>
+<li>Starts the auto focus routine after a set amount of temperature change</li>
+</ul>
+</li>
+<li><strong>Amount of temperature change</strong>
+<ul>
+<li>Specifies the temperature difference that has to be reached after the last auto focus routine</li>
+</ul>
+<blockquote>
+<p>Requires a temperature sensor that reports the temperature for the <a href="#tab-filter-wheel-and-focuser">auto focuser</a></p>
 </blockquote>
 </li>
 <li><strong>Sequence entry</strong>
@@ -982,13 +1017,6 @@ Will be added to calculations of (9)</p>
 <li>Will overwrite all current sequence settings</li>
 </ul>
 </li>
-<li><strong>Target information</strong>
-<ul>
-<li>Shows you the target name, RA and Dec</li>
-<li>Can be changed from here</li>
-<li>RA and Dec will affect slew on start (4) and center target (6)</li>
-</ul>
-</li>
 <li><strong>Start Sequence</strong>
 <ul>
 <li>Starts the sequence</li>
@@ -999,6 +1027,21 @@ Will be added to calculations of (9)</p>
 </ul>
 </li>
 </ul>
+</li>
+<li><strong>Target information</strong>
+<ul>
+<li>Shows you the target name, RA and Dec</li>
+<li>Can be changed from here</li>
+<li>RA and Dec will affect slew on start (4) and center target (6)</li>
+</ul>
+</li>
+<li><strong>Object altitude</strong>
+<ul>
+<li>Shows the objects altitude, what direction it will transit and the darkness phase of today, including the current time</li>
+</ul>
+<blockquote>
+<p>Altitude depends on Latitude and Longitude set in the <a href="#general-settings">Settings</a></p>
+</blockquote>
 </li>
 </ol>
 <hr />
