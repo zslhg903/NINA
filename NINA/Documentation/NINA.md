@@ -496,25 +496,39 @@ With Sequences you are able to create imaging sequences with various options for
 4. **Slew to target**
     - Slews to the target as specified in RA and Dec
     - Does not Plate Solve to verify it is on target
-5. **Auto focus on start**
-    - Starts the auto focuser sequence to pinpoint the automatic focus
-    > Requires a connected auto focuser
-6. **Center target**
+5. **Center target**
     - Will center the target given the Ra and Dec coordinates
     - Utilizes the plate solver as specified in the settings
     > Requires a set up [primary plate solver](#plate-solving-settings)
-7. **Auto focus on filter change**
-    - Starts the auto focus routine for every switch of the filter wheel
-    > Requires a connected [auto focuser](#tab-filter-wheel-and-focuser)
-8. **Estimated Download Time**
+6. **Estimated Download Time**
     - You can enter the approximate download time your camera takes to download a single image
     > Will be automatically populated with the average download times as measured by NINA on image download  
     > Will be added to calculations of (9)
-9. **Estimated Finish Time**
+7. **Estimated Finish Time**
     - Shows you the estimated finish time when your sequence will end
     - Adds the download time (8) to each sequence entry
     > Needs to be manually refreshed using the button on the right of the estimation
-10. **Sequence entry**
+8. **Auto Focus Expander**
+    - Will show all enabled auto focus options when not expanded
+    > All settings inside require a connected [auto focuser](#tab-filter-wheel-and-focuser)
+9. **Auto focus on start**
+    - Starts the auto focuser sequence to pinpoint the automatic focus    
+10. **Auto focus on filter change**
+    - Starts the auto focus routine for every switch of the filter wheel
+11. **Auto focus after elapsed time**
+    - Starts the auto focus routine after a set amount of time has passed since the last auto focus routine
+12. **Time that has to pass**
+    - Specifies the time in minutes that have to pass to trigger the auto focus routine
+13. **Auto focus after a number of exposures**
+    - Starts the auto focus routine after a set amount of exposures have been taken since the last auto focus routine
+14. **Amount of exposures**
+    - Specifies the number of exposures that have to be taken to trigger the auto focus routine
+15. **Auto focus after a temperature change**
+    - Starts the auto focus routine after a set amount of temperature change
+16. **Amount of temperature change**
+    - Specifies the temperature difference that has to be reached after the last auto focus routine
+    > Requires a temperature sensor that reports the temperature for the [auto focuser](#tab-filter-wheel-and-focuser)
+17. **Sequence entry**
     - Each sequence entry consists out of up to 9 columns which determine how the image will be shot
         - Progress: shows the current progress of the image sequence
         - Total #: the amount of frames for that specific sequence entry
@@ -527,24 +541,27 @@ With Sequences you are able to create imaging sequences with various options for
         - Dither Every # Frame: will dither only every # frame as set when dithering is enabled
         - Gain: Change the gain of the camera for this entry. Only available when camera can set gain
     - Sequences cannot be changed while the sequence is running, you need to pause, abort it or wait until it’s finished to change the amount of frames
-11. **Add new Sequence entry**
+18. **Add new Sequence entry**
     - Adds a new sequence entry line
-12. **Delete Sequence entry**
+19. **Delete Sequence entry**
     - Deletes the currently selected sequence line
-13. **Save Sequence**
+20. **Save Sequence**
     - Allows you to save the sequence as a .xml file
-14. **Open Sequence**
+21. **Open Sequence**
     - Allows to load a previously saved sequence file.
     - Will overwrite all current sequence settings
-15. **Target information**
-    - Shows you the target name, RA and Dec
-    - Can be changed from here
-    - RA and Dec will affect slew on start (4) and center target (6)
-16. **Start Sequence**
+22. **Start Sequence**
     - Starts the sequence
     - Once started morphs into two buttons which allow you to pause or cancel the sequence
         - Pausing will pause the sequence after the current frame
         - Cancel will abort the frame capture completely and stop the sequence
+23. **Target information**
+    - Shows you the target name, RA and Dec
+    - Can be changed from here
+    - RA and Dec will affect slew on start (4) and center target (6)
+24. **Object altitude**
+    - Shows the objects altitude, what direction it will transit and the darkness phase of today, including the current time
+    > Altitude depends on Latitude and Longitude set in the [Settings](#general-settings)
 
 ---
 
