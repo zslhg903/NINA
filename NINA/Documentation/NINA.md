@@ -5,89 +5,22 @@
 
 # NINA - Nighttime Imaging ‘N’ Astronomy Manual
 
-Manual for Version 1.4.1.0
+## Version 1.5.0.X
 
-![NINA Logo](images\nina-logo.png)
-
----
-
-# Table of Contents
-
-<!-- TOC -->
-
-- [NINA - Nighttime Imaging ‘N’ Astronomy Manual](#nina---nighttime-imaging-n-astronomy-manual)
-- [Table of Contents](#table-of-contents)
-- [Manual Revision History](#manual-revision-history)
-- [Manual Editing Guidelines](#manual-editing-guidelines)
-- [Glossary](#glossary)
-- [Introduction](#introduction)
-- [Prerequisites, Compatibility and System Requirements](#prerequisites-compatibility-and-system-requirements)
-    - [Minimum System Requirements](#minimum-system-requirements)
-    - [Supported Devices](#supported-devices)
-    - [Supported Software](#supported-software)
-    - [Additional Downloads](#additional-downloads)
-- [Quick Start Guide](#quick-start-guide)
-    - [Quick Start: UI Overview](#quick-start-ui-overview)
-    - [Quick Start: Connecting Your Equipment](#quick-start-connecting-your-equipment)
-    - [Quick Start: Finalizing the settings](#quick-start-finalizing-the-settings)
-    - [Quick Start: Focusing](#quick-start-focusing)
-    - [Starting a Sequence](#starting-a-sequence)
-- [Tabs](#tabs)
-    - [Tab: Camera](#tab-camera)
-    - [Tab: Filter Wheel and Focuser](#tab-filter-wheel-and-focuser)
-    - [Tab: Telescope](#tab-telescope)
-    - [Tab: PHD2](#tab-phd2)
-    - [Tab: Object Browser](#tab-object-browser)
-    - [Tab: Framing Assistant](#tab-framing-assistant)
-    - [Tab: Sequence](#tab-sequence)
-    - [Tab: Imaging](#tab-imaging)
-        - [Panel Adjustment and Personalization](#panel-adjustment-and-personalization)
-        - [Panel: Image](#panel-image)
-        - [Panel: Image History](#panel-image-history)
-        - [Panel: Camera](#panel-camera)
-        - [Panel: Telescope](#panel-telescope)
-        - [Panel: Plate Solving](#panel-plate-solving)
-        - [Panel: Polar Alignment](#panel-polar-alignment)
-        - [Panel: Weather](#panel-weather)
-        - [Panel: Guider](#panel-guider)
-        - [Panel: Sequence](#panel-sequence)
-        - [Panel: Filter Wheel](#panel-filter-wheel)
-        - [Panel: Focuser](#panel-focuser)
-        - [Panel: Imaging](#panel-imaging)
-        - [Panel: HFR History](#panel-hfr-history)
-        - [Panel: Statistics](#panel-statistics)
-        - [Panel: Auto Focus](#panel-auto-focus)
-    - [Tab: Settings](#tab-settings)
-        - [General Settings](#general-settings)
-        - [Equipment Settings](#equipment-settings)
-        - [Imaging Settings](#imaging-settings)
-        - [Plate Solving Settings](#plate-solving-settings)
-- [Usage](#usage)
-    - [Plate Solving](#plate-solving)
-    - [Using the Object Browser](#using-the-object-browser)
-    - [Dithering with PHD2](#dithering-with-phd2)
-    - [Framing with the Framing Assistant](#framing-with-the-framing-assistant)
-    - [Automated Meridian Flip](#automated-meridian-flip)
-    - [Automatic Refocusing During a Sequence](#automatic-refocusing-during-a-sequence)
-    - [Advanced Sequencing](#advanced-sequencing)
-    - [Using RS232 or Mount for Bulb Shutter](#using-rs232-or-mount-for-bulb-shutter)
-- [Troubleshooting](#troubleshooting)
-    - [Errors](#errors)
-    - [Bugs](#bugs)
-    - [Comments and Suggestions](#comments-and-suggestions)
-
-<!-- /TOC -->
+![NINA Logo](images/nina-logo.png)
 
 ---
 
 # Manual Revision History
 | Version | Date | Comment |
 | --- | --- | --- |
-| 0.1 | 2018-04-25 | Initial draft with rough outline |
+| 0.1 | 2018-04-25 | Initial draft with rough outline for preliminary version 1.4.1.0 |
 | 0.2 | 2018-04-25 | Added Manual Editing Guidelines, Introduction, Requirements, Quick Start Guide |
 | 0.3 | 2018-04-25 | Added detailed information for following tabs: Camera, Filter wheel+Focuser, Telescope, PHD2, Object Browser; added images to document framing assistant, sequence and settings tab; more glossary items; peer reviewed quick start guide |
 | 0.4 | 2018-04-27 | Completed initial Tabs documentation |
 | 0.5 | 2018-04-27 | Conversion to Markdown, minor changes |
+| 0.6 | 2018-05-02 | Updated to 1.5.0.0, added screenshots and descriptions of new features |
+| 0.7 | 2018-05-04 | Added more usage topics, added links to usage topics where applicable, changed version to 1.5.0.X |
 
 # Manual Editing Guidelines
 - Screenshots with NINA in 1280×720 (minimal window size) resolution to maintain readability
@@ -106,16 +39,18 @@ Manual for Version 1.4.1.0
 # Glossary
 | Term | Description |
 | --- | --- |
-| Bahtinov | A specific mask to align the focus, see Bahtinov Mask |
-| Guiding | A way to use a second camera to guide along stars to prevent the mount from having errors, see [Autoguiding] |
+| Bahtinov | A specific mask to align the focus |
+| Guiding | A way to use a second camera to guide along stars to prevent the mount from having errors |
 | Plate Solving | Using software and a captured image to determine where your scope is pointing at in the sky |
 | Dithering | Moving the guiding output by a few pixels to shift the image by a tiny bit to prevent fixed noise patterns and missing data by hot pixels |
 | HFR | Half-Flux Radius of stars in pixels which determines how focussed the average star is |
-| ADU | Analogue Digital Unit, the lightness value of pixels (max. 2^16) |
+| ADU | Analogue Digital Unit, the lightness value of pixels (max. 2^BitDepth) |
 | ASCOM | AStronomy Common Object Model, a standard protocol for astronomy related device drivers |
 | DSO | Deep Space Object, anything that does not count as a star or planet |
 | DSLR | Digital Single Lens Reflex Camera, typical hand held camera with interchangeable lenses and a mirror for the viewfinder |
 | J2000/JNOW | Different epochs based on the current time or the year 2000. Used for mount location synchronization |
+| OSC | One Shot Color, typical DSLR or color astro camera |
+| LRGB | Lightness, Red, Green, Blue - a typical color combination for color images from a monochrome camera |
 
 ---
 
@@ -133,33 +68,41 @@ This document is aimed to describe the functionality of NINA so you can utilize 
 
 > Important notes will appear like this throughout the documentation, if you happen to find a note like this don't skimp over it!
 
+> Please note that images in this manual might not 100% reflect what you see, they will only be updated for a specific section if there actually were some updates in this version.
+
 ---
 
 # Prerequisites, Compatibility and System Requirements
+
+## NINA Download
+- [Download Latest Version](https://bitbucket.org/Isbeorn/nina/downloads/)
 
 ## Minimum System Requirements
 - 64bit Windows 7 or later
     - 32bit builds are available, but might be unstable and less tested
 - [.NET Framework 4.6.2 or later](https://www.microsoft.com/en-us/download/details.aspx?id=48130)
 - [ASCOM Platform 6.3 or later][ASCOM]
+- [Visual C++ Redistributable Runtime 2013](https://www.microsoft.com/en-us/download/details.aspx?id=40784)
 - At least 2GB RAM
 - A dual core CPU (technically should run on single core too)
-- 70MB of free disk space
+- 70MB of free disk space without SkyAtlas
 
 ## Supported Devices
-- Camera
+- Cameras
     - [ASCOM][ASCOM] supported 64bit camera driver
     - ZWO cameras with native driver
+    - Atik cameras with native driver
     - Canon cameras
-        - EOS 1300d not compatible
     - Nikon cameras
         - Some Nikons may require a serial shutter cable for bulb exposures
 - Mounts
-    - All [ASCOM][ASCOM] compatible mounts with 64bit drivers
+    - All [ASCOM][ASCOM] compatible mounts
 - Filter Wheels
-    - All [ASCOM][ASCOM] compatible filter wheels with 64bit drivers
+    - All [ASCOM][ASCOM] compatible filter wheels
 - Focusers
-    - All [ASCOM][ASCOM] compatible focusers with 64bit drivers
+    - All [ASCOM][ASCOM] compatible focusers
+ 
+> Please note that for the 64bit version of NINA you need 64bit drivers for your ASCOM devices.
 
 ## Supported Software
 - [PHD2](https://openphdguiding.org/)
@@ -222,7 +165,7 @@ We have a few small steps to do before we can start with imaging. For that we ne
 
 In the settings we go directly to the Equipment tab (1) and have to set a few things first. You should set your pixel size to the pixel size that your camera has, if it has not been set automatically, which is the case with most DSLR. Search online for the pixel size of your camera and enter the value in (2). 
 
-> If you have an older Nikon camera you might not be able to use the native bulb mode for long exposures (>30s) via USB. If you have a RS232-Shutter cable or your mount has a shutter port which is connected to the camera change the setting in (3). Please refer to the Advanced topic using RS232 or mount for bulb shutter.
+> If you have an older Nikon camera you might not be able to use the native bulb mode for long exposures (>30s) via USB. If you have a RS232-Shutter cable or your mount has a shutter port which is connected to the camera change the setting in (3). Please refer to the Advanced topic [using RS232 or mount for bulb shutter](#using-rs232-or-mount-for-bulb-shutter).
 
 Finally, you will need to set your Telescope or lens focal length in (4).
 
@@ -248,6 +191,8 @@ You can leave those panels enabled, or disable any other at your will. Feel free
 
 Since our target now is to focus our telescope to get pinpoint stars, we have to use the the following currently enabled panels.
 
+> An alternative to focus is to use a Bahtinov Mask. You can try our experimental feature for Bahtinov Detection by enabling the icon in the [Image panel](#panel-image).
+
 With the HFR History (1) you will be able to see how your stars perform in terms of HFR. This is also represented in the Statistics panel (2). The lower your HFR value, the better focused your image will be. To start the manual focus procedure, you have to select the Imaging tab (3) and press on the start capture button (4). Your exposure time for that snapshot can be adjusted as well, should you choose to do so (5).
 
 To enable star detection and HFR analysis, you need to press on the Star Analysis button (6). This will yield a full analysis of the image and will enter the HFR values in the Statistics (2) and HFR History (1). You will notice that the AutoStretch button (7) will be enabled as well once you enable the Star Analysis button (6).
@@ -260,7 +205,7 @@ Here are two examples of a focused and defocused star field.
 
 As you can see, the values for HFR have been entered in the HFR history and are displayed in the Statistics as well. The second image is definitely defocused with a HFR of 2.14, while the first image is in as good focus as possible. Your HFR values will vary because they depend on the focal length of the telescope as well as on the pixel size of the sensor, but you should try and focus your telescope until the HFR is as low as possible.
 
-## Starting a Sequence
+## Quick Start: Starting a Sequence
 
 Once you nailed your focus you can switch to the Sequence tab (1).
 
@@ -301,8 +246,10 @@ The Camera panel allows you to connect ASCOM based cameras as well as various ZW
         > Please note that DSLR do not report all necessary data
 6. **Gain, Offset and USB Limit Settings**
     - Allows the change of Gain, Offset and USB Limit
-        > Please note that the specific driver has to support this
+        > Please note that the specific driver has to support this  
+
 > Following settings need the camera to have an active cooler and report its status to NINA
+
 7. **Cooler status and switch**
     - Enable to start cooling the camera to the selected Target Temperature (9)
 8. **Temperature Information**
@@ -397,7 +344,11 @@ The Telescope tab allows you to connect your ASCOM supported mount, slew it to s
 
 ## Tab: PHD2
 
-With the PHD2 tab you can connect NINA to PHD2 to send dither commands and receive current guiding information in the User Interface. It consists out of following elements:
+With the PHD2 tab you can connect NINA to PHD2 to send dither commands and receive current guiding information in the User Interface. 
+
+> For further information about PHD2 and dithering refer to [Usage: Dithering with PHD2](#dithering-with-phd2)
+
+It consists out of following elements:
 
 ![Tab: PHD2](images/tab-phd2.png)
 
@@ -407,17 +358,27 @@ With the PHD2 tab you can connect NINA to PHD2 to send dither commands and recei
 2. **PHD2 Information**
     - Displays information about the connection status, pixel scale in PHD2 and the current state of the guider
 3. **Y-Axis Scale**
-    - Allows you to change the scale of the Y-Axis, is affected by( 4)
-4. **Y-Axis Scale selection**
+    - Allows you to change the scale of the Y-Axis, is affected by (4)
+4. **X-Axis Scale**
+    - Allows you to change the scale of the X-Axis
+        > Can also be set in the [Equipment Settings](#equipment-settings)
+5. **Y-Axis Scale units**
     - Allows you to change the scale of the Y axis between arcseconds (recommended) and pixels. PHD2 natively displays information in arcseconds
-5. **Guiding graph**
+6. **RMS Display**
+    - Displays the current Root Mean Square error in RA, Dec and Total
+7. **Guiding graph**
     - Displays the guiding graph as received by PHD2. Colors are identical for RA and Dec as they typically are in PHD2.
 
 ---
 
 ## Tab: Object Browser
 
-In the Object Browser you can search for various objects in the sky, filter by object type and other various criteria, set them as sequence target or for the framing assistant. The UI consists out of following elements:
+In the Object Browser you can search for various objects in the sky, filter by object type and other various criteria, set them as sequence target or for the framing assistant. 
+
+> For further information about the object browser refer to [Usage: Using the Object Browser](#using-the-object-browser)
+
+
+The UI consists out of following elements:
 
 ![Tab: Object Browser](images/tab-objectbrowser.png)
 
@@ -453,9 +414,9 @@ In the Object Browser you can search for various objects in the sky, filter by o
     - Shows the objects altitude, what direction it will transit and the darkness phase of the specified day, including the current time
     > Altitude depends on Latitude and Longitude set in the [Settings](#general-settings)
 8. **Set as Sequence**
-    - Sets the object as sequence target and uses its name in the [sequence tab](#tab--sequence) as well
+    - Sets the object as sequence target and uses its name in the [sequence tab](#tab-sequence) as well
 9. **Set for Framing Assistant**
-    - Sets the object as target for the [framing assistant](#tab--framing-assistant)
+    - Sets the object as target for the [framing assistant](#tab-framing-assistant)
 10. **Slew**
     - Slews the mount to the specified object
 
@@ -464,6 +425,8 @@ In the Object Browser you can search for various objects in the sky, filter by o
 ## Tab: Framing Assistant
 
 The Framing Assistant allows you to frame your next shot perfectly utilizing DSS data or images from the previous night. It can utilize plate solving to perfectly align your telescope to the rectangle you select.
+
+> For further information about using the Framing Asisstant refer to [Usage: Framing with the Framing Assistant](#framing-with-the-framing-assistant)
 
 ![Tab: Framing Assistant](images/tab-framingassistant.png)
 
@@ -497,7 +460,7 @@ The Framing Assistant allows you to frame your next shot perfectly utilizing DSS
 7. **Slew**
     - Slews the mount exactly to the center of the framing window (12)
 8. **Set as Sequence Target**
-    - Sets the coordinates of the RA and Dec of the framing window as the sequence and copies the name over to the [sequence tab](#tab--sequence) as well
+    - Sets the coordinates of the RA and Dec of the framing window as the sequence and copies the name over to the [sequence tab](#tab-sequence) as well
 9. **Altitude browser**
     - Displays the current time, altitude of the target and night cycle
 10. **Image display controls**
@@ -509,13 +472,15 @@ The Framing Assistant allows you to frame your next shot perfectly utilizing DSS
     - Can be dragged around with the mouse
     - Can be rotated with (5)
     - Displays the coordinates of the center
-    - Center of the framing rectangle can be slewed to (7) or set as [sequence](#tab--sequence) target (8)
+    - Center of the framing rectangle can be slewed to (7) or set as [sequence](#tab-sequence) target (8)
 
 ---
 
 ## Tab: Sequence
 
 With Sequences you are able to create imaging sequences with various options for automation. The main usage is to set exposure times, filters and other settings for a total amount of frames to not have to shoot manually and have it stop after a specific amount of frames.
+
+> For further information about sequencing refer to [Usage: Advanced Sequencing](#advanced-sequencing) and [Usage: Automated Meridian Flip](#automated-meridian-flip).
 
 ![Tab: Sequence](images/tab-sequencing.png)
 
@@ -527,29 +492,43 @@ With Sequences you are able to create imaging sequences with various options for
         - “Rotate through” would process one item from a sequence entry and then continue with the next. Allows for example the rotation of LRGB sequences.
 3. **Start guiding**
     - When enabled will try to start guiding with PHD2 after the start of the sequence
-    - PHD2 needs to be connected in the [PHD2 Tab](#tab--phd2)
+    - PHD2 needs to be connected in the [PHD2 Tab](#tab-phd2)
 4. **Slew to target**
     - Slews to the target as specified in RA and Dec
     - Does not Plate Solve to verify it is on target
-5. **Auto focus on start**
-    - Starts the auto focuser sequence to pinpoint the automatic focus
-    > Requires a connected auto focuser
-6. **Center target**
+5. **Center target**
     - Will center the target given the Ra and Dec coordinates
     - Utilizes the plate solver as specified in the settings
     > Requires a set up [primary plate solver](#plate-solving-settings)
-7. **Auto focus on filter change**
-    - Starts the auto focus routine for every switch of the filter wheel
-    > Requires a connected [auto focuser](#tab-filter-wheel-and-focuser)
-8. **Estimated Download Time**
+6. **Estimated Download Time**
     - You can enter the approximate download time your camera takes to download a single image
     > Will be automatically populated with the average download times as measured by NINA on image download  
     > Will be added to calculations of (9)
-9. **Estimated Finish Time**
+7. **Estimated Finish Time**
     - Shows you the estimated finish time when your sequence will end
     - Adds the download time (8) to each sequence entry
     > Needs to be manually refreshed using the button on the right of the estimation
-10. **Sequence entry**
+8. **Auto Focus Expander**
+    - Will show all enabled auto focus options when not expanded
+    > All settings inside require a connected [auto focuser](#tab-filter-wheel-and-focuser)
+9. **Auto focus on start**
+    - Starts the auto focuser sequence to pinpoint the automatic focus    
+10. **Auto focus on filter change**
+    - Starts the auto focus routine for every switch of the filter wheel
+11. **Auto focus after elapsed time**
+    - Starts the auto focus routine after a set amount of time has passed since the last auto focus routine
+12. **Time that has to pass**
+    - Specifies the time in minutes that have to pass to trigger the auto focus routine
+13. **Auto focus after a number of exposures**
+    - Starts the auto focus routine after a set amount of exposures have been taken since the last auto focus routine
+14. **Amount of exposures**
+    - Specifies the number of exposures that have to be taken to trigger the auto focus routine
+15. **Auto focus after a temperature change**
+    - Starts the auto focus routine after a set amount of temperature change
+16. **Amount of temperature change**
+    - Specifies the temperature difference that has to be reached after the last auto focus routine
+    > Requires a temperature sensor that reports the temperature for the [auto focuser](#tab-filter-wheel-and-focuser)
+17. **Sequence entry**
     - Each sequence entry consists out of up to 9 columns which determine how the image will be shot
         - Progress: shows the current progress of the image sequence
         - Total #: the amount of frames for that specific sequence entry
@@ -562,24 +541,27 @@ With Sequences you are able to create imaging sequences with various options for
         - Dither Every # Frame: will dither only every # frame as set when dithering is enabled
         - Gain: Change the gain of the camera for this entry. Only available when camera can set gain
     - Sequences cannot be changed while the sequence is running, you need to pause, abort it or wait until it’s finished to change the amount of frames
-11. **Add new Sequence entry**
+18. **Add new Sequence entry**
     - Adds a new sequence entry line
-12. **Delete Sequence entry**
+19. **Delete Sequence entry**
     - Deletes the currently selected sequence line
-13. **Save Sequence**
+20. **Save Sequence**
     - Allows you to save the sequence as a .xml file
-14. **Open Sequence**
+21. **Open Sequence**
     - Allows to load a previously saved sequence file.
     - Will overwrite all current sequence settings
-15. **Target information**
-    - Shows you the target name, RA and Dec
-    - Can be changed from here
-    - RA and Dec will affect slew on start (4) and center target (6)
-16. **Start Sequence**
+22. **Start Sequence**
     - Starts the sequence
     - Once started morphs into two buttons which allow you to pause or cancel the sequence
         - Pausing will pause the sequence after the current frame
         - Cancel will abort the frame capture completely and stop the sequence
+23. **Target information**
+    - Shows you the target name, RA and Dec
+    - Can be changed from here
+    - RA and Dec will affect slew on start (4) and center target (6)
+24. **Object altitude**
+    - Shows the objects altitude, what direction it will transit and the darkness phase of today, including the current time
+    > Altitude depends on Latitude and Longitude set in the [Settings](#general-settings)
 
 ---
 
@@ -630,7 +612,8 @@ The image panel displays the latest captured image. You can zoom, plate solve or
     - From left to right: Zoom in, Zoom out, Fit image to Screen, Show image at 100% scale
 2. **Plate Solve current image**
     - This will trigger the plate solving mechanism that will attempt to plate solve the currently captured image
-        > The solved result will be displayed in the [Plate Solve panel](#panel-plate-solving)
+        > The solved result will be displayed in the [Plate Solve panel](#panel-plate-solving)  
+        > For Usage of the Plate Solver refer to [Usage: Plate Solving](#plate-solving)
 3. **Crosshair**
     - Displays a crosshair overlay over the image
 4. **Auto Stretch**
@@ -638,8 +621,22 @@ The image panel displays the latest captured image. You can zoom, plate solve or
     > Auto Stretch factor can be set in [Settings](#imaging-settings)
 5. **Star Detection and analysis**
     > Will also enable (4)
-    - Tries to detect the stars in the image to output a [HFR result](#panel--hfr-history)
+    - Tries to detect the stars in the image to output a [HFR result](#panel-hfr-history)
     - When annotation is enabled in the [Settings](#imaging-settings), will annotate the stars with their respective calculated HFR
+6. **Bahtinov Helper** *(Experimental feature)*
+    - Tries to detect the bahtinov Pattern on an image
+    - Displays a rectangle which can be dragged around
+        > Beta status, might not work as expected, report bugs or issues if you have any!
+    - ![Panel: Image: Bahtinov](images/panel-image-bahtinov.png)
+7. **Subsampling Rectangle** *(Experimental feature)*
+    - If your camera allows subsampling of a frame will display a rectangle, which can be dragged around the image
+    - Enabling subsampling in the [Imaging panel](#panel-imaging) will only download the displayed rectangle as long subsampling is enabled
+        > Currently only implemented for native Atik cameras
+    - ![Panel: Image: SubSampling](images/panel-image-subsampling.png)
+8. **Your captured image**
+     - Display of the last captured frame or a loaded frame from the [Image History](#panel-image-history)
+     - Is affected by (4) and will be displayed autostretched when enabled
+
 
 ---
 
@@ -658,9 +655,8 @@ The Camera panel displays various information about the current state of the cam
 ![Panel: Camera](images/panel-camera.png)
 
 > Cooling requires a camera with an active cooler that reports to NINA  
-> Requires a connected [camera](#tab--camera) to display information
+> Requires a connected [camera](#tab-camera) to display information
 1. **Display of the current cooler status**
-    > You cannot enable or disable the cooler with this switch
 2. **Target temperature**
     - You can set the target temperature in C here
 3. **Duration**
@@ -676,13 +672,15 @@ The Telescope panel displays various information about the current state of the 
 
 ![Panel: Telescope](images/panel-telescope.png)
 
-> Requires a connected [telescope](#tab--telescope) to display information
+> Requires a connected [telescope](#tab-telescope) to display information
 
 ---
 
 ### Panel: Plate Solving
 
 The Plate Solving panel allows you to start the plate solving procedure to align your mount to its actual location in the sky, making framing and finding targets way easier without utilizing star alignment.
+
+> For Usage of the Plate Solver refer to [Usage: Plate Solving](#plate-solving)
 
 ![Panel: Plate Solve](images/panel-platesolving.png)
 
@@ -771,19 +769,21 @@ Display of latest weather information from the selected weather provider in [Set
 
 ### Panel: Guider
 
-This panel will display information as provided by [PHD2](#tab--phd2). 
+This panel will display information as provided by [PHD2](#tab-phd2). 
 
 ![Panel: Guider](images/panel-guiding.png)
 
 1. **Guider Status**
-2. **Guider Graph**
-    - Will utilize the scale as set in the [PHD2 tab](#tab--phd2)
+2. **RMS Display**
+3. **Guider Graph**
+    - Will utilize the scale as set in the [PHD2 tab](#tab-phd2)
+    - X-Scale can be changed in the [Settings](#equipment-settings)
 
 ---
 
 ### Panel: Sequence
 
-This panel displays the current active [sequence](#tab--sequence).
+This panel displays the current active [sequence](#tab-sequence).
 
 ![Panel: Sequence](images/panel-sequence.png)
 
@@ -808,7 +808,7 @@ Here you can see the current selected filter, the state and are able to change t
 
 ![Panel: Filter Wheel](images/panel-filterwheel.png)
 
-> Requires a connected [Filter Wheel](#tab--filter-wheel-and-focuser)
+> Requires a connected [Filter Wheel](#tab-filter-wheel-and-focuser)
 1. **Filter Drop Down**
     - Allows you to change the current filter in the filter wheel
 
@@ -820,7 +820,7 @@ This panel displays information about the focuser status and allows you to move 
 
 ![Panel: Focuser](images/panel-focuser.png)
 
-> Requires a connected [focuser](#tab--filter-wheel-and-focuser)
+> Requires a connected [focuser](#tab-filter-wheel-and-focuser)
 1. **Focuser Status**
 2. **Temperature Compensation**
     - When enabled the focuser will try to compensate for ambient temperature if a temperature sensor is available
@@ -846,7 +846,7 @@ The imaging panel allows you to take snapshots with your camera, for example for
 3. **Binning**
     - This allows you to change the binning
     > Only makes sense on CCD cameras
-4. **Gain**
+4. **Gain (not shown)**
     - Allows you to change the gain
     > Some cameras might not have the ability to change gain
 5. **Loop**
@@ -854,7 +854,11 @@ The imaging panel allows you to take snapshots with your camera, for example for
 6. **Save**
     - When enabled will save the images to the image path as defined in Settings
     > Image type will be “SNAP” for those images
-7. **Start Snapshot**
+7. **Enable SubSampling** *(Experimental feature)*
+    - Toggles the capture of only the subsampled frame as defined in the [image panel](#panel-image)
+        > Currently only supported by native Atik cameras  
+        > To get the full sized frame again disable subsampling
+8. **Start Snapshot**
     - Starts the snapshot
     > When loop (5) is enabled, will loop until pressed again to cancel
     
@@ -866,7 +870,7 @@ Here you can read useful information about your average HFR and the amount of st
 
 ![Panel: HFR History](images/panel-hfrhistory.png)
 
-> Requires [HFR detection](#panel--image) to be enabled
+> Requires [HFR detection](#panel-image) to be enabled
 1. **Display of HFR and Stars in a graph**
     - Limited to 300 entries by default
     - Right side Y axis displays the amount of stars
@@ -886,7 +890,13 @@ This panel shows you useful statistics about your latest captured or loaded imag
 > Will display the statistics only at least one image capture
 1. **Display of statistics**
     > Stars and HFR will not be calculated unless HFR detection is enabled
-2. **Histogram**
+2. **Optimal Exposure Calculator** *(Experimental feature)*
+    - Based on your camera values as defined in the [settings](#settings-equipment) will try and determine the necessary exposure time for a decently exposed image
+    - Calculations will be done once an image has been captured
+        > You should expose for at least 30s for this to work properly  
+        > You need to set the correct values in the settings, please refer to the PixInsight script ccdparameters or sensorgen.info for your cameras' values  
+        > *This is only a rough guideline and should work if you enter the correct values in the settings*  
+3. **Histogram**
     - This will show your exposure histogram
     > Histogram resolution can be set in [Settings](#imaging-settings)
 
@@ -898,9 +908,8 @@ With this panel you can start the auto focus sequence if you have a motorized fo
 
 ![Panel: Auto Focus](images/panel-autofocus.png)
 
-> Requires a connected [focuser](#tab--filter-wheel-and-focuser)
+> Requires a connected [focuser](#tab-filter-wheel-and-focuser)
 1. **Display of the focus steps and HFR**
-    - <something>
 2. **Start Auto Focus**
     - This will start the auto focus procedure
 
@@ -929,7 +938,7 @@ The General Settings tab allows you to manage NINA in terms of all general setti
     > Currently only English and German are available, if you want you can contribute to the translation of NINA to your language of choice, contact us on [Discord][Discord]!
 5. **Sky Atlas Image Directory**
     - The directory to the [Sky Atlas][SkyAtlas] Image Repository
-    - Used in [Object Browser](#tab--object-browser)
+    - Used in [Object Browser](#tab-object-browser)
 6. **Log Level**
     - You can change the log level should you encounter issues and want to report a bug
     > Please attach the log with level TRACE then
@@ -974,37 +983,64 @@ This tab allows you to change settings related to your equipment.
 
 1. **Camera Pixel Size**
     - The Pixel Size of your camera sensor in micrometers
-    > Will be automatically populated by the camera, if it provides the information
-2. **Camera Bulb Mode**
+      > Will be automatically populated by the camera, if it provides the information
+
+> For entries 2-5 refer to sensorgen.info or ccdparameters script in PixInsight
+
+2. **Camera Read noise in e**
+    - The read noise in electrons of your camera device
+3. **BIAS mean (native)**
+    - The mean value of your BIAS (shortest exposure) at your cameras native bit depth (4)
+4. **Bit depth**
+     - Your cameras native ADC bit depth
+5. **Full Well Capacity in e**
+    - Your cameras full well capacity in electrons
+6. **Download to Data ratio**
+    - The ratio the optimal exposure calculator will utilize to calculate the maximum adequately possible exposures
+7. **Camera Bulb Mode**
     - Allows you to change the bulb mode of the camera
     - Native will work in most cases
     - RS232 and Mount is available as well and might be necessary for older Nikon cameras
-        > Please refer to Using RS232 or Mount for bulb shutter
-3. **Telescope Focal Length**
+        > For usage of RS232 and Monunt shutter refer to [Usage: Using RS232 or Mount for bulb shutter](#using-rs232-or-mount-for-bulb-shutter)
+8. **Raw converter**
+    - You can change the raw converter here
+    - Only applies to DSLR
+    - Available converters: DCRaw and FreeImage
+        - DCRaw will utilize DCRaw and stretch your images to 16bit, applying the cameras specific color bias profile
+        - FreeImage will deliver the frame exactly as your camera provided it and can be slightly faster for image download on slower machines
+            > Note that both raw converters will deliver you the raw frame of your DSLR. but they might vary in color. Saving the raw frame without adding the camera specific profile with FreeImage can deliver more faint and less colorful raw images than you are used to.
+9. **Telescope Focal Length**
     - Enter your telescope focal length here
-    > This will be used for [plate solving](#panel--plate-solving)
-4. **Use Filter Wheel Offsets**
+    > This will be used for [plate solving](#panel-plate-solving)
+10. **Settle time after slew**
+    - After slewing NINA will wait the specified amount before starting an exposure
+    - Value is in seconds
+11. **Use Filter Wheel Offsets**
     - When enabled the focuser will utilize the filter wheel focus offsets as defined in (6)
-5. **Auto Focus Settings**
+12. **Auto Focus Settings**
     - Allows you to change how the focuser operates in auto focus mode
-6. **Filter Wheel Filter List**
+13. **Filter Wheel Filter List**
     - This filter wheel filter list is used for sequences in NINA
     > You should import your filter list from your ASCOM filter wheel at least once using (8)
-7. **Add or Remove to/from Filter List**
+14. **Add or Remove to/from Filter List**
     - Manually add or remove filters from the filter list
     > Removing always removes the selected filter
-8. **Import Filters from Filter Wheel**
+15. **Import Filters from Filter Wheel**
     > You should run this once to synchronize your filters from ASCOM to NINA
-9. **PHD2 Server URL and Port**
+16. **PHD2 Server URL and Port**
     - You can set the PHD2 server settings here
     > Usually the defaults should work fine  
     > You need to enable PHD2 server in PHD2
-10. **Dither Pixels amount**
+17. **Dither Pixels amount**
     - The amount of pixels to dither in PHD2
-11. **Dither RA Only**
+18. **Dither RA Only**
     - Enables dithering in the RA axis only
-12. **Settle Time after resume**
+19. **Settle Time after resume**
     - The time NINA should wait after a dithering process until it starts the next capture
+20. **PHD2 History Size**
+    - The amount of PHD2 guide values NINA will save in the History of the [PHD2 Tab](#tabs--phd2)
+21. **PHD2 History Size (Imaging)**
+    - The amount of PHD2 guide values NINA will save in the history of the [PHD2 Panel](#panels--guider)
 
 ---
 
@@ -1016,7 +1052,7 @@ In the Imaging settings you can find various imaging related settings like file 
 
 1. **Image Save Format Drop Down**
     - File format to save the image as
-        - Available formats: TIFF, TIFF (Zip), TIFF (LZW), XISF, FITS
+        - Available formats: TIFF, TIFF (zip-compressed), TIFF (lzw-compressed), XISF, FITS
     - Either format will be saved unbayered as 16bit RAW file
     - TIFF can be left as default
     > To save space you can use TIFF (Zip) or TIFF (LZW)
@@ -1035,7 +1071,7 @@ In the Imaging settings you can find various imaging related settings like file 
 6. **Meridian Flip Enable**
     - This option will enable the automated meridian flip
     - The sequence will check periodically between images when to start the flip sequence
-    - See [Automated Meridian Flip](#automated-meridian-flip)
+    > For usage of the automated meridian flip refer to [Usage: Automated Meridian Flip](#automated-meridian-flip)
 7. **Meridian Flip start point**
     - The setting to wait until meridian is passed in minutes
     - The mount will wait until the target is # minutes after the meridian
@@ -1054,10 +1090,10 @@ In the Imaging settings you can find various imaging related settings like file 
     > This setting will affect the [plate solver](#plate-solving-settings)!
 12. **Annotate images**
     - When enabled will annotate the images with HFR of the detected stars
-    - Only will annotate them when [HFR detection](#panel--image) is active
+    - Only will annotate them when [HFR detection](#panel-image) is active
     > Values are not saved into the image, it’s just for display in the Imaging tab
 13. **Histogram Resolution**
-    - This changes the granularity of the histogram resolution in the [statistics](#panel--statistics)
+    - This changes the granularity of the histogram resolution in the [statistics](#panel-statistics)
 14. **Sequence Template**
     - The default sequence template for images
 
@@ -1067,6 +1103,8 @@ In the Imaging settings you can find various imaging related settings like file 
 
 This Setting tab allows you to change the plate solving mechanism. There are 3 plate solvers you can use in NINA. Selected Plate solver settings in this screenshot are for Astrometry.Net plate solver.
 
+> For usage of the Plate Solver refer to [Usage: Plate Solving](#plate-solving)
+
 ![Settings: PlateSolving Astrometry](images/tab-settings-platesolving-astrometry.png)
 
 1. **Primary Plate Solver Drop Down**
@@ -1074,11 +1112,17 @@ This Setting tab allows you to change the plate solving mechanism. There are 3 p
     > Recommended is PlateSolve 2 or Local Platesolver
 2. **Blind Solver Drop Down**
     - This is the blind solver for initial solving
-    > Will be used for [Framing Assistant](#tab--framing-assistant) and for normal [plate solving](#panel--plate-solving) should the primary fail
-3. **Plate Solver Settings Selection**
+    > Will be used for [Framing Assistant](#tab-framing-assistant) and for normal [plate solving](#panel-plate-solving) should the primary fail
+3. **Exposure Time**
+    - The default exposure time for Plate Solving
+4. **Filter**
+    - The default filter for Plate Solving
+5. **error <**
+    - The default error in arcmin for repeated Plate Solving
+6. **Plate Solver Settings Selection**
     - Here you can select the various plate solvers
     > Settings for the Plate solver will appear on the right
-4. **Astrometry.Net Plate Solver API Key**
+7. **Astrometry.Net Plate Solver API Key**
     - This is the main setting for the Astrometry.Net Plate Solver
     > You need an account with astrometry.net to get an API key
 
@@ -1137,13 +1181,155 @@ Those are the settings for the PlateSolve 2 platesolver.
 
 ## Plate Solving
 
+Plate solving is a great way to determine where your scope is pointing at exactly in the sky and an important aspect for fast and easy framing. Essentially what it does is taking a shot with your camera, extract the stars and tries to triangulate the current position based on an internal sky atlas of the plate solver.
+
+> To utilize the full potential of plate solving it is required that your mount and camera are both connected to NINA.
+
+> It is required that your camera and telescope settings in the [equipment settings](#settings-equipment) are set correctly. The two important aspects are `Camera Pixel Size` for the camera and `Focal Length` for the telescope.
+
+NINA allows you to use the three most popular external plate solvers, each of which has its own benefits and drawbacks. Those plate solvers are Astrometry.Net, Local Astrometry and PlateSolve 2.
+
+### General Plate Solving
+
+To plate solve an image you need to capture an image and use the `Plate solve current image` button in the [image panel](#image-panel). This will start the procedure of plate solving your image with the Plate Solver as set in the [plate solving settings](#plate-solving-settings). Should that plate solve attempt fail the mechanism will try to use the Blind Solver to solve the image.
+
+> Before being able to plate solve you need to configure the settings, primary solver and blind solver.
+
+> Should it happen that both plate solving mechanisms fail please verify that your image is somewhat in focus and if necessary change the exposure time or filter for that single image.
+
+To apply the plate solving you need to enable the options `Sync` and if you want to, `Reslew to target` in the [plate solving panel](#panel-plate-solving). The former will synchronize your mounts location to the location that the plate solver has determined you're at. The latter will reslew your mount to the location where it was supposed to be in the first place.
+
+> This allows you to skip the whole star alignment process at your mounts start-up.
+
+Plate Solving is also utilized in the [Automated Meridian Flip](#automated-meridian-flip) to recenter your image after a flip has been performed. This is essential for a hands-off experience of NINA.
+
+> *Our recommendation is to set up all Plate Solvers to have a backup should one plate solver not work as expected in the field.*
+
+### Astrometry.net Plate Solver
+
+The Astrometry.net plate solver will utilize the internet page Astrometry.Net to plate solve an image. It requires registration on [astrometry.net](http://nova.astrometry.net) to get an API key that you need to enter in the settings.
+
+#### Benefits
+- Fast when the mounts location is unknown or far off
+- Does not need to know the cameras pixel size or telescopes focal length
+#### Drawbacks
+- Requires an internet connection
+- Slow when the mounts location is close
+#### Recommendation
+- Primary Solver: not recommended
+- Blind Solver: recommended when an internet connection is available
+
+### Local Astrometry Plate Solver
+
+The local Astrometry plate solver is bundled with NINA and can be installed with the NINA setup. It requires download of index files which can be installed through NINA as well to get the required index files that you need for your combination of focal length and pixel size. See [plate solving settings](#plate-solving-settings).
+
+#### Benefits
+- Adequately fast when the mounts location is unknown or far off
+- Fast when the mounts location is close
+- Does not need an internet connection to work
+#### Drawbacks
+- Download of the correct index files is crucial for the plate solving performance
+- Can pick up hot pixels as stars (especially an issue with DSLR)
+#### Recommendation
+- Primary Solver: recommended with the right index files
+- Blind Solver: recommended
+
+### PlateSolve 2
+
+PlateSolve 2 is a standalone executable which can be downloaded from the [PlateSolve 2 home page](http://planewave.com/downloads/software/). It requires the download of at least one catalogue of stars so it can properly work. You need to start the executable once standalone and set the catalog location of the catalog that you want to use. Both the APM or UCAC3 catalogues will work just fine, but it is recommended to download both of them should you encounter issues with any one of them.
+
+#### Benefits
+- Very fast when the mounts location is close to the target
+- Does not need an internet connection to work
+#### Drawbacks
+- Slow when the mounts location is far off and the focal length of the scope is long
+#### Recommendation
+- Primary Solver: recommended
+- Blind Solver: not recommended (not possible)
+
 ---
 
 ## Using the Object Browser
 
+With the [object browser](#tab-object-browser) you can easily determine targets to shoot for the evening. It seamlessly connects into the [framing assistant](#tab-framing-assistant) and the [sequence](#tab-sequence).
+
+> To being able to utilize the object browser you need to configure your current location in the Astrometry settings in the [general settings](#general-settings). That includes Epoch, Hemisphere, Latitude and Longitude. *Otherwise the object browser will show you wrong data!*
+
+> You also might want to consider to download the [SkyAtlas][SkyAtlas] and configure the location of it in the [general settings](#general-settings) so that the object browser shows you previews of the objects in question.
+
+The idea of the object browser is to show you targets that are relevant to you for this evening. You can set various filters for the object type or maximum altitude. Should you have not decided yet what you want to shoot following filters are suggested to use:
+- Object Type: set it to whatever you would like to photograph
+- Apparent size: important to get your framing right and make sure that you can actually fit the object into the frame and/or have enough resolution for the object in question
+- Minimum altitude: Generally you don't want to shoot anything that is below 45 degrees at its peak due to atmospheric disturbance
+
+The Moon Phase in the Object Browser will tell you the current phase of the moon, when it will rise and set so you don't have to guess or rely on the internet.
+
+> The object browser heavily depends on your imaging location, you will need to experiment with various filters to see their effects.
+
+### Object Display
+
+All objects that are in the object browser are displayed the same way. Once you understand how to read the display it becomes very easy and tremendeously helpful for you to determine whether the target is worth shooting for you.
+
+![Usage: Object Browser Object Display](images/usage-objectbrowser-object.png)
+
+1. The name of the object in question with any available alternatives. Spoken names like "Whirlpool Galaxy" are not implemented yet.
+2. The Coordinates of the object in RA and Dec, should you want to save the coordinates or slew manually to them
+3. The object type which is GALXY (Galaxy) in this case. Those types are abbreviations to save space. In the filter it will use the full description instead of the abbreviation.
+4. The objects constellation
+5. Apparent magnitude of the object, if available. Determines the peak brightness.
+6. Surface brightness of the object, if available (if not, it's 99.9). The actual full brightness of the object.
+7. Apparent size of the object, if available. Shows you the apparent size in arcminutes or degrees, depending on size.
+8. The altitude of the object, current time and darkness meter.
+    - This one is a bit more complex to explain; the line with a specific peak is the actual altitude of the object at any given time, generally: the higher, the better. Transit north or south tells you whether the object will pass to your south or north.
+    - The Now line shows you your current time so you can crossreference the current altitude of the object.
+    - The darker lines are show you the start of the nautical and astro dark.
+9. Sets the object as the target for the sequence, see [Usage: Advanced sequencing](#advanced-sequencing)
+10. Sets the object as the target for the framing assistant, see [Usage: Framing with the Framing Assistant](#framing-with-the-framing-assistant)
+11. Slews to the target in question so you can frame and align manually or with plate solving, see [Usage: Plate Solving](#plate-solving)
+
+
 ---
 
 ## Dithering with PHD2
+
+Dithering is an important part of the imaging process. The benefit of dithering will be a clearer image with less pattern noise and more detail since the image will be shifted by a few pixels with a dithering request.
+
+NINA supports dithering out of the box utilizing PHD2 and makes it easy to set up and have it running. There are a few prerequisites to be able to dither your images during a sequence.
+
+- A mount needs to be connected
+- PHD2 needs to be be running, guiding and also connected to NINA
+  - The PHD2 settings in the [Equipment Settings](#settings-equipment) need to be set up
+- Dithering needs to be enabled in the sequence
+
+### PHD2 Settings
+
+You need to enable the Option "Enable Server" in PHD2 so NINA can connect to PHD2 to get the current guiding and RMS data as well as send dithering commands.
+
+> The setting to enable it is in PHD2 under ```Tools -> Enable Server```
+
+![PHD2 Settings](images/usage-dithering-settings-phd2.png)
+
+The settings for NINA in the [Equipment Settings](#settings-equipment) can be left at their defaults. The PHD2 Server Port of `4400` is correct and so is the the server URL of `localhost` since we assume PHD2 is running on the local computer.
+
+> If you use a different computer to guide you need to change the server URL to the IP or Hostname of the guiding server.
+
+The other two important settings are `Dither Pixels` and `Dither RA only`. You can leave the Dither Pixels to 5 or reduce it if you shoot at a high focal length. The default works fine for most focal lengths. It depends on the guide camera and focal length of the guidescope as well.
+
+> You can calculate how much arcseconds a single pixel of your camera is by calculating the FOV of your guide scope with guide camera and getting the arcseconds per pixel values. A calculator for this is for example the [Astronomy Tools Field of View Calculator](https://astronomy.tools/calculators/field_of_view/).
+
+Dithering RA only should be disabled in general so PHD2 will dither in all directions instead of only RA. If you have a high backlash and it takes a long time for the dither to settle, you can disable this option. This is generally not recommended.
+
+### Sequence Settings
+
+Once you have set up your PHD2 you will need to connect it first in the [PHD2 Tab](#tab-phd2). Once connected and verified that it sends data you can enable Dithering in the [Sequence tab](#tab-sequence).
+
+![Seqence Settings](images/usage-dithering-sequence.png)
+
+In the sequence tab you have two settings that affect dithering. The first and obvious is `Dither` for any given sequence entry. If you enable `Dither` PHD2 will start dithering every frame. You might want to consider dithering less than every frame or dither only for specific sequence entries. For example, if you use a LRGB rotational sequence (see: [Advanced Sequencing](#advanced-sequencing)) you might only want to dither on every L frame. If you use a OSC Camera it is suggested to dither every frame.
+
+> The dithering will happen while the camera downloads the image, so depending on how long your download is and how long it takes the guiding to settle you might not even lose time.
+
+Once enabled in the sequence, the sequence is running and PHD2 is connected the dithering will happen automatically. You don't need to enable anything else.
 
 ---
 
@@ -1153,9 +1339,44 @@ Those are the settings for the PlateSolve 2 platesolver.
 
 ## Automated Meridian Flip
 
----
+Automated Meridian flips are important once your mount passes the meridian while imaging. They prevent that your telescope and camera bump into the mount and do major damage to your equipment. NINA has built-in functionality for the automated flip, even if your mount does not support it in firmware.
 
-## Automatic Refocusing During a Sequence
+> Prerequisite for this functionality is that your mount is connected to NINA and the setting for flipping is enabled.
+
+To enable the Automated Meridian Flip you need to enable it in the imaging settings.
+
+![Automated Meridian Flip Settings](images/usage-autoflip-settings.png)
+
+There are a few settings that you can change here that will affect what the meridian flip will do. 
+
+Minutes after meridian is when the flip actually will happen. 1 Minute as the default is a good time for the mount to actually notice it's past the meridian and flip automatically.
+
+Recenter after flip will use plate solving to determine where your mount is and recenter it after the flip.
+
+Scope settle time after flip will wait for the specified time after the flip and center.
+
+Pause before meridian is when the mount will stop imaging and wait for the time to pass until minutes after meridian.
+
+The whole Sequence of the Automated Meridian Flip works like this:
+
+1. Camera shoots and downloads an image
+2. Check if next image time + time to meridian is less than pause before meridian
+   1. If there is still time go to 1.
+   2. Otherwise continue with 3.
+3. Show the Meridian Flip UI
+4. Stop guiding in PHD2 and mount tracking
+5. Wait until meridian passes + minutes after meridian setting
+6. Give a slew command to the same RA/Dec coordinates where it was before so the mount flips
+7. Start mount tracking
+8. Wait for Scope settle time
+9. If Recenter after flip is disabled go to 10.
+   1. Otherwise take a snap shot and plate solve it
+   2. Recenter according to the plate solve to the correct mount location
+10. Auto Select star in PHD2 and resume guiding
+11. Wait for guiding to settle
+12. Continue with 1.
+
+> Please note that some steps might fail or your mount can entangle itself during the automated meridian flip. **Always supervise your mount and NINA while flipping to ensure that there are no issues.**
 
 ---
 
@@ -1164,6 +1385,66 @@ Those are the settings for the PlateSolve 2 platesolver.
 ---
 
 ## Using RS232 or Mount for Bulb Shutter
+
+If you have a DSLR that does not allow BULB exposure time over USB this is a solution for you. Instead of native USB mode you can use a selfmade RS232-Shutter cable or use the mounts port for shutter (if available). You can test whether you need or don't need an external shutter cable by trying taking an exposure of more than 30s. This will trigger bulb mode on DSLR. If your camera won't take a picture you need to look at this section.
+
+> Prerequsite for any method of this functionality is that your DSLR has a shutter port!
+
+You can find the necessary settings in the [Equipment Settings](#settings-equipment).
+
+![Bulb Shutter Settings](images/usage-bulbshutter-settings.png)
+
+If your mount has a SNAP port we advise to test out the [Mount for Bulb Shutter](#mount-for-bulb-shutter) functionality before the RS232 for Bulb Shutter.
+
+### RS232 for Bulb Shutter
+
+One way to trigger the shutter mechanism of your DSLR is utilizing a self-made RS232 to Bulb shutter cable. There are already some pre-made cables to be bought online for this issue or you can DIY.
+
+> DSUSB cables are not supported since they don't expose a COM Port!
+
+You can find some tutorials on how to build a DIY shutter cable here:
+
+- [Nikon MC-DC2](https://www.cloudynights.com/topic/457536-usb-corded-shutter-control-for-nikon/)
+- [Canon #1](http://www.beskeen.com/projects/dslr_serial/dslr_serial.shtml)
+- [Canon #2](http://www.covingtoninnovations.com/dslr/CanonRelease.html)
+
+Once you have a RS232-Shutter cable built you need to connect it to the PC, install drivers for your RS232 adapter and check for the COM port used.
+
+In NINA you need to select `Serial Port` for the Bulb Mode and change the COM port to the port your RS232 is using.
+
+![Bulb Shutter Serial](images/usage-bulbshutter-serial.png)
+
+After that you can try and snap an image with an exposure time of longer than 30s. If it works you are done and can now expose for any time that you wish.
+
+Should you face issues with the RS232-Shutter exposure in NINA feel free to contact us on our [Discord][Discord].
+
+> Please not we have no experience with DIY of shutter cables!
+
+### Mount for Bulb Shutter
+
+If you are lucky enough that your mount runs with EQMOD and has a shutter port you can use that to trigger the bulb shutter mechanism.
+
+![Bulb Shutter Mount Port](images/usage-bulbshutter-mountsnapport.png)
+
+To try use that select the `Telescope Snap Port` from the settings drop down.
+
+> Currently confirmed and tested mounts for Mount Bulb Shutter are the SkyWatcher EQ6-R and AZ-EQ-6-GT.
+
+First you need to connect a shutter cable from the SNAP port of your mount to your DSLR. For that you will likely need a 3.5mm jack to your cameras specific shutter port cable. 
+
+Once everything is physically connected you need to connect the mount to NINA and the Camera as well.
+
+> If your mount has two SNAP ports you can use either. Both will work depending on the next setting.
+
+The next step is to experiment with the command setting that is sent to the mount. 
+
+![Bulb Shutter Port Command](images/usage-bulbshutter-snapport.png)
+
+The default settings might already work for you already, so feel free to try and take a snap shot that is longer than 30s in NINA. If the shutter is triggered, you are done and can take longer exposures than 30s now.
+
+Should this not work please try the commands `:SNAP2,1#` to start and `:SNAP2,0#` to stop the snap port. 
+
+Should your bulb exposure still not trigger please contact us on our [Discord][Discord].
 
 ---
 
@@ -1176,6 +1457,12 @@ Those are the settings for the PlateSolve 2 platesolver.
 
 ## Bugs
 
+Should you encounter any bugs during your usage of NINA please report them to the [Issues Tracker][IssuesTracker] or directly to us on our [Discord][Discord]. If possible attach the latest Log file from the day on which you encountered the issue.
+
+Log files can be found in ```%LOCALAPPDATA%\NINA\Logs\```
+
 ---
 
 ## Comments and Suggestions
+
+We are always happy to take new comments and suggestions to improve your and our experience with NINA. As with Bugs feel free to drop them by us on our [Issues Tracker][Issues Tracker] or [Discord][Discord]. You are always welcome and your voice will be heard - or you get your money back.
