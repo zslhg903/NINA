@@ -5,22 +5,11 @@
 
 # NINA - Nighttime Imaging ‘N’ Astronomy Manual
 
-## Version 1.5.0.X
+## Version 1.7.0.X
 
 ![NINA Logo](images/nina-logo.png)
 
 ---
-
-# Manual Revision History
-| Version | Date | Comment |
-| --- | --- | --- |
-| 0.1 | 2018-04-25 | Initial draft with rough outline for preliminary version 1.4.1.0 |
-| 0.2 | 2018-04-25 | Added Manual Editing Guidelines, Introduction, Requirements, Quick Start Guide |
-| 0.3 | 2018-04-25 | Added detailed information for following tabs: Camera, Filter wheel+Focuser, Telescope, PHD2, Object Browser; added images to document framing assistant, sequence and settings tab; more glossary items; peer reviewed quick start guide |
-| 0.4 | 2018-04-27 | Completed initial Tabs documentation |
-| 0.5 | 2018-04-27 | Conversion to Markdown, minor changes |
-| 0.6 | 2018-05-02 | Updated to 1.5.0.0, added screenshots and descriptions of new features |
-| 0.7 | 2018-05-04 | Added more usage topics, added links to usage topics where applicable, changed version to 1.5.0.X |
 
 # Manual Editing Guidelines
 - Screenshots with NINA in 1280×720 (minimal window size) resolution to maintain readability
@@ -272,14 +261,15 @@ The Camera panel allows you to connect ASCOM based cameras as well as various ZW
 
 ---
 
-## Tab: Filter Wheel and Focuser
+## Tab: Filter Wheel, Focuser and Rotator
 
-In the Filter Wheel and Focuser tab you can connect your ASCOM based filter wheels and auto focusers. It also allows you to switch filters or change settings for the auto focuser, including focus movement. The User Interface and functionality consists out of following elements:
+In the Filter Wheel, Focuser and Rotator tab you can connect your ASCOM based filter wheels, auto focusers and rotators. It also allows you to switch filters, change settings for the auto focuser, including focus movement and rotation. The User Interface and functionality consists out of following elements:
 
-![Tab: Filter Wheel and Focuser](images/tab-filterwheelfocuser.png)
+![Tab: Filter Wheel, Focuser and Rotator](images/tab-filterwheelfocuser.png)
 
 1. **Filter Wheel Drop Down**
     - Select the filter wheel to connect
+        > There is also a manual filter wheel option available that will prompt to change the filter manually
 2. **Filter Wheel Settings (ASCOM)**
     - Start the ASCOM settings software for the selected filter wheel (if available)
 3. **Refresh Filter Wheel Devices**
@@ -288,26 +278,38 @@ In the Filter Wheel and Focuser tab you can connect your ASCOM based filter whee
     - Attempts to connect the filter wheel to NINA
 5. **Filter Wheel Information**
     - Display of a few information about the filter wheel
-6. **Filter Wheel Filters**
-    - List of all Filters with Focus Offsets as provided by ASCOM
-    - A click on a specific filter will move the filter wheel to that position
+6. **Filter Change**
+    - To change a filter, select the target filter inside the combobox on the left and click on the change button
+7. **Filter Wheel Filters**
+    - List of all Filters with Focus Offsets as provided by ASCOM    
         > The ASCOM filter list needs to be imported once to the NINA settings, refer to [Equipment Settings](#equipment-settings)
-7. **Focuser Drop Down**
+8. **Focuser Drop Down**
     - Select the focuser to connect
-8. **Focuser Settings (ASCOM)**
+9. **Focuser Settings (ASCOM)**
     - Starts the ASCOM settings software for the selected focuser (if available)
-9. **Refresh Focusers**
+10. **Refresh Focusers**
     - Refreshes the device list and checks for newly connected focusers
-10. **Connect Focuser**
+11. **Connect Focuser**
     - Attempts to connect the focuser to NINA
-11. **Focuser Information**
+12. **Focuser Information**
     - Display of various information about the focuser and its status
-12. **Focuser Temperature Compensation**
+13. **Focuser Temperature Compensation**
     - Enables compensation for ambient temperature of the focuser if a temperature sensor is available to compensate for focus drift due to temperature change in the night
     - Disables manual movement of the focuser
-13. **Focuser Target Position and Move**
+14. **Focuser Target Position and Move**
     - Allows you to set a specific focuser target position
     - Is disabled when automatic temperature compensation is enabled
+15. **Rotator Drop Down**
+    - Select the rotator to connect
+        > There is also a manual rotator option available that will prompt to change the camera rotation manually
+16. **Rotator Settings (ASCOM)**
+    - Starts the ASCOM settings software for the selected rotator (if available)
+17. **Refresh Rotators**
+    - Refreshes the device list and checks for newly connected rotators
+18. **Connect Rotator**
+    - Attempts to connect the rotator to NINA
+19. **Rotator Target Position and Move**
+    - Allows you to set a specific rotator target rotation
 
 ---
 
@@ -510,7 +512,7 @@ With Sequences you are able to create imaging sequences with various options for
     > Needs to be manually refreshed using the button on the right of the estimation
 8. **Auto Focus Expander**
     - Will show all enabled auto focus options when not expanded
-    > All settings inside require a connected [auto focuser](#tab-filter-wheel-and-focuser)
+    > All settings inside require a connected [auto focuser](#tab-filter-wheel-focuser-and-rotator)
 9. **Auto focus on start**
     - Starts the auto focuser sequence to pinpoint the automatic focus    
 10. **Auto focus on filter change**
@@ -527,7 +529,7 @@ With Sequences you are able to create imaging sequences with various options for
     - Starts the auto focus routine after a set amount of temperature change
 16. **Amount of temperature change**
     - Specifies the temperature difference that has to be reached after the last auto focus routine
-    > Requires a temperature sensor that reports the temperature for the [auto focuser](#tab-filter-wheel-and-focuser)
+    > Requires a temperature sensor that reports the temperature for the [auto focuser](#tab-filter-wheel-focuser-and-rotator)
 17. **Sequence entry**
     - Each sequence entry consists out of up to 9 columns which determine how the image will be shot
         - Progress: shows the current progress of the image sequence
@@ -808,7 +810,7 @@ Here you can see the current selected filter, the state and are able to change t
 
 ![Panel: Filter Wheel](images/panel-filterwheel.png)
 
-> Requires a connected [Filter Wheel](#tab-filter-wheel-and-focuser)
+> Requires a connected [Filter Wheel](#tab-filter-wheel-focuser-and-rotator)
 1. **Filter Drop Down**
     - Allows you to change the current filter in the filter wheel
 
@@ -820,7 +822,7 @@ This panel displays information about the focuser status and allows you to move 
 
 ![Panel: Focuser](images/panel-focuser.png)
 
-> Requires a connected [focuser](#tab-filter-wheel-and-focuser)
+> Requires a connected [focuser](#tab-filter-wheel-focuser-and-rotator)
 1. **Focuser Status**
 2. **Temperature Compensation**
     - When enabled the focuser will try to compensate for ambient temperature if a temperature sensor is available
@@ -908,7 +910,7 @@ With this panel you can start the auto focus sequence if you have a motorized fo
 
 ![Panel: Auto Focus](images/panel-autofocus.png)
 
-> Requires a connected [focuser](#tab-filter-wheel-and-focuser)
+> Requires a connected [focuser](#tab-filter-wheel-focuser-and-rotator)
 1. **Display of the focus steps and HFR**
 2. **Start Auto Focus**
     - This will start the auto focus procedure

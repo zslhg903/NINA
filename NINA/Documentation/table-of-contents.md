@@ -15,7 +15,7 @@
     - [Starting a Sequence](#starting-a-sequence)
 - [Tabs](#tabs)
     - [Tab: Camera](#tab-camera)
-    - [Tab: Filter Wheel and Focuser](#tab-filter-wheel-and-focuser)
+    - [Tab: Filter Wheel, Focuser and Rotator](#tab-filter-wheel-focuser-and-rotator)
     - [Tab: Telescope](#tab-telescope)
     - [Tab: PHD2](#tab-phd2)
     - [Tab: Object Browser](#tab-object-browser)
