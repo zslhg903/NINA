@@ -1,4 +1,3 @@
-- [Manual Revision History](#manual-revision-history)
 - [Manual Editing Guidelines](#manual-editing-guidelines)
 - [Glossary](#glossary)
 - [Introduction](#introduction)
@@ -12,7 +11,7 @@
     - [Quick Start: Connecting Your Equipment](#quick-start-connecting-your-equipment)
     - [Quick Start: Finalizing the settings](#quick-start-finalizing-the-settings)
     - [Quick Start: Focusing](#quick-start-focusing)
-    - [Starting a Sequence](#starting-a-sequence)
+    - [Quick Start: Starting a Sequence](#quick-start-starting-a-sequence)
 - [Tabs](#tabs)
     - [Tab: Camera](#tab-camera)
     - [Tab: Filter Wheel, Focuser and Rotator](#tab-filter-wheel-focuser-and-rotator)
