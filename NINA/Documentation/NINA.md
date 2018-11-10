@@ -17,11 +17,11 @@
 - Screenshots of UI in “Arsenic” as primary style, Dark as secondary style
 - Use lots of screenshots in general, it’s easier to look at something instead of reading something, but do not skimp on text either
 - Use ASCOM Simulators for Screenshots when possible
-- Use the latest version of NINA, possibly the nightly builds if available (ask Isbeorn or darkarchon or build it yourself)
-- Only add paragraphs to functionalities you used yourself to prevent guesswork
+- Use the latest version of NINA, possibly the nightly builds if available (ask a moderator via discord, mail or build it yourself)
+- Only add paragraphs to functionalities you used yourself and fully understand to prevent guesswork
 - Maintain an easy reading style so people who are completely new to the topic won’t get lost
 - Viewers can only comment on entries, if you feel something is wrong comment on that specific section and it will be reviewed
-- If you want to contribute actively notify darkarchon on Discord
+- If you want to contribute please have a look into the CONTRIBUTING.md file of the project
 
 ---
 
