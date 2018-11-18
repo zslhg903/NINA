@@ -1,154 +1,112 @@
-﻿<!DOCTYPE html> 
+﻿<!DOCTYPE html>
 <html>
-    <head>
-        <title>NINA - Nighttime Imaging ‘N’ Astronomy Manual</title>
-        <link rel="stylesheet" type="Text/css" href="modest.css" />
-    </head>
-    <body>
-        <div id="navbar">
-            <button onclick="w3_close()">&times;</button>
-            <ul style="margin-top: 40px">
-                <li><a href="#manual-revision-history">Manual Revision History</a></li>
-                <li><a href="#manual-editing-guidelines">Manual Editing Guidelines</a></li>
-                <li><a href="#glossary">Glossary</a></li>
-                <li><a href="#introduction">Introduction</a></li>
-                <li><a href="#prerequisites-compatibility-and-system-requirements">Prerequisites, Compatibility and System Requirements</a>
+<head>
+    <title>NINA - Nighttime Imaging ‘N’ Astronomy Manual</title>
+    <link rel="stylesheet" type="Text/css" href="modest.css" />
+</head>
+<body>
+    <div id="navbar">
+        <button onclick="w3_close()">&times;</button>
+        <ul>
+            <li><a href="#manual-editing-guidelines">Manual Editing Guidelines</a></li>
+            <li><a href="#glossary">Glossary</a></li>
+            <li><a href="#introduction">Introduction</a></li>
+            <li>
+                <a href="#prerequisites-compatibility-and-system-requirements">Prerequisites, Compatibility and System Requirements</a>
                 <ul>
-				<li><a href="#nina-download">NINA Download</a></li>
-                <li><a href="#minimum-system-requirements">Minimum System Requirements</a></li>
-                <li><a href="#supported-devices">Supported Devices</a></li>
-                <li><a href="#supported-software">Supported Software</a></li>
-                <li><a href="#additional-downloads">Additional Downloads</a></li>
+                    <li><a href="#minimum-system-requirements">Minimum System Requirements</a></li>
+                    <li><a href="#supported-devices">Supported Devices</a></li>
+                    <li><a href="#supported-software">Supported Software</a></li>
+                    <li><a href="#additional-downloads">Additional Downloads</a></li>
                 </ul>
-                </li>
-                <li><a href="#quick-start-guide">Quick Start Guide</a>
+            </li>
+            <li>
+                <a href="#quick-start-guide">Quick Start Guide</a>
                 <ul>
-                <li><a href="#quick-start-ui-overview">Quick Start: UI Overview</a></li>
-                <li><a href="#quick-start-connecting-your-equipment">Quick Start: Connecting Your Equipment</a></li>
-                <li><a href="#quick-start-finalizing-the-settings">Quick Start: Finalizing the settings</a></li>
-                <li><a href="#quick-start-focusing">Quick Start: Focusing</a></li>
-                <li><a href="#quick-start-starting-a-sequence">Quick Start: Starting a Sequence</a></li>
+                    <li><a href="#quick-start-ui-overview">Quick Start: UI Overview</a></li>
+                    <li><a href="#quick-start-connecting-your-equipment">Quick Start: Connecting Your Equipment</a></li>
+                    <li><a href="#quick-start-finalizing-the-settings">Quick Start: Finalizing the settings</a></li>
+                    <li><a href="#quick-start-focusing">Quick Start: Focusing</a></li>
+                    <li><a href="#quick-start-starting-a-sequence">Quick Start: Starting a Sequence</a></li>
                 </ul>
-                </li>
-                <li><a href="#tabs">Tabs</a>
+            </li>
+            <li>
+                <a href="#tabs">Tabs</a>
                 <ul>
-                <li><a href="#tab-camera">Tab: Camera</a></li>
-                <li><a href="#tab-filter-wheel-and-focuser">Tab: Filter Wheel and Focuser</a></li>
-                <li><a href="#tab-telescope">Tab: Telescope</a></li>
-                <li><a href="#tab-phd2">Tab: PHD2</a></li>
-                <li><a href="#tab-object-browser">Tab: Object Browser</a></li>
-                <li><a href="#tab-framing-assistant">Tab: Framing Assistant</a></li>
-                <li><a href="#tab-sequence">Tab: Sequence</a></li>
-                <li><a href="#tab-imaging">Tab: Imaging</a>
+                    <li><a href="#tab-camera">Tab: Camera</a></li>
+                    <li><a href="#tab-filter-wheel-focuser-and-rotator">Tab: Filter Wheel, Focuser and Rotator</a></li>
+                    <li><a href="#tab-telescope">Tab: Telescope</a></li>
+                    <li><a href="#tab-phd2">Tab: PHD2</a></li>
+                    <li><a href="#tab-object-browser">Tab: Object Browser</a></li>
+                    <li><a href="#tab-framing-assistant">Tab: Framing Assistant</a></li>
+                    <li><a href="#tab-sequence">Tab: Sequence</a></li>
+                    <li>
+                        <a href="#tab-imaging">Tab: Imaging</a>
+                        <ul>
+                            <li><a href="#panel-adjustment-and-personalization">Panel Adjustment and Personalization</a></li>
+                            <li><a href="#panel-image">Panel: Image</a></li>
+                            <li><a href="#panel-image-history">Panel: Image History</a></li>
+                            <li><a href="#panel-camera">Panel: Camera</a></li>
+                            <li><a href="#panel-telescope">Panel: Telescope</a></li>
+                            <li><a href="#panel-plate-solving">Panel: Plate Solving</a></li>
+                            <li><a href="#panel-polar-alignment">Panel: Polar Alignment</a></li>
+                            <li><a href="#panel-weather">Panel: Weather</a></li>
+                            <li><a href="#panel-guider">Panel: Guider</a></li>
+                            <li><a href="#panel-sequence">Panel: Sequence</a></li>
+                            <li><a href="#panel-filter-wheel">Panel: Filter Wheel</a></li>
+                            <li><a href="#panel-focuser">Panel: Focuser</a></li>
+                            <li><a href="#panel-imaging">Panel: Imaging</a></li>
+                            <li><a href="#panel-hfr-history">Panel: HFR History</a></li>
+                            <li><a href="#panel-statistics">Panel: Statistics</a></li>
+                            <li><a href="#panel-auto-focus">Panel: Auto Focus</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#tab-settings">Tab: Settings</a>
+                        <ul>
+                            <li><a href="#general-settings">General Settings</a></li>
+                            <li><a href="#equipment-settings">Equipment Settings</a></li>
+                            <li><a href="#imaging-settings">Imaging Settings</a></li>
+                            <li><a href="#plate-solving-settings">Plate Solving Settings</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#usage">Usage</a>
                 <ul>
-                <li><a href="#panel-adjustment-and-personalization">Panel Adjustment and Personalization</a></li>
-                <li><a href="#panel-image">Panel: Image</a></li>
-                <li><a href="#panel-image-history">Panel: Image History</a></li>
-                <li><a href="#panel-camera">Panel: Camera</a></li>
-                <li><a href="#panel-telescope">Panel: Telescope</a></li>
-                <li><a href="#panel-plate-solving">Panel: Plate Solving</a></li>
-                <li><a href="#panel-polar-alignment">Panel: Polar Alignment</a></li>
-                <li><a href="#panel-weather">Panel: Weather</a></li>
-                <li><a href="#panel-guider">Panel: Guider</a></li>
-                <li><a href="#panel-sequence">Panel: Sequence</a></li>
-                <li><a href="#panel-filter-wheel">Panel: Filter Wheel</a></li>
-                <li><a href="#panel-focuser">Panel: Focuser</a></li>
-                <li><a href="#panel-imaging">Panel: Imaging</a></li>
-                <li><a href="#panel-hfr-history">Panel: HFR History</a></li>
-                <li><a href="#panel-statistics">Panel: Statistics</a></li>
-                <li><a href="#panel-auto-focus">Panel: Auto Focus</a></li>
+                    <li><a href="#plate-solving">Plate Solving</a></li>
+                    <li><a href="#using-the-object-browser">Using the Object Browser</a></li>
+                    <li><a href="#dithering-with-phd2">Dithering with PHD2</a></li>
+                    <li><a href="#framing-with-the-framing-assistant">Framing with the Framing Assistant</a></li>
+                    <li><a href="#automated-meridian-flip">Automated Meridian Flip</a></li>
+                    <li><a href="#advanced-sequencing">Advanced Sequencing</a></li>
+                    <li><a href="#using-rs232-or-mount-for-bulb-shutter">Using RS232 or Mount for Bulb Shutter</a></li>
                 </ul>
-                </li>
-                <li><a href="#tab-settings">Tab: Settings</a>
+            </li>
+            <li>
+                <a href="#troubleshooting">Troubleshooting</a>
                 <ul>
-                <li><a href="#general-settings">General Settings</a></li>
-                <li><a href="#equipment-settings">Equipment Settings</a></li>
-                <li><a href="#imaging-settings">Imaging Settings</a></li>
-                <li><a href="#plate-solving-settings">Plate Solving Settings</a></li>
+                    <li><a href="#errors">Errors</a></li>
+                    <li><a href="#bugs">Bugs</a></li>
+                    <li><a href="#comments-and-suggestions">Comments and Suggestions</a></li>
                 </ul>
-                </li>
-                </ul>
-                </li>
-                <li><a href="#usage">Usage</a>
-                <ul>
-                <li><a href="#plate-solving">Plate Solving</a></li>
-                <li><a href="#using-the-object-browser">Using the Object Browser</a></li>
-                <li><a href="#dithering-with-phd2">Dithering with PHD2</a></li>
-                <li><a href="#framing-with-the-framing-assistant">Framing with the Framing Assistant</a></li>
-                <li><a href="#automated-meridian-flip">Automated Meridian Flip</a></li>
-                <li><a href="#advanced-sequencing">Advanced Sequencing</a></li>
-                <li><a href="#using-rs232-or-mount-for-bulb-shutter">Using RS232 or Mount for Bulb Shutter</a></li>
-                </ul>
-                </li>
-                <li><a href="#troubleshooting">Troubleshooting</a>
-                <ul>
-                <li><a href="#errors">Errors</a></li>
-                <li><a href="#bugs">Bugs</a></li>
-                <li><a href="#comments-and-suggestions">Comments and Suggestions</a></li>
-                </ul>
-                </li>
-            </ul>
-        </div>
+            </li>
+        </ul>
+    </div>
 
-        <div class="navbar_header">
-            <div class="navbar_collapsed">
-                <button onclick="w3_open()">&#9776;</button>
-                <h1>NINA - Nighttime Imaging ‘N’ Astronomy Manual</Nav></h1>
-            </div>
+    <div class="navbar_header">
+        <div class="navbar_collapsed">
+            <button onclick="w3_open()">&#9776;</button>
+            <h1>NINA - Nighttime Imaging ‘N’ Astronomy Manual</h1>
         </div>
+    </div>
 
-        <div id="content" onclick="w3_close()">
-            <h1 id="nina-nighttime-imaging-n-astronomy-manual">NINA - Nighttime Imaging ‘N’ Astronomy Manual</h1>
-<h2 id="version-1.5.0.x">Version 1.5.0.X</h2>
+    <div id="content" onclick="w3_close()">
+        <h1 id="nina-nighttime-imaging-n-astronomy-manual">NINA - Nighttime Imaging ‘N’ Astronomy Manual</h1>
+<h2 id="version-1.7.0.x">Version 1.7.0.X</h2>
 <p><img src="images/nina-logo.png" alt="NINA Logo" /></p>
 <hr />
-<h1 id="manual-revision-history">Manual Revision History</h1>
-<table>
-<thead>
-<tr>
-<th>Version</th>
-<th>Date</th>
-<th>Comment</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0.1</td>
-<td>2018-04-25</td>
-<td>Initial draft with rough outline for preliminary version 1.4.1.0</td>
-</tr>
-<tr>
-<td>0.2</td>
-<td>2018-04-25</td>
-<td>Added Manual Editing Guidelines, Introduction, Requirements, Quick Start Guide</td>
-</tr>
-<tr>
-<td>0.3</td>
-<td>2018-04-25</td>
-<td>Added detailed information for following tabs: Camera, Filter wheel+Focuser, Telescope, PHD2, Object Browser; added images to document framing assistant, sequence and settings tab; more glossary items; peer reviewed quick start guide</td>
-</tr>
-<tr>
-<td>0.4</td>
-<td>2018-04-27</td>
-<td>Completed initial Tabs documentation</td>
-</tr>
-<tr>
-<td>0.5</td>
-<td>2018-04-27</td>
-<td>Conversion to Markdown, minor changes</td>
-</tr>
-<tr>
-<td>0.6</td>
-<td>2018-05-02</td>
-<td>Updated to 1.5.0.0, added screenshots and descriptions of new features</td>
-</tr>
-<tr>
-<td>0.7</td>
-<td>2018-05-04</td>
-<td>Added more usage topics, added links to usage topics where applicable, changed version to 1.5.0.X</td>
-</tr>
-</tbody>
-</table>
 <h1 id="manual-editing-guidelines">Manual Editing Guidelines</h1>
 <ul>
 <li>Screenshots with NINA in 1280×720 (minimal window size) resolution to maintain readability</li>
@@ -156,11 +114,11 @@
 <li>Screenshots of UI in “Arsenic” as primary style, Dark as secondary style</li>
 <li>Use lots of screenshots in general, it’s easier to look at something instead of reading something, but do not skimp on text either</li>
 <li>Use ASCOM Simulators for Screenshots when possible</li>
-<li>Use the latest version of NINA, possibly the nightly builds if available (ask Isbeorn or darkarchon or build it yourself)</li>
-<li>Only add paragraphs to functionalities you used yourself to prevent guesswork</li>
+<li>Use the latest version of NINA, possibly the nightly builds if available (ask a moderator via discord, mail or build it yourself)</li>
+<li>Only add paragraphs to functionalities you used yourself and fully understand to prevent guesswork</li>
 <li>Maintain an easy reading style so people who are completely new to the topic won’t get lost</li>
 <li>Viewers can only comment on entries, if you feel something is wrong comment on that specific section and it will be reviewed</li>
-<li>If you want to contribute actively notify darkarchon on Discord</li>
+<li>If you want to contribute please have a look into the CONTRIBUTING.md file of the project</li>
 </ul>
 <hr />
 <h1 id="glossary">Glossary</h1>
@@ -469,13 +427,17 @@
 </li>
 </ol>
 <hr />
-<h2 id="tab-filter-wheel-and-focuser">Tab: Filter Wheel and Focuser</h2>
-<p>In the Filter Wheel and Focuser tab you can connect your ASCOM based filter wheels and auto focusers. It also allows you to switch filters or change settings for the auto focuser, including focus movement. The User Interface and functionality consists out of following elements:</p>
-<p><img src="images/tab-filterwheelfocuser.png" alt="Tab: Filter Wheel and Focuser" /></p>
+<h2 id="tab-filter-wheel-focuser-and-rotator">Tab: Filter Wheel, Focuser and Rotator</h2>
+<p>In the Filter Wheel, Focuser and Rotator tab you can connect your ASCOM based filter wheels, auto focusers and rotators. It also allows you to switch filters, change settings for the auto focuser, including focus movement and rotation. The User Interface and functionality consists out of following elements:</p>
+<p><img src="images/tab-filterwheelfocuser.png" alt="Tab: Filter Wheel, Focuser and Rotator" /></p>
 <ol>
 <li><strong>Filter Wheel Drop Down</strong>
 <ul>
-<li>Select the filter wheel to connect</li>
+<li>Select the filter wheel to connect
+<blockquote>
+<p>There is also a manual filter wheel option available that will prompt to change the filter manually</p>
+</blockquote>
+</li>
 </ul>
 </li>
 <li><strong>Filter Wheel Settings (ASCOM)</strong>
@@ -498,10 +460,14 @@
 <li>Display of a few information about the filter wheel</li>
 </ul>
 </li>
+<li><strong>Filter Change</strong>
+<ul>
+<li>To change a filter, select the target filter inside the combobox on the left and click on the change button</li>
+</ul>
+</li>
 <li><strong>Filter Wheel Filters</strong>
 <ul>
-<li>List of all Filters with Focus Offsets as provided by ASCOM</li>
-<li>A click on a specific filter will move the filter wheel to that position
+<li>List of all Filters with Focus Offsets as provided by ASCOM
 <blockquote>
 <p>The ASCOM filter list needs to be imported once to the NINA settings, refer to <a href="#equipment-settings">Equipment Settings</a></p>
 </blockquote>
@@ -543,6 +509,35 @@
 <ul>
 <li>Allows you to set a specific focuser target position</li>
 <li>Is disabled when automatic temperature compensation is enabled</li>
+</ul>
+</li>
+<li><strong>Rotator Drop Down</strong>
+<ul>
+<li>Select the rotator to connect
+<blockquote>
+<p>There is also a manual rotator option available that will prompt to change the camera rotation manually</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><strong>Rotator Settings (ASCOM)</strong>
+<ul>
+<li>Starts the ASCOM settings software for the selected rotator (if available)</li>
+</ul>
+</li>
+<li><strong>Refresh Rotators</strong>
+<ul>
+<li>Refreshes the device list and checks for newly connected rotators</li>
+</ul>
+</li>
+<li><strong>Connect Rotator</strong>
+<ul>
+<li>Attempts to connect the rotator to NINA</li>
+</ul>
+</li>
+<li><strong>Rotator Target Position and Move</strong>
+<ul>
+<li>Allows you to set a specific rotator target rotation</li>
 </ul>
 </li>
 </ol>
@@ -924,7 +919,7 @@ Will be added to calculations of (9)</p>
 <li>Will show all enabled auto focus options when not expanded</li>
 </ul>
 <blockquote>
-<p>All settings inside require a connected <a href="#tab-filter-wheel-and-focuser">auto focuser</a></p>
+<p>All settings inside require a connected <a href="#tab-filter-wheel-focuser-and-rotator">auto focuser</a></p>
 </blockquote>
 </li>
 <li><strong>Auto focus on start</strong>
@@ -967,7 +962,7 @@ Will be added to calculations of (9)</p>
 <li>Specifies the temperature difference that has to be reached after the last auto focus routine</li>
 </ul>
 <blockquote>
-<p>Requires a temperature sensor that reports the temperature for the <a href="#tab-filter-wheel-and-focuser">auto focuser</a></p>
+<p>Requires a temperature sensor that reports the temperature for the <a href="#tab-filter-wheel-focuser-and-rotator">auto focuser</a></p>
 </blockquote>
 </li>
 <li><strong>Sequence entry</strong>
@@ -1400,7 +1395,7 @@ Requires a connected <a href="#tab-camera">camera</a> to display information</p>
 <p>Here you can see the current selected filter, the state and are able to change the current filter.</p>
 <p><img src="images/panel-filterwheel.png" alt="Panel: Filter Wheel" /></p>
 <blockquote>
-<p>Requires a connected <a href="#tab-filter-wheel-and-focuser">Filter Wheel</a></p>
+<p>Requires a connected <a href="#tab-filter-wheel-focuser-and-rotator">Filter Wheel</a></p>
 </blockquote>
 <ol>
 <li><strong>Filter Drop Down</strong>
@@ -1414,7 +1409,7 @@ Requires a connected <a href="#tab-camera">camera</a> to display information</p>
 <p>This panel displays information about the focuser status and allows you to move the focuser.</p>
 <p><img src="images/panel-focuser.png" alt="Panel: Focuser" /></p>
 <blockquote>
-<p>Requires a connected <a href="#tab-filter-wheel-and-focuser">focuser</a></p>
+<p>Requires a connected <a href="#tab-filter-wheel-focuser-and-rotator">focuser</a></p>
 </blockquote>
 <ol>
 <li><strong>Focuser Status</strong></li>
@@ -1566,7 +1561,7 @@ You need to set the correct values in the settings, please refer to the PixInsig
 <p>With this panel you can start the auto focus sequence if you have a motorized focuser connected.</p>
 <p><img src="images/panel-autofocus.png" alt="Panel: Auto Focus" /></p>
 <blockquote>
-<p>Requires a connected <a href="#tab-filter-wheel-and-focuser">focuser</a></p>
+<p>Requires a connected <a href="#tab-filter-wheel-focuser-and-rotator">focuser</a></p>
 </blockquote>
 <ol>
 <li><strong>Display of the focus steps and HFR</strong></li>
@@ -2373,15 +2368,15 @@ You need to download the catalogues from the PlateSolve 2 homepage as well</p>
 <h2 id="comments-and-suggestions">Comments and Suggestions</h2>
 <p>We are always happy to take new comments and suggestions to improve your and our experience with NINA. As with Bugs feel free to drop them by us on our [Issues Tracker][Issues Tracker] or <a href="https://discordapp.com/invite/fwpmHU4">Discord</a>. You are always welcome and your voice will be heard - or you get your money back.</p>
 
-        </div>
+    </div>
 
-        <script>
-                function w3_open() {
-                  document.getElementById("navbar").style.display = "inline-block";
-                }
-                function w3_close() {
-                  document.getElementById("navbar").style.display = "none";
-                }
-                </script>
-    </body>            
+    <script>
+        function w3_open() {
+            document.getElementById("navbar").style.display = "inline-block";
+        }
+        function w3_close() {
+            document.getElementById("navbar").style.display = "none";
+        }
+    </script>
+</body>
 </html>
