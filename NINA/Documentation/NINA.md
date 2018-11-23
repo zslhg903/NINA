@@ -3,7 +3,7 @@
 [IssuesTracker]: https://bitbucket.org/Isbeorn/nina/issues?status=new&status=open
 [ASCOM]: https://ascom-standards.org/
 
-# NINA - Nighttime Imaging ‘N’ Astronomy Manual
+# N.I.N.A. - Nighttime Imaging ‘N’ Astronomy Manual
 
 ## Version 1.7.0.X
 
@@ -12,12 +12,12 @@
 ---
 
 # Manual Editing Guidelines
-- Screenshots with NINA in 1280×720 (minimal window size) resolution to maintain readability
+- Screenshots with N.I.N.A. in 1280×720 (minimal window size) resolution to maintain readability
 - Screenshots annotation with Greenshot to have the same numbering scheme
 - Screenshots of UI in “Arsenic” as primary style, Dark as secondary style
 - Use lots of screenshots in general, it’s easier to look at something instead of reading something, but do not skimp on text either
 - Use ASCOM Simulators for Screenshots when possible
-- Use the latest version of NINA, possibly the nightly builds if available (ask a moderator via discord, mail or build it yourself)
+- Use the latest version of N.I.N.A., possibly the nightly builds if available (ask a moderator via discord, mail or build it yourself)
 - Only add paragraphs to functionalities you used yourself and fully understand to prevent guesswork
 - Maintain an easy reading style so people who are completely new to the topic won’t get lost
 - Viewers can only comment on entries, if you feel something is wrong comment on that specific section and it will be reviewed
@@ -45,15 +45,15 @@
 
 
 # Introduction
-Welcome to NINA - Nighttime Imaging ‘N’ Astronomy. If you have found this document you have likely already downloaded the software - congratulations for that step!
+Welcome to N.I.N.A. - Nighttime Imaging ‘N’ Astronomy. If you have found this document you have likely already downloaded the software - congratulations for that step!
 
->NINA is a software designed for all DSO imagers. If you are totally new to the world of DSO imaging or a seasoned veteran our goal is to make your image acquisition easier, faster and more comfortable.
+>N.I.N.A. is a software designed for all DSO imagers. If you are totally new to the world of DSO imaging or a seasoned veteran our goal is to make your image acquisition easier, faster and more comfortable.
 
-NINA supports a wide range of cameras, mounts and accessories. This is achieved by utilizing the powerful ASCOM platform. The software allows you to connect all of your devices in one place and interconnects them in ways to make your imaging workflow as simple as possible, while still maintaining a high degree of customization.
+N.I.N.A. supports a wide range of cameras, mounts and accessories. This is achieved by utilizing the powerful ASCOM platform. The software allows you to connect all of your devices in one place and interconnects them in ways to make your imaging workflow as simple as possible, while still maintaining a high degree of customization.
 
 From control of mounts, cameras, focusers and filter wheels to detailed information about your current image with detection of HFR of your stars, useful statistics to determine your exposure time, auto stretching your image results over support for polar alignment, focus, framing, plate solving and target selection as well as generating powerful reusable sequences - this software has it all.
 
-This document is aimed to describe the functionality of NINA so you can utilize it to its fullest potential. It is divided into three rough chapters: [Quick Start Guide](#quick-start-guide) to get you started, [Tabs](#tabs) for full functionality, and [Advanced topics](#usage) which should cover everything you need to know to effectively run the software. Should you have questions, issues, want to help development or just want to chit chat with us feel free to join the [Official NINA Discord][Discord] or record your findings in the [official Issues Tracker][IssuesTracker].
+This document is aimed to describe the functionality of N.I.N.A. so you can utilize it to its fullest potential. It is divided into three rough chapters: [Quick Start Guide](#quick-start-guide) to get you started, [Tabs](#tabs) for full functionality, and [Advanced topics](#usage) which should cover everything you need to know to effectively run the software. Should you have questions, issues, want to help development or just want to chit chat with us feel free to join the [Official NINA Discord][Discord] or record your findings in the [official Issues Tracker][IssuesTracker].
 
 > Important notes will appear like this throughout the documentation, if you happen to find a note like this don't skimp over it!
 
@@ -63,7 +63,7 @@ This document is aimed to describe the functionality of NINA so you can utilize 
 
 # Prerequisites, Compatibility and System Requirements
 
-## NINA Download
+## N.I.N.A. Download
 - [Download Latest Version](https://bitbucket.org/Isbeorn/nina/downloads/)
 
 ## Minimum System Requirements
@@ -91,11 +91,11 @@ This document is aimed to describe the functionality of NINA so you can utilize 
 - Focusers
     - All [ASCOM][ASCOM] compatible focusers
  
-> Please note that for the 64bit version of NINA you need 64bit drivers for your ASCOM devices.
+> Please note that for the 64bit version of N.I.N.A. you need 64bit drivers for your ASCOM devices.
 
 ## Supported Software
 - [PHD2](https://openphdguiding.org/)
-- [Local Astrometry.net Plate Solver](https://adgsoftware.com/ansvr/) (bundled as Opt-In with installation of NINA)
+- [Local Astrometry.net Plate Solver](https://adgsoftware.com/ansvr/) (bundled as Opt-In with installation of N.I.N.A.)
 - [PlateSolve 2](http://planewave.com/downloads/software/)
  
 ## Additional Downloads
@@ -108,13 +108,13 @@ This document is aimed to describe the functionality of NINA so you can utilize 
 
 ## Quick Start: UI Overview
 
-Once you start NINA for the first time you will be greeted with this screen. Let’s go over the basics for a moment to accustom you with the usage of this software.
+Once you start N.I.N.A. for the first time you will be greeted with this screen. Let’s go over the basics for a moment to accustom you with the usage of this software.
 
 ![Quickstart UI Overview](images/quickstart-ui-overview.png)
 
 The UI is divided in 2 panes. On the left side tabs section (1) you will find all the necessary tabs to connect your equipment, on the right side you usually find the detailed information about the currently selected tab. The currently selected tab is highlighted on the left side (1) so you always know where you are. Feel free to click through all of them; the detailed descriptions for all tabs are provided in the [Tabs section](#tabs). For now let’s assume you have a DSLR camera and mount with no filter wheel or any extras and just want to start a simple sequence.
 
-> This quick start guide assumes you know how to connect your equipment to the computer and have the appropriate drivers for [ASCOM][ASCOM] and your camera (if necessary) already installed. If you do not, don’t hesitate to ask us on the [official NINA Discord server][Discord].
+> This quick start guide assumes you know how to connect your equipment to the computer and have the appropriate drivers for [ASCOM][ASCOM] and your camera (if necessary) already installed. If you do not, don’t hesitate to ask us on the [official N.I.N.A. Discord server][Discord].
 
 ---
 
@@ -122,7 +122,7 @@ The UI is divided in 2 panes. On the left side tabs section (1) you will find al
 
 Now let us focus on connecting your camera and mount for the first time. 
 
-> You should have physically connected your camera and mount to the PC NINA is running on already. If you did not, connect it now. 
+> You should have physically connected your camera and mount to the PC N.I.N.A. is running on already. If you did not, connect it now. 
 
 ![Quickstart Camera Connection](images/quickstart-camera.png)
 
@@ -130,7 +130,7 @@ Now you need to select your camera in the drop down menu (1). If it does not app
 
 Once your device is connected it will display various information about the camera (if available) in the Camera section (4). 
 
-> Keep in mind that if you are using a DSLR the information might be incomplete or missing. That doesn’t deter NINA from working, but should you need to find the information you have to look for it online.
+> Keep in mind that if you are using a DSLR the information might be incomplete or missing. That doesn’t deter N.I.N.A. from working, but should you need to find the information you have to look for it online.
 
 When you connect a camera that has the ability to change the gain (ISO) it will be displayed in the Camera Settings section (5). This is the default gain that will be used and can be overridden by settings during imaging later.
 
@@ -141,12 +141,12 @@ Once you connected your camera you will need to connect your mount. For that we 
 
 Here we have the same procedure to connect the mount as we have with the camera. Select the mount from the dropdown (1), refresh if not available (2), and press connect (3) to connect to the mount.
 
-In the Telescope section (4) you will find useful information about the latitude, longitude, elevation, sidereal time and when it will arrive at the meridian as saved in the driver/mount or calculated by NINA. You can manually slew to specific coordinates with (5) or control the mount manually in the Manual Control section (6).
+In the Telescope section (4) you will find useful information about the latitude, longitude, elevation, sidereal time and when it will arrive at the meridian as saved in the driver/mount or calculated by N.I.N.A.. You can manually slew to specific coordinates with (5) or control the mount manually in the Manual Control section (6).
 > This is very useful if you don’t use a hand controller anymore.
 
 ## Quick Start: Finalizing the settings
 
-> This whole setup routine only has to be done once for a specific profile. Once you have your default mount and camera set you just need to press the Connect button (7) once NINA is started up to connect to the saved equipment automatically.
+> This whole setup routine only has to be done once for a specific profile. Once you have your default mount and camera set you just need to press the Connect button (7) once N.I.N.A. is started up to connect to the saved equipment automatically.
 
 We have a few small steps to do before we can start with imaging. For that we need to switch to the Settings tab (8).
 
@@ -227,7 +227,7 @@ The Camera panel allows you to connect ASCOM based cameras as well as various ZW
 3. **Refresh Camera Devices**
     - Refreshes the device list and checks for newly connected cameras
 4. **Connect Camera**
-    - Attempts to connect the camera to NINA
+    - Attempts to connect the camera to N.I.N.A.
     - Nikon cameras can take a bit longer
         > Clearing up the SD card or using no SD card with Nikon cameras will speed up this process
 5. **Camera Information**
@@ -237,7 +237,7 @@ The Camera panel allows you to connect ASCOM based cameras as well as various ZW
     - Allows the change of Gain, Offset and USB Limit
         > Please note that the specific driver has to support this  
 
-> Following settings need the camera to have an active cooler and report its status to NINA
+> Following settings need the camera to have an active cooler and report its status to N.I.N.A.
 
 7. **Cooler status and switch**
     - Enable to start cooling the camera to the selected Target Temperature (9)
@@ -275,14 +275,14 @@ In the Filter Wheel, Focuser and Rotator tab you can connect your ASCOM based fi
 3. **Refresh Filter Wheel Devices**
     - Refreshes the device list and checks for newly connected filter wheels
 4. **Connect Filter Wheel**
-    - Attempts to connect the filter wheel to NINA
+    - Attempts to connect the filter wheel to N.I.N.A.
 5. **Filter Wheel Information**
     - Display of a few information about the filter wheel
 6. **Filter Change**
     - To change a filter, select the target filter inside the combobox on the left and click on the change button
 7. **Filter Wheel Filters**
     - List of all Filters with Focus Offsets as provided by ASCOM    
-        > The ASCOM filter list needs to be imported once to the NINA settings, refer to [Equipment Settings](#equipment-settings)
+        > The ASCOM filter list needs to be imported once to the N.I.N.A. settings, refer to [Equipment Settings](#equipment-settings)
 8. **Focuser Drop Down**
     - Select the focuser to connect
 9. **Focuser Settings (ASCOM)**
@@ -290,7 +290,7 @@ In the Filter Wheel, Focuser and Rotator tab you can connect your ASCOM based fi
 10. **Refresh Focusers**
     - Refreshes the device list and checks for newly connected focusers
 11. **Connect Focuser**
-    - Attempts to connect the focuser to NINA
+    - Attempts to connect the focuser to N.I.N.A.
 12. **Focuser Information**
     - Display of various information about the focuser and its status
 13. **Focuser Temperature Compensation**
@@ -307,7 +307,7 @@ In the Filter Wheel, Focuser and Rotator tab you can connect your ASCOM based fi
 17. **Refresh Rotators**
     - Refreshes the device list and checks for newly connected rotators
 18. **Connect Rotator**
-    - Attempts to connect the rotator to NINA
+    - Attempts to connect the rotator to N.I.N.A.
 19. **Rotator Target Position and Move**
     - Allows you to set a specific rotator target rotation
 
@@ -326,7 +326,7 @@ The Telescope tab allows you to connect your ASCOM supported mount, slew it to s
 3. **Refresh Telescope Devices**
     - Refreshes the device list and checks for newly connected mounts
 4. **Connect Telescope**
-    - Attempts to connect the mount to NINA
+    - Attempts to connect the mount to N.I.N.A.
 5. **Telescope Information**
     - Display of various information about the mount, including most notably Sidereal time and time to meridian
 6. **Manual Coordinates**
@@ -346,7 +346,7 @@ The Telescope tab allows you to connect your ASCOM supported mount, slew it to s
 
 ## Tab: PHD2
 
-With the PHD2 tab you can connect NINA to PHD2 to send dither commands and receive current guiding information in the User Interface. 
+With the PHD2 tab you can connect N.I.N.A. to PHD2 to send dither commands and receive current guiding information in the User Interface. 
 
 > For further information about PHD2 and dithering refer to [Usage: Dithering with PHD2](#dithering-with-phd2)
 
@@ -355,7 +355,7 @@ It consists out of following elements:
 ![Tab: PHD2](images/tab-phd2.png)
 
 1. **Connect PHD2**
-    - Attempts to connect PHD2 to NINA
+    - Attempts to connect PHD2 to N.I.N.A.
         > You need to enable the server in PHD2 and possibly adjust the PHD2 settings in the [Equipment Settings](#equipment-settings)
 2. **PHD2 Information**
     - Displays information about the connection status, pixel scale in PHD2 and the current state of the guider
@@ -504,7 +504,7 @@ With Sequences you are able to create imaging sequences with various options for
     > Requires a set up [primary plate solver](#plate-solving-settings)
 6. **Estimated Download Time**
     - You can enter the approximate download time your camera takes to download a single image
-    > Will be automatically populated with the average download times as measured by NINA on image download  
+    > Will be automatically populated with the average download times as measured by N.I.N.A. on image download  
     > Will be added to calculations of (9)
 7. **Estimated Finish Time**
     - Shows you the estimated finish time when your sequence will end
@@ -586,7 +586,7 @@ First a quick overview over the imaging tab.
 
 ### Panel Adjustment and Personalization
 
-The imaging tab can be completely personalized to your wishes. You can enable and disable various panels or reposition them freely, designing the User Interface to your personal liking. The settings are stored and will be reused the next time you start NINA.
+The imaging tab can be completely personalized to your wishes. You can enable and disable various panels or reposition them freely, designing the User Interface to your personal liking. The settings are stored and will be reused the next time you start N.I.N.A..
 
 ![Panel: Customization 1](images/panel-customization_1.png)
 
@@ -656,7 +656,7 @@ The Camera panel displays various information about the current state of the cam
 
 ![Panel: Camera](images/panel-camera.png)
 
-> Cooling requires a camera with an active cooler that reports to NINA  
+> Cooling requires a camera with an active cooler that reports to N.I.N.A.  
 > Requires a connected [camera](#tab-camera) to display information
 1. **Display of the current cooler status**
 2. **Target temperature**
@@ -919,16 +919,16 @@ With this panel you can start the auto focus sequence if you have a motorized fo
 
 ## Tab: Settings
 
-The Settings tab is the first tab you should visit after you connect all of your equipment to set various settings that affect many aspects of NINA. You will find a lot of various settings to adjust here.
+The Settings tab is the first tab you should visit after you connect all of your equipment to set various settings that affect many aspects of N.I.N.A.. You will find a lot of various settings to adjust here.
 
 ### General Settings
 
-The General Settings tab allows you to manage NINA in terms of all general settings. Settings here affect the whole application.
+The General Settings tab allows you to manage N.I.N.A. in terms of all general settings. Settings here affect the whole application.
 
 ![Settings: General](images/tab-settings-general.png)
 
 1. **Profiles**
-    - A display of all profiles in NINA
+    - A display of all profiles in N.I.N.A.
     > Name of a profile can be changed by double clicking on the Name field of the profile
 2. **Add or Remove Profile**
     - Those buttons allow you to add new profiles or to delete the currently selected profile
@@ -936,8 +936,8 @@ The General Settings tab allows you to manage NINA in terms of all general setti
 3. **Load profile**
     - Loads the currently selected profile
 4. **Language Drop Down**
-    - Allows you to change the language of NINA
-    > Currently only English and German are available, if you want you can contribute to the translation of NINA to your language of choice, contact us on [Discord][Discord]!
+    - Allows you to change the language of N.I.N.A.
+    > Currently only English and German are available, if you want you can contribute to the translation of N.I.N.A. to your language of choice, contact us on [Discord][Discord]!
 5. **Sky Atlas Image Directory**
     - The directory to the [Sky Atlas][SkyAtlas] Image Repository
     - Used in [Object Browser](#tab-object-browser)
@@ -1015,20 +1015,20 @@ This tab allows you to change settings related to your equipment.
     - Enter your telescope focal length here
     > This will be used for [plate solving](#panel-plate-solving)
 10. **Settle time after slew**
-    - After slewing NINA will wait the specified amount before starting an exposure
+    - After slewing N.I.N.A. will wait the specified amount before starting an exposure
     - Value is in seconds
 11. **Use Filter Wheel Offsets**
     - When enabled the focuser will utilize the filter wheel focus offsets as defined in (6)
 12. **Auto Focus Settings**
     - Allows you to change how the focuser operates in auto focus mode
 13. **Filter Wheel Filter List**
-    - This filter wheel filter list is used for sequences in NINA
+    - This filter wheel filter list is used for sequences in N.I.N.A.
     > You should import your filter list from your ASCOM filter wheel at least once using (8)
 14. **Add or Remove to/from Filter List**
     - Manually add or remove filters from the filter list
     > Removing always removes the selected filter
 15. **Import Filters from Filter Wheel**
-    > You should run this once to synchronize your filters from ASCOM to NINA
+    > You should run this once to synchronize your filters from ASCOM to N.I.N.A.
 16. **PHD2 Server URL and Port**
     - You can set the PHD2 server settings here
     > Usually the defaults should work fine  
@@ -1038,11 +1038,11 @@ This tab allows you to change settings related to your equipment.
 18. **Dither RA Only**
     - Enables dithering in the RA axis only
 19. **Settle Time after resume**
-    - The time NINA should wait after a dithering process until it starts the next capture
+    - The time N.I.N.A. should wait after a dithering process until it starts the next capture
 20. **PHD2 History Size**
-    - The amount of PHD2 guide values NINA will save in the History of the [PHD2 Tab](#tabs--phd2)
+    - The amount of PHD2 guide values N.I.N.A. will save in the History of the [PHD2 Tab](#tabs--phd2)
 21. **PHD2 History Size (Imaging)**
-    - The amount of PHD2 guide values NINA will save in the history of the [PHD2 Panel](#panels--guider)
+    - The amount of PHD2 guide values N.I.N.A. will save in the history of the [PHD2 Panel](#panels--guider)
 
 ---
 
@@ -1103,7 +1103,7 @@ In the Imaging settings you can find various imaging related settings like file 
 
 ### Plate Solving Settings
 
-This Setting tab allows you to change the plate solving mechanism. There are 3 plate solvers you can use in NINA. Selected Plate solver settings in this screenshot are for Astrometry.Net plate solver.
+This Setting tab allows you to change the plate solving mechanism. There are 3 plate solvers you can use in N.I.N.A.. Selected Plate solver settings in this screenshot are for Astrometry.Net plate solver.
 
 > For usage of the Plate Solver refer to [Usage: Plate Solving](#plate-solving)
 
@@ -1128,14 +1128,14 @@ This Setting tab allows you to change the plate solving mechanism. There are 3 p
     - This is the main setting for the Astrometry.Net Plate Solver
     > You need an account with astrometry.net to get an API key
 
-Plate Solver settings for the Local Platesolver, which you can install on installation of NINA.
+Plate Solver settings for the Local Platesolver, which you can install on installation of N.I.N.A..
 
 ![Settings: PlateSolving Local Solver](images/tab-settings-platesolving-localplatesolver.png)
 
 1. **Local Plate Solver Directory**
     - The directory where the local plate solver is installed
     > If you installed it manually you need to change this to where it is located  
-    > If you installed it bundled with NINA you likely don’t have to change anything
+    > If you installed it bundled with N.I.N.A. you likely don’t have to change anything
 2. **Local Plate Solver Search Radius**
     - This is the search radius in degrees where the local plate solver should search for matches
     > 30 degrees is usually plenty
@@ -1185,11 +1185,11 @@ Those are the settings for the PlateSolve 2 platesolver.
 
 Plate solving is a great way to determine where your scope is pointing at exactly in the sky and an important aspect for fast and easy framing. Essentially what it does is taking a shot with your camera, extract the stars and tries to triangulate the current position based on an internal sky atlas of the plate solver.
 
-> To utilize the full potential of plate solving it is required that your mount and camera are both connected to NINA.
+> To utilize the full potential of plate solving it is required that your mount and camera are both connected to N.I.N.A..
 
 > It is required that your camera and telescope settings in the [equipment settings](#settings-equipment) are set correctly. The two important aspects are `Camera Pixel Size` for the camera and `Focal Length` for the telescope.
 
-NINA allows you to use the three most popular external plate solvers, each of which has its own benefits and drawbacks. Those plate solvers are Astrometry.Net, Local Astrometry and PlateSolve 2.
+N.I.N.A. allows you to use the three most popular external plate solvers, each of which has its own benefits and drawbacks. Those plate solvers are Astrometry.Net, Local Astrometry and PlateSolve 2.
 
 ### General Plate Solving
 
@@ -1203,7 +1203,7 @@ To apply the plate solving you need to enable the options `Sync` and if you want
 
 > This allows you to skip the whole star alignment process at your mounts start-up.
 
-Plate Solving is also utilized in the [Automated Meridian Flip](#automated-meridian-flip) to recenter your image after a flip has been performed. This is essential for a hands-off experience of NINA.
+Plate Solving is also utilized in the [Automated Meridian Flip](#automated-meridian-flip) to recenter your image after a flip has been performed. This is essential for a hands-off experience of N.I.N.A..
 
 > *Our recommendation is to set up all Plate Solvers to have a backup should one plate solver not work as expected in the field.*
 
@@ -1223,7 +1223,7 @@ The Astrometry.net plate solver will utilize the internet page Astrometry.Net to
 
 ### Local Astrometry Plate Solver
 
-The local Astrometry plate solver is bundled with NINA and can be installed with the NINA setup. It requires download of index files which can be installed through NINA as well to get the required index files that you need for your combination of focal length and pixel size. See [plate solving settings](#plate-solving-settings).
+The local Astrometry plate solver is bundled with N.I.N.A. and can be installed with the N.I.N.A. setup. It requires download of index files which can be installed through N.I.N.A. as well to get the required index files that you need for your combination of focal length and pixel size. See [plate solving settings](#plate-solving-settings).
 
 #### Benefits
 - Adequately fast when the mounts location is unknown or far off
@@ -1296,22 +1296,22 @@ All objects that are in the object browser are displayed the same way. Once you 
 
 Dithering is an important part of the imaging process. The benefit of dithering will be a clearer image with less pattern noise and more detail since the image will be shifted by a few pixels with a dithering request.
 
-NINA supports dithering out of the box utilizing PHD2 and makes it easy to set up and have it running. There are a few prerequisites to be able to dither your images during a sequence.
+N.I.N.A. supports dithering out of the box utilizing PHD2 and makes it easy to set up and have it running. There are a few prerequisites to be able to dither your images during a sequence.
 
 - A mount needs to be connected
-- PHD2 needs to be be running, guiding and also connected to NINA
+- PHD2 needs to be be running, guiding and also connected to N.I.N.A.
   - The PHD2 settings in the [Equipment Settings](#settings-equipment) need to be set up
 - Dithering needs to be enabled in the sequence
 
 ### PHD2 Settings
 
-You need to enable the Option "Enable Server" in PHD2 so NINA can connect to PHD2 to get the current guiding and RMS data as well as send dithering commands.
+You need to enable the Option "Enable Server" in PHD2 so N.I.N.A. can connect to PHD2 to get the current guiding and RMS data as well as send dithering commands.
 
 > The setting to enable it is in PHD2 under ```Tools -> Enable Server```
 
 ![PHD2 Settings](images/usage-dithering-settings-phd2.png)
 
-The settings for NINA in the [Equipment Settings](#settings-equipment) can be left at their defaults. The PHD2 Server Port of `4400` is correct and so is the the server URL of `localhost` since we assume PHD2 is running on the local computer.
+The settings for N.I.N.A. in the [Equipment Settings](#settings-equipment) can be left at their defaults. The PHD2 Server Port of `4400` is correct and so is the the server URL of `localhost` since we assume PHD2 is running on the local computer.
 
 > If you use a different computer to guide you need to change the server URL to the IP or Hostname of the guiding server.
 
@@ -1341,9 +1341,9 @@ Once enabled in the sequence, the sequence is running and PHD2 is connected the 
 
 ## Automated Meridian Flip
 
-Automated Meridian flips are important once your mount passes the meridian while imaging. They prevent that your telescope and camera bump into the mount and do major damage to your equipment. NINA has built-in functionality for the automated flip, even if your mount does not support it in firmware.
+Automated Meridian flips are important once your mount passes the meridian while imaging. They prevent that your telescope and camera bump into the mount and do major damage to your equipment. N.I.N.A. has built-in functionality for the automated flip, even if your mount does not support it in firmware.
 
-> Prerequisite for this functionality is that your mount is connected to NINA and the setting for flipping is enabled.
+> Prerequisite for this functionality is that your mount is connected to N.I.N.A. and the setting for flipping is enabled.
 
 To enable the Automated Meridian Flip you need to enable it in the imaging settings.
 
@@ -1378,7 +1378,7 @@ The whole Sequence of the Automated Meridian Flip works like this:
 11. Wait for guiding to settle
 12. Continue with 1.
 
-> Please note that some steps might fail or your mount can entangle itself during the automated meridian flip. **Always supervise your mount and NINA while flipping to ensure that there are no issues.**
+> Please note that some steps might fail or your mount can entangle itself during the automated meridian flip. **Always supervise your mount and N.I.N.A. while flipping to ensure that there are no issues.**
 
 ---
 
@@ -1412,13 +1412,13 @@ You can find some tutorials on how to build a DIY shutter cable here:
 
 Once you have a RS232-Shutter cable built you need to connect it to the PC, install drivers for your RS232 adapter and check for the COM port used.
 
-In NINA you need to select `Serial Port` for the Bulb Mode and change the COM port to the port your RS232 is using.
+In N.I.N.A. you need to select `Serial Port` for the Bulb Mode and change the COM port to the port your RS232 is using.
 
 ![Bulb Shutter Serial](images/usage-bulbshutter-serial.png)
 
 After that you can try and snap an image with an exposure time of longer than 30s. If it works you are done and can now expose for any time that you wish.
 
-Should you face issues with the RS232-Shutter exposure in NINA feel free to contact us on our [Discord][Discord].
+Should you face issues with the RS232-Shutter exposure in N.I.N.A. feel free to contact us on our [Discord][Discord].
 
 > Please not we have no experience with DIY of shutter cables!
 
@@ -1434,7 +1434,7 @@ To try use that select the `Telescope Snap Port` from the settings drop down.
 
 First you need to connect a shutter cable from the SNAP port of your mount to your DSLR. For that you will likely need a 3.5mm jack to your cameras specific shutter port cable. 
 
-Once everything is physically connected you need to connect the mount to NINA and the Camera as well.
+Once everything is physically connected you need to connect the mount to N.I.N.A. and the Camera as well.
 
 > If your mount has two SNAP ports you can use either. Both will work depending on the next setting.
 
@@ -1442,7 +1442,7 @@ The next step is to experiment with the command setting that is sent to the moun
 
 ![Bulb Shutter Port Command](images/usage-bulbshutter-snapport.png)
 
-The default settings might already work for you already, so feel free to try and take a snap shot that is longer than 30s in NINA. If the shutter is triggered, you are done and can take longer exposures than 30s now.
+The default settings might already work for you already, so feel free to try and take a snap shot that is longer than 30s in N.I.N.A.. If the shutter is triggered, you are done and can take longer exposures than 30s now.
 
 Should this not work please try the commands `:SNAP2,1#` to start and `:SNAP2,0#` to stop the snap port. 
 
@@ -1459,7 +1459,7 @@ Should your bulb exposure still not trigger please contact us on our [Discord][D
 
 ## Bugs
 
-Should you encounter any bugs during your usage of NINA please report them to the [Issues Tracker][IssuesTracker] or directly to us on our [Discord][Discord]. If possible attach the latest Log file from the day on which you encountered the issue.
+Should you encounter any bugs during your usage of N.I.N.A. please report them to the [Issues Tracker][IssuesTracker] or directly to us on our [Discord][Discord]. If possible attach the latest Log file from the day on which you encountered the issue.
 
 Log files can be found in ```%LOCALAPPDATA%\NINA\Logs\```
 
@@ -1467,4 +1467,4 @@ Log files can be found in ```%LOCALAPPDATA%\NINA\Logs\```
 
 ## Comments and Suggestions
 
-We are always happy to take new comments and suggestions to improve your and our experience with NINA. As with Bugs feel free to drop them by us on our [Issues Tracker][Issues Tracker] or [Discord][Discord]. You are always welcome and your voice will be heard - or you get your money back.
+We are always happy to take new comments and suggestions to improve your and our experience with N.I.N.A.. As with Bugs feel free to drop them by us on our [Issues Tracker][Issues Tracker] or [Discord][Discord]. You are always welcome and your voice will be heard - or you get your money back.
