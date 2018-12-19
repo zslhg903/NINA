@@ -5,7 +5,7 @@
 
 # N.I.N.A. - Nighttime Imaging ‘N’ Astronomy Manual
 
-## Version 1.7.0.X
+## Version 1.7.1.X
 
 ![NINA Logo](images/nina-logo.png)
 
@@ -477,6 +477,91 @@ The Framing Assistant allows you to frame your next shot perfectly utilizing DSS
     - Center of the framing rectangle can be slewed to (7) or set as [sequence](#tab-sequence) target (8)
 
 ---
+
+## Tab: Flat Wizard
+
+The Flat Wizard gives you the possibility to automate your flat image capture. It takes multiple exposures until it finds a proper exposure time for the settings that you chose. You can use it in Single Mode or Multi Mode.
+
+Generally the flat wizard will take 3 exposures and try to calculate a linear extrapolation of the necessary exposure time for the flats. Should this still not be enough it will continue refining the value.
+
+### Single Mode
+
+![Tab: Flat Wizard Single Mode](images/tab-flatwizard-single.png)
+
+1.	**Image Preview**
+	- Shows you the latest captured flat while determining the flat exposure time
+		> Note this will not change anymore once the exposure time is determined and the flats are downloading to speed up the process.
+2.	**Flats to Take**
+	- The amount of flats the wizard should capture
+3.	**Binning**
+	- Allows you to change the binning for the captured flats
+4.	**Gain**
+	- Allows you to change the gain for the captured flats, if your camera supports it
+5.	**Single Mode**
+	- The mode to take flats for a single filter or no filter at all
+6.	**Multi Mode**
+	- The mode to take flats for multiple filters at once
+7.	**Filter**
+	- If you have a filter wheel connected you can change your filter to capture the flats for
+8.	**Flat Min Exposure**
+	- The minimum exposure time for the flats the flat wizard should use and start with
+		> To use the slider, drag and hold it. This allows you precise small movements as well as large movements (it accelerates over time)
+9.	**Flat Max Exposure**
+	- The maximum exposure time for the flats the flat wizard should use
+		> To use the slider, drag and hold it. This allows you precise small movements as well as large movements (it accelerates over time)
+10.	**Flat Step Size**
+	- This sets the step size in seconds that the flat wizard should use between two flats to determine the necessary exposure time
+11.	**Histogram Mean Target**
+	- This allows you to set the mean ADU that your histogram should have.
+	- You can set it as percentage on the right and as well with the slider. The Number left of the percentage shows you the ADU value of your desired percentage.
+12.	**Mean Tolerance**
+	- With this value you can determine how large the tolerance of the flat mean from the mean target (11) should be
+	- You can set it as percentage on the right and as well with the slider. The number left of the percentage shows you the ADU range of your desired tolerance percentage based on the mean target (11).
+		> A tolerance value of 20-30% should typically be fine
+13.	**Start Flat Wizard**
+	- This button will start the flat wizard with the settings as set above
+	- First it will calculate the necessary exposure time and then take flat exposures as set in (2)
+14.	**Calculated Target Exposure Time***
+	- Once the flat wizard determines the necessary exposure time it will use that exposure time to take flats
+15.	**Calculated Target Histogram Mean**
+	- Once the flat wizard determines the necessary exposure time and resulting ADU it will display the ADU mean here
+
+### Multi Mode
+
+![Tab: Flat Wizard Multi Mode](images/tab-flatwizard-multi.png)
+
+In essence the Multi Mode works the same as the Single Mode, except for multiple filters. For most of the controls refer to the Single Mode.
+
+Flat Wizard settings are saved per filter in multi mode and do not transfer to single mode.
+
+1. **Filter Toggle**
+	- This toggle will enable this specific filter for flat capture
+2. **Filter List**
+	- Here you can see all of your filters by name and expand them by pressing on the >
+
+### Error Handling
+
+![Tab: Flat Wizard Error](images-tab-flatwizard-error.png)
+
+If the flat wizard cannot determine the necessary exposure time or it conflicts with your settings it will display this dialog.
+
+1.	**Error message**
+	- The flat wizard will tell you what the issue with the current configuration is and what you should do to fix the issue
+2.	**Current Exposure Calculations**
+	- Here the flat wizard will display current calculated metrics, as the current mean, the maximum bit depth of your camera in ADU and the estimated exposure time
+	- Use those to adjust the values in (3)
+3.	**Flat Wizard Settings**
+	- You can change the settings for the current flat capture to get successful flats
+	- For further description see the description of the settings in the Single Mode
+4.	**Reset and Continue**
+	- Pressing this button will lead to the flat wizard re-starting from the Flat Min Exposure as set in the settings (3)
+5.	**Continue**
+	- This button will continue the flat capture with the new settings (3)
+6.	**Cancel Flat Wizard**
+	- This button will completely abort the flat wizard sequence
+
+---
+
 
 ## Tab: Sequence
 
