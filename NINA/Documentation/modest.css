@@ -13,109 +13,109 @@
         display: none;
       }
     }
-  
+
     a,
     a:visited {
       text-decoration: underline;
     }
-  
+
     a[href]:after {
       content: " (" attr(href) ")";
     }
-  
+
     abbr[title]:after {
       content: " (" attr(title) ")";
     }
-  
+
     a[href^="#"]:after,
     a[href^="javascript:"]:after {
       content: "";
     }
-  
+
     pre,
     blockquote {
       border: 1px solid #999;
       page-break-inside: avoid;
     }
-  
+
     thead {
       display: table-header-group;
     }
-  
+
     tr,
     img {
       page-break-inside: avoid;
     }
-  
+
     img {
       max-width: 100% !important;
     }
-  
+
     p,
     h2,
     h3 {
       orphans: 3;
       widows: 3;
     }
-  
+
     h2,
     h3 {
       page-break-after: avoid;
     }
   }
-  
+
   pre,
   code {
     font-family: Menlo, Monaco, "Courier New", monospace;
   }
-  
+
   pre {
     padding: .5rem;
     line-height: 1.25;
     overflow-x: scroll;
   }
-  
+
   a,
   a:visited {
     color: #3498db;
   }
-  
+
   a:hover,
   a:focus,
   a:active {
     color: #2980b9;
   }
-  
+
   .modest-no-decoration {
     text-decoration: none;
   }
-  
+
   html {
     font-size: 11px;
   }
-  
+
   @media screen and (min-width: 32rem) and (max-width: 48rem) {
     html {
       font-size: 14px;
     }
   }
-  
+
   @media screen and (min-width: 48rem) {
     html {
       font-size: 15px;
     }
   }
-  
+
   body {
     line-height: 1.85;
   }
-  
+
   p,
   .modest-p {
     font-size: 0.9rem;
     margin-bottom: 1.3rem;
   }
-  
+
   h1,
   .modest-h1,
   h2,
@@ -128,45 +128,45 @@
     font-weight: inherit;
     line-height: 1.42;
   }
-  
+
   h1,
   .modest-h1 {
     margin-top: 0;
     font-size: 3.5rem;
   }
-  
+
   h2,
   .modest-h2 {
     font-size: 2.5rem;
   }
-  
+
   h3,
   .modest-h3 {
     font-size: 2rem;
   }
-  
+
   h4,
   .modest-h4 {
     font-size: 1.5rem;
   }
-  
+
   h5,
   .modest-h5 {
     font-size: 1.125rem;
   }
-  
+
   h6,
   .modest-h6 {
     font-size: 1rem;
   }
-  
+
   small,
   .modest-small {
     font-size: .707em;
   }
-  
+
   /* https://github.com/mrmrs/fluidity */
-  
+
   img,
   canvas,
   iframe,
@@ -179,16 +179,16 @@
     margin-right: auto !important;
     display: block !important;
   }
-  
+
   @import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700);
-  
+
   @import url(http://fonts.googleapis.com/css?family=Arimo:700,700italic);
-  
+
   html {
     font-size: 18px;
     max-width: 100%;
   }
-  
+
   body {
     color: #444;
     font-family: 'Open Sans Condensed', sans-serif;
@@ -198,7 +198,7 @@
     line-height: 1.45;
     padding: .25rem;
   }
-  
+
   h1,
   h2,
   h3,
@@ -207,7 +207,7 @@
   h6 {
     font-family: Arimo, Helvetica, sans-serif;
   }
-  
+
   h1,
   h2,
   h3 {
@@ -216,7 +216,7 @@
     padding-bottom: .5rem;
     text-align: center;
   }
-  
+
   blockquote {
     border-left: 8px solid #ff5454;
     padding: 0.1rem;
@@ -229,7 +229,7 @@
     margin-bottom: 0.5rem;
     margin-top: 0.5rem;
   }
-  
+
   pre,
   code {
     background-color: #fafafa;
@@ -255,7 +255,7 @@
   margin: 0;
 }
 
-.navbar_header button {  
+.navbar_header button {
   background: none;
   border: none;
   font-size: 1em;
