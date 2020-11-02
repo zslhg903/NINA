@@ -53,9 +53,9 @@
 
 
 
-                               Release 14
+                               Release 16
 
-                             2018 January 1
+                              2020 July 21
 
 contents.lis                                             2018 January 26
 
@@ -83,7 +83,7 @@ contents.lis                                             2018 January 26
 
                  A3   SOFA Board membership
 
-intro.lis                                                 2017 October 7
+intro.lis                                                2018 December 7
 
 
                   -------------------------------
@@ -94,7 +94,7 @@ intro.lis                                                 2017 October 7
   SOFA stands for "Standards Of Fundamental Astronomy".  The SOFA
   software libraries are a collection of subprograms, in source-
   code form, which implement official IAU algorithms for fundamental-
-  astronomy computations.   The subprograms at present comprise 185
+  astronomy computations.   The subprograms at present comprise 189
   "astronomy" routines supported by 55 "vector/matrix" routines,
   available in both Fortran77 and C implementations.
 
@@ -159,7 +159,7 @@ SCOPE
 The routines currently available are listed in the next two chapters of
 this document.
 
-The "astronomy" library comprises 185 routines (plus one obsolete
+The "astronomy" library comprises 189 routines (plus one obsolete
 Fortran routine that now appears under a revised name).  The areas
 addressed include calendars, astrometry, time scales, Earth rotation,
 ephemerides, precession-nutation, star catalog transformations,
@@ -172,9 +172,9 @@ angles used by the astronomy routines.
 
 There is no explicit commitment by SOFA to support historical models,
 though as time goes on a legacy of superseded models will naturally
-accumulate.  There is, for example, no support of B1950/FK4 star
-coordinates, or pre-1976 precession models, though these capabilities
-could be added were there significant demand.
+accumulate.  There is, for example, no support of pre-1976 precession
+models, though these capabilities could be added were there significant
+demand.
 
 Though the SOFA software libraries are rather limited in scope, and are
 likely to remain so for a considerable time, they do offer distinct
@@ -299,7 +299,7 @@ Resources for operating the SOFA Center are provided by Her Majesty's
 Nautical Almanac Office, operated by the United Kingdom Hydrographic
 Office.
 
-sofa_lib.lis                                              2017 October 7
+sofa_lib.lis                                             2018 December 7
 
                      ----------------------
                      SOFA Astronomy Library
@@ -556,6 +556,10 @@ ROUTINES
      FK5HZ     FK5 to Hipparcos assuming zero Hipparcos proper motion
      H2FK5     transform Hipparcos star data into the FK5 system
      HFK5Z     Hipparcos to FK5 assuming zero Hipparcos proper motion
+     FK425     transform FK4 star data into FK5
+     FK45Z     FK4 to FK5 assuming zero FK5 proper motion
+     FK524     transform FK5 star data into FK4
+     FK54Z     FK5 to FK4 assuming zero FK5 proper motion
 
   Ecliptic coordinates
 
@@ -695,8 +699,14 @@ CALLS: FORTRAN VERSION
    D =  iau_FASA03 ( T )
    D =  iau_FAUR03 ( T )
    D =  iau_FAVE03 ( T )
+   CALL iau_FK425 ( R1950, D1950, DR1950, DD1950, P1950, V1950,
+  :                 R2000, D2000, DR2000, DD2000, P2000, V2000 )
+   CALL iau_FK45Z ( R1950, D1950, BEPOCH, R2000, D2000 )
+   CALL iau_FK524 ( R2000, D2000, DR2000, DD2000, P2000, V2000,
+  :                 R1950, D1950, DR1950, DD1950, P1950, V1950 )
    CALL iau_FK52H  ( R5, D5, DR5, DD5, PX5, RV5,
   :                  RH, DH, DRH, DDH, PXH, RVH )
+   CALL iau_FK54Z ( R2000, D2000, BEPOCH, R1950, D1950, DR1950, DD1950 )
    CALL iau_FK5HIP ( R5H, S5H )
    CALL iau_FK5HZ  ( R5, D5, DATE1, DATE2, RH, DH )
    CALL iau_FW2M   ( GAMB, PHIB, PSI, EPS, R )
@@ -909,8 +919,15 @@ CALLS: C VERSION
    d = iauFasa03 ( t );
    d = iauFaur03 ( t );
    d = iauFave03 ( t );
+       iauFk425 ( r1950, d1950, dr1950, dd1950, p1950, v1950,
+                  &r2000, &d2000, &dr2000, &dd2000, &p2000, &v2000 );
+       iauFk45z ( r1950, d1950, bepoch, &r2000, &d2000 );
+       iauFk524 ( r2000, d2000, dr2000, dd2000, p2000, v2000,
+                  &r1950, &d1950, &dr1950, &dd1950, &p1950, &v1950 );
        iauFk52h  ( r5, d5, dr5, dd5, px5, rv5,
                    &rh, &dh, &drh, &ddh, &pxh, &rvh );
+       iauFk54z ( r2000, d2000, bepoch,
+                  &r1950, &d1950, &dr1950, &dd1950 );
        iauFk5hip ( r5h, s5h );
        iauFk5hz  ( r5, d5, date1, date2, &rh, &dh );
        iauFw2m   ( gamb, phib, psi, eps, r );
@@ -1362,11 +1379,8 @@ void iauA2af(int ndp, double angle, char *sign, int idmsf[4])
 **     angle   double  angle in radians
 **
 **  Returned:
-**     sign    char    '+' or '-'
+**     sign    char*   '+' or '-'
 **     idmsf   int[4]  degrees, arcminutes, arcseconds, fraction
-**
-**  Called:
-**     iauD2tf      decompose days to hms
 **
 **  Notes:
 **
@@ -1400,6 +1414,9 @@ void iauA2af(int ndp, double angle, char *sign, int idmsf[4])
 **     case where angle is very nearly 2pi and rounds up to 360 degrees,
 **     by testing for idmsf[0]=360 and setting idmsf[0-3] to zero.
 **
+**  Called:
+**     iauD2tf      decompose days to hms
+**
 */
 
 
@@ -1422,11 +1439,8 @@ void iauA2tf(int ndp, double angle, char *sign, int ihmsf[4])
 **     angle   double  angle in radians
 **
 **  Returned:
-**     sign    char    '+' or '-'
+**     sign    char*   '+' or '-'
 **     ihmsf   int[4]  hours, minutes, seconds, fraction
-**
-**  Called:
-**     iauD2tf      decompose days to hms
 **
 **  Notes:
 **
@@ -1459,6 +1473,9 @@ void iauA2tf(int ndp, double angle, char *sign, int ihmsf[4])
 **     does not, it is up to the caller to test for and handle the
 **     case where angle is very nearly 2pi and rounds up to 24 hours,
 **     by testing for ihmsf[0]=24 and setting ihmsf[0-3] to zero.
+**
+**  Called:
+**     iauD2tf      decompose days to hms
 **
 */
 
@@ -1580,9 +1597,9 @@ void iauAe2hd (double az, double el, double phi,
 **
 **  Last revision:   2017 September 12
 **
-**  SOFA release 2018-01-30
+**  SOFA release 2020-07-21
 **
-**  Copyright (C) 2018 IAU SOFA Board.  See notes at end.
+**  Copyright (C) 2020 IAU SOFA Board.  See notes at end.
 */
 {
    double sa, ca, se, ce, sp, cp, x, y, z, r;
@@ -1610,7 +1627,7 @@ void iauAe2hd (double az, double el, double phi,
 
 /*----------------------------------------------------------------------
 **
-**  Copyright (C) 2018
+**  Copyright (C) 2020
 **  Standards Of Fundamental Astronomy Board
 **  of the International Astronomical Union.
 **
@@ -1703,7 +1720,6 @@ void iauAe2hd (double az, double el, double phi,
 **                 United Kingdom
 **
 **--------------------------------------------------------------------*/
-
 }
 
 
@@ -4015,9 +4031,9 @@ void iauAticq(double ri, double di, iauASTROM *astrom,
 void iauAticqn(double ri, double di, iauASTROM *astrom,
                int n, iauLDBODY b[], double *rc, double *dc)
 /*
-**  - - - - - - - - -
+**  - - - - - - - - - -
 **   i a u A t i c q n
-**  - - - - - - - - -
+**  - - - - - - - - - -
 **
 **  Quick CIRS to ICRS astrometric place transformation, given the star-
 **  independent astrometry parameters plus a list of light-deflecting
@@ -6239,7 +6255,7 @@ void iauD2tf(int ndp, double days, char *sign, int ihmsf[4])
 **     days    double  interval in days
 **
 **  Returned:
-**     sign    char    '+' or '-'
+**     sign    char*   '+' or '-'
 **     ihmsf   int[4]  hours, minutes, seconds, fraction
 **
 **  Notes:
@@ -6278,7 +6294,7 @@ void iauD2tf(int ndp, double days, char *sign, int ihmsf[4])
 
 
 
-int iauDat(int iy, int im, int id, double fd, double *deltat )
+int iauDat(int iy, int im, int id, double fd, double *deltat)
 /*
 **  - - - - - - -
 **   i a u D a t
@@ -8330,6 +8346,325 @@ double iauFave03(double t)
 
 
 
+void iauFk425(double r1950, double d1950,
+              double dr1950, double dd1950,
+              double p1950, double v1950,
+              double *r2000, double *d2000,
+              double *dr2000, double *dd2000,
+              double *p2000, double *v2000)
+/*
+**  - - - - - - - - -
+**   i a u F k 4 2 5
+**  - - - - - - - - -
+**
+**  Convert B1950.0 FK4 star catalog data to J2000.0 FK5.
+**
+**  This function is part of the International Astronomical Union's
+**  SOFA (Standards of Fundamental Astronomy) software collection.
+**
+**  Status:  support function.
+**
+**  This function converts a star's catalog data from the old FK4
+** (Bessel-Newcomb) system to the later IAU 1976 FK5 (Fricke) system.
+**
+**  Given: (all B1950.0, FK4)
+**     r1950,d1950    double   B1950.0 RA,Dec (rad)
+**     dr1950,dd1950  double   B1950.0 proper motions (rad/trop.yr)
+**     p1950          double   parallax (arcsec)
+**     v1950          double   radial velocity (km/s, +ve = moving away)
+**
+**  Returned: (all J2000.0, FK5)
+**     r2000,d2000    double   J2000.0 RA,Dec (rad)
+**     dr2000,dd2000  double   J2000.0 proper motions (rad/Jul.yr)
+**     p2000          double   parallax (arcsec)
+**     v2000          double   radial velocity (km/s, +ve = moving away)
+**
+**  Notes:
+**
+**  1) The proper motions in RA are dRA/dt rather than cos(Dec)*dRA/dt,
+**     and are per year rather than per century.
+**
+**  2) The conversion is somewhat complicated, for several reasons:
+**
+**     . Change of standard epoch from B1950.0 to J2000.0.
+**
+**     . An intermediate transition date of 1984 January 1.0 TT.
+**
+**     . A change of precession model.
+**
+**     . Change of time unit for proper motion (tropical to Julian).
+**
+**     . FK4 positions include the E-terms of aberration, to simplify
+**       the hand computation of annual aberration.  FK5 positions
+**       assume a rigorous aberration computation based on the Earth's
+**       barycentric velocity.
+**
+**     . The E-terms also affect proper motions, and in particular cause
+**       objects at large distances to exhibit fictitious proper
+**       motions.
+**
+**     The algorithm is based on Smith et al. (1989) and Yallop et al.
+**     (1989), which presented a matrix method due to Standish (1982) as
+**     developed by Aoki et al. (1983), using Kinoshita's development of
+**     Andoyer's post-Newcomb precession.  The numerical constants from
+**     Seidelmann (1992) are used canonically.
+**
+**  3) Conversion from B1950.0 FK4 to J2000.0 FK5 only is provided for.
+**     Conversions for different epochs and equinoxes would require
+**     additional treatment for precession, proper motion and E-terms.
+**
+**  4) In the FK4 catalog the proper motions of stars within 10 degrees
+**     of the poles do not embody differential E-terms effects and
+**     should, strictly speaking, be handled in a different manner from
+**     stars outside these regions.  However, given the general lack of
+**     homogeneity of the star data available for routine astrometry,
+**     the difficulties of handling positions that may have been
+**     determined from astrometric fields spanning the polar and non-
+**     polar regions, the likelihood that the differential E-terms
+**     effect was not taken into account when allowing for proper motion
+**     in past astrometry, and the undesirability of a discontinuity in
+**     the algorithm, the decision has been made in this SOFA algorithm
+**     to include the effects of differential E-terms on the proper
+**     motions for all stars, whether polar or not.  At epoch J2000.0,
+**     and measuring "on the sky" rather than in terms of RA change, the
+**     errors resulting from this simplification are less than
+**     1 milliarcsecond in position and 1 milliarcsecond per century in
+**     proper motion.
+**
+**  Called:
+**     iauAnp       normalize angle into range 0 to 2pi
+**     iauPv2s      pv-vector to spherical coordinates
+**     iauPdp       scalar product of two p-vectors
+**     iauPvmpv     pv-vector minus pv_vector
+**     iauPvppv     pv-vector plus pv_vector
+**     iauS2pv      spherical coordinates to pv-vector
+**     iauSxp       multiply p-vector by scalar
+**
+**  References:
+**
+**     Aoki, S. et al., 1983, "Conversion matrix of epoch B1950.0
+**     FK4-based positions of stars to epoch J2000.0 positions in
+**     accordance with the new IAU resolutions".  Astron.Astrophys.
+**     128, 263-267.
+**
+**     Seidelmann, P.K. (ed), 1992, "Explanatory Supplement to the
+**     Astronomical Almanac", ISBN 0-935702-68-7.
+**
+**     Smith, C.A. et al., 1989, "The transformation of astrometric
+**     catalog systems to the equinox J2000.0".  Astron.J. 97, 265.
+**
+**     Standish, E.M., 1982, "Conversion of positions and proper motions
+**     from B1950.0 to the IAU system at J2000.0".  Astron.Astrophys.,
+**     115, 1, 20-22.
+**
+**     Yallop, B.D. et al., 1989, "Transformation of mean star places
+**     from FK4 B1950.0 to FK5 J2000.0 using matrices in 6-space".
+**     Astron.J. 97, 274.
+**
+*/
+
+
+
+void iauFk45z(double r1950, double d1950, double bepoch,
+              double *r2000, double *d2000)
+/*
+**  - - - - - - - - -
+**   i a u F k 4 5 z
+**  - - - - - - - - -
+**
+**  Convert a B1950.0 FK4 star position to J2000.0 FK5, assuming zero
+**  proper motion in the FK5 system.
+**
+**  This function is part of the International Astronomical Union's
+**  SOFA (Standards of Fundamental Astronomy) software collection.
+**
+**  Status:  support function.
+**
+**  This function converts a star's catalog data from the old FK4
+**  (Bessel-Newcomb) system to the later IAU 1976 FK5 (Fricke) system,
+**  in such a way that the FK5 proper motion is zero.  Because such a
+**  star has, in general, a non-zero proper motion in the FK4 system,
+**  the routine requires the epoch at which the position in the FK4
+**  system was determined.
+**
+**  Given:
+**     r1950,d1950    double   B1950.0 FK4 RA,Dec at epoch (rad)
+**     bepoch         double   Besselian epoch (e.g. 1979.3D0)
+**
+**  Returned:
+**     r2000,d2000    double   J2000.0 FK5 RA,Dec (rad)
+**
+**  Notes:
+**
+**  1) The epoch bepoch is strictly speaking Besselian, but if a
+**     Julian epoch is supplied the result will be affected only to a
+**     negligible extent.
+**
+**  2) The method is from Appendix 2 of Aoki et al. (1983), but using
+**     the constants of Seidelmann (1992).  See the routine iauFk425
+**     for a general introduction to the FK4 to FK5 conversion.
+**
+**  3) Conversion from equinox B1950.0 FK4 to equinox J2000.0 FK5 only
+**     is provided for.  Conversions for different starting and/or
+**     ending epochs would require additional treatment for precession,
+**     proper motion and E-terms.
+**
+**  4) In the FK4 catalog the proper motions of stars within 10 degrees
+**     of the poles do not embody differential E-terms effects and
+**     should, strictly speaking, be handled in a different manner from
+**     stars outside these regions.  However, given the general lack of
+**     homogeneity of the star data available for routine astrometry,
+**     the difficulties of handling positions that may have been
+**     determined from astrometric fields spanning the polar and non-
+**     polar regions, the likelihood that the differential E-terms
+**     effect was not taken into account when allowing for proper motion
+**     in past astrometry, and the undesirability of a discontinuity in
+**     the algorithm, the decision has been made in this SOFA algorithm
+**     to include the effects of differential E-terms on the proper
+**     motions for all stars, whether polar or not.  At epoch 2000.0,
+**     and measuring "on the sky" rather than in terms of RA change, the
+**     errors resulting from this simplification are less than
+**     1 milliarcsecond in position and 1 milliarcsecond per century in
+**     proper motion.
+**
+**  References:
+**
+**     Aoki, S. et al., 1983, "Conversion matrix of epoch B1950.0
+**     FK4-based positions of stars to epoch J2000.0 positions in
+**     accordance with the new IAU resolutions".  Astron.Astrophys.
+**     128, 263-267.
+**
+**     Seidelmann, P.K. (ed), 1992, "Explanatory Supplement to the
+**     Astronomical Almanac", ISBN 0-935702-68-7.
+**
+**  Called:
+**     iauAnp       normalize angle into range 0 to 2pi
+**     iauC2s       p-vector to spherical
+**     iauEpb2jd    Besselian epoch to Julian date
+**     iauEpj       Julian date to Julian epoch
+**     iauPdp       scalar product of two p-vectors
+**     iauPmp       p-vector minus p-vector
+**     iauPpsp      p-vector plus scaled p-vector
+**     iauPvu       update a pv-vector
+**     iauS2c       spherical to p-vector
+**
+*/
+
+
+
+void iauFk524(double r2000, double d2000,
+              double dr2000, double dd2000,
+              double p2000, double v2000,
+              double *r1950, double *d1950,
+              double *dr1950, double *dd1950,
+              double *p1950, double *v1950)
+/*
+**  - - - - - - - - -
+**   i a u F k 5 2 4
+**  - - - - - - - - -
+**
+**  Convert J2000.0 FK5 star catalog data to B1950.0 FK4.
+**
+**  This function is part of the International Astronomical Union's
+**  SOFA (Standards of Fundamental Astronomy) software collection.
+**
+**  Status:  support function.
+**
+**  Given: (all J2000.0, FK5)
+**     r2000,d2000    double   J2000.0 RA,Dec (rad)
+**     dr2000,dd2000  double   J2000.0 proper motions (rad/Jul.yr)
+**     p2000          double   parallax (arcsec)
+**     v2000          double   radial velocity (km/s, +ve = moving away)
+**
+**  Returned: (all B1950.0, FK4)
+**     r1950,d1950    double   B1950.0 RA,Dec (rad)
+**     dr1950,dd1950  double   B1950.0 proper motions (rad/trop.yr)
+**     p1950          double   parallax (arcsec)
+**     v1950          double   radial velocity (km/s, +ve = moving away)
+**
+**  Notes:
+**
+**  1) The proper motions in RA are dRA/dt rather than cos(Dec)*dRA/dt,
+**     and are per year rather than per century.
+**
+**  2) The conversion is somewhat complicated, for several reasons:
+**
+**     . Change of standard epoch from J2000.0 to B1950.0.
+**
+**     . An intermediate transition date of 1984 January 1.0 TT.
+**
+**     . A change of precession model.
+**
+**     . Change of time unit for proper motion (Julian to tropical).
+**
+**     . FK4 positions include the E-terms of aberration, to simplify
+**       the hand computation of annual aberration.  FK5 positions
+**       assume a rigorous aberration computation based on the Earth's
+**       barycentric velocity.
+**
+**     . The E-terms also affect proper motions, and in particular cause
+**       objects at large distances to exhibit fictitious proper
+**       motions.
+**
+**     The algorithm is based on Smith et al. (1989) and Yallop et al.
+**     (1989), which presented a matrix method due to Standish (1982) as
+**     developed by Aoki et al. (1983), using Kinoshita's development of
+**     Andoyer's post-Newcomb precession.  The numerical constants from
+**     Seidelmann (1992) are used canonically.
+**
+**  4) In the FK4 catalog the proper motions of stars within 10 degrees
+**     of the poles do not embody differential E-terms effects and
+**     should, strictly speaking, be handled in a different manner from
+**     stars outside these regions.  However, given the general lack of
+**     homogeneity of the star data available for routine astrometry,
+**     the difficulties of handling positions that may have been
+**     determined from astrometric fields spanning the polar and non-
+**     polar regions, the likelihood that the differential E-terms
+**     effect was not taken into account when allowing for proper motion
+**     in past astrometry, and the undesirability of a discontinuity in
+**     the algorithm, the decision has been made in this SOFA algorithm
+**     to include the effects of differential E-terms on the proper
+**     motions for all stars, whether polar or not.  At epoch J2000.0,
+**     and measuring "on the sky" rather than in terms of RA change, the
+**     errors resulting from this simplification are less than
+**     1 milliarcsecond in position and 1 milliarcsecond per century in
+**     proper motion.
+**
+**  Called:
+**     iauAnp       normalize angle into range 0 to 2pi
+**     iauPdp       scalar product of two p-vectors
+**     iauPm        modulus of p-vector
+**     iauPmp       p-vector minus p-vector
+**     iauPpp       p-vector pluus p-vector
+**     iauPv2s      pv-vector to spherical coordinates
+**     iauS2pv      spherical coordinates to pv-vector
+**     iauSxp       multiply p-vector by scalar
+**
+**  References:
+**
+**     Aoki, S. et al., 1983, "Conversion matrix of epoch B1950.0
+**     FK4-based positions of stars to epoch J2000.0 positions in
+**     accordance with the new IAU resolutions".  Astron.Astrophys.
+**     128, 263-267.
+**
+**     Seidelmann, P.K. (ed), 1992, "Explanatory Supplement to the
+**     Astronomical Almanac", ISBN 0-935702-68-7.
+**
+**     Smith, C.A. et al., 1989, "The transformation of astrometric
+**     catalog systems to the equinox J2000.0".  Astron.J. 97, 265.
+**
+**     Standish, E.M., 1982, "Conversion of positions and proper motions
+**     from B1950.0 to the IAU system at J2000.0".  Astron.Astrophys.,
+**     115, 1, 20-22.
+**
+**     Yallop, B.D. et al., 1989, "Transformation of mean star places
+**     from FK4 B1950.0 to FK5 J2000.0 using matrices in 6-space".
+**     Astron.J. 97, 274.
+**
+*/
+
+
+
 void iauFk52h(double r5, double d5,
               double dr5, double dd5, double px5, double rv5,
               double *rh, double *dh,
@@ -8387,6 +8722,66 @@ void iauFk52h(double r5, double d5,
 **  Reference:
 **
 **     F.Mignard & M.Froeschle, Astron.Astrophys., 354, 732-739 (2000).
+**
+*/
+
+
+
+void iauFk54z(double r2000, double d2000, double bepoch,
+              double *r1950, double *d1950,
+              double *dr1950, double *dd1950)
+/*
+**  - - - - - - - - -
+**   i a u F k 5 4 z
+**  - - - - - - - - -
+**
+**  Convert a J2000.0 FK5 star position to B1950.0 FK4, assuming zero
+**  proper motion in FK5 and parallax.
+**
+**  This function is part of the International Astronomical Union's
+**  SOFA (Standards of Fundamental Astronomy) software collection.
+**
+**  Status:  support function.
+**
+**  Given:
+**     r2000,d2000    double   J2000.0 FK5 RA,Dec (rad)
+**     bepoch         double   Besselian epoch (e.g. 1950.0)
+**
+**  Returned:
+**     r1950,d1950    double   B1950.0 FK4 RA,Dec (rad) at epoch BEPOCH
+**     dr1950,dd1950  double   B1950.0 FK4 proper motions (rad/trop.yr)
+**
+**  Notes:
+**
+**  1) In contrast to the iauFk524  routine, here the FK5 proper
+**     motions, the parallax and the radial velocity are presumed zero.
+**
+**  2) This function converts a star position from the IAU 1976 FK5
+**    (Fricke) system to the former FK4 (Bessel-Newcomb) system, for
+**     cases such as distant radio sources where it is presumed there is
+**     zero parallax and no proper motion.  Because of the E-terms of
+**     aberration, such objects have (in general) non-zero proper motion
+**     in FK4, and the present routine returns those fictitious proper
+**     motions.
+**
+**  3) Conversion from B1950.0 FK4 to J2000.0 FK5 only is provided for.
+**     Conversions involving other equinoxes would require additional
+**     treatment for precession.
+**
+**  4) The position returned by this routine is in the B1950.0 FK4
+**     reference system but at Besselian epoch BEPOCH.  For comparison
+**     with catalogs the BEPOCH argument will frequently be 1950.0. (In
+**     this context the distinction between Besselian and Julian epoch
+**     is insignificant.)
+**
+**  5) The RA component of the returned (fictitious) proper motion is
+**     dRA/dt rather than cos(Dec)*dRA/dt.
+**
+**  Called:
+**     iauAnp       normalize angle into range 0 to 2pi
+**     iauC2s       p-vector to spherical
+**     iauFk524     FK4 to FK5
+**     iauS2c       spherical to p-vector
 **
 */
 
@@ -8559,13 +8954,16 @@ void iauFw2m(double gamb, double phib, double psi, double eps,
 **
 **        NxPxB = R_1(-eps).R_3(-psi).R_1(phib).R_3(gamb)
 **
-**  3) Three different matrices can be constructed, depending on the
-**     supplied angles:
+**  3) The present function can construct three different matrices,
+**     depending on which angles are supplied as the arguments gamb,
+**     phib, psi and eps:
 **
 **     o  To obtain the nutation x precession x frame bias matrix,
-**        generate the four precession angles, generate the nutation
-**        components and add them to the psi_bar and epsilon_A angles,
-**        and call the present function.
+**        first generate the four precession angles known conventionally
+**        as gamma_bar, phi_bar, psi_bar and epsilon_A, then generate
+**        the nutation components Dpsi and Depsilon and add them to
+**        psi_bar and epsilon_A, and finally call the present function
+**        using those four angles as arguments.
 **
 **     o  To obtain the precession x frame bias matrix, generate the
 **        four precession angles and call the present function.
@@ -8581,8 +8979,9 @@ void iauFw2m(double gamb, double phib, double psi, double eps,
 **     iauRz        rotate around Z-axis
 **     iauRx        rotate around X-axis
 **
-**  Reference:
+**  References:
 **
+**     Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
 **     Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
 **
 */
@@ -9687,9 +10086,9 @@ void iauHd2ae (double ha, double dec, double phi,
 **
 **  Last revision:   2017 September 12
 **
-**  SOFA release 2018-01-30
+**  SOFA release 2020-07-21
 **
-**  Copyright (C) 2018 IAU SOFA Board.  See notes at end.
+**  Copyright (C) 2020 IAU SOFA Board.  See notes at end.
 */
 {
    double sh, ch, sd, cd, sp, cp, x, y, z, r, a;
@@ -9718,7 +10117,7 @@ void iauHd2ae (double ha, double dec, double phi,
 
 /*----------------------------------------------------------------------
 **
-**  Copyright (C) 2018
+**  Copyright (C) 2020
 **  Standards Of Fundamental Astronomy Board
 **  of the International Astronomical Union.
 **
@@ -9811,7 +10210,6 @@ void iauHd2ae (double ha, double dec, double phi,
 **                 United Kingdom
 **
 **--------------------------------------------------------------------*/
-
 }
 
 
@@ -9867,9 +10265,9 @@ double iauHd2pa (double ha, double dec, double phi)
 **
 **  Last revision:   2017 September 12
 **
-**  SOFA release 2018-01-30
+**  SOFA release 2020-07-21
 **
-**  Copyright (C) 2018 IAU SOFA Board.  See notes at end.
+**  Copyright (C) 2020 IAU SOFA Board.  See notes at end.
 */
 {
    double cp, cqsz, sqsz;
@@ -9884,7 +10282,7 @@ double iauHd2pa (double ha, double dec, double phi)
 
 /*----------------------------------------------------------------------
 **
-**  Copyright (C) 2018
+**  Copyright (C) 2020
 **  Standards Of Fundamental Astronomy Board
 **  of the International Astronomical Union.
 **
@@ -9977,7 +10375,6 @@ double iauHd2pa (double ha, double dec, double phi)
 **                 United Kingdom
 **
 **--------------------------------------------------------------------*/
-
 }
 
 
@@ -10199,16 +10596,23 @@ int iauJd2cal(double dj1, double dj2,
 **         2400000.5       50123.2       (MJD method)
 **         2450123.5           0.2       (date & time method)
 **
+**     Separating integer and fraction uses the "compensated summation"
+**     algorithm of Kahan-Neumaier to preserve as much precision as
+**     possible irrespective of the jd1+jd2 apportionment.
+**
 **  3) In early eras the conversion is from the "proleptic Gregorian
 **     calendar";  no account is taken of the date(s) of adoption of
 **     the Gregorian calendar, nor is the AD/BC numbering convention
 **     observed.
 **
-**  Reference:
+**  References:
 **
 **     Explanatory Supplement to the Astronomical Almanac,
 **     P. Kenneth Seidelmann (ed), University Science Books (1992),
 **     Section 12.92 (p604).
+**
+**     Klein, A., A Generalized Kahan-Babuska-Summation-Algorithm.
+**     Computing 76, 279-293 (2006), Section 3.
 **
 */
 
@@ -11754,12 +12158,16 @@ void iauP06e(double date1, double date2,
 **     za     z_A         equatorial precession: -3rd 323 Euler angle
 **     zetaa  zeta_A      equatorial precession: -1st 323 Euler angle
 **     thetaa theta_A     equatorial precession: 2nd 323 Euler angle
-**     pa     p_A         general precession
+**     pa     p_A         general precession (n.b. see below)
 **     gam    gamma_J2000 J2000.0 RA difference of ecliptic poles
 **     phi    phi_J2000   J2000.0 codeclination of ecliptic pole
 **     psi    psi_J2000   longitude difference of equator poles, J2000.0
 **
 **     The returned values are all radians.
+**
+**     Note that the t^5 coefficient in the series for p_A from
+**     Capitaine et al. (2003) is incorrectly signed in Hilton et al.
+**     (2006).
 **
 **  3) Hilton et al. (2006) Table 1 also contains angles that depend on
 **     models distinct from the P03 precession theory itself, namely the
@@ -11796,7 +12204,10 @@ void iauP06e(double date1, double date2,
 **  8) It is permissible to re-use the same variable in the returned
 **     arguments.  The quantities are stored in the stated order.
 **
-**  Reference:
+**  References:
+**
+**     Capitaine, N., Wallace, P.T. & Chapront, J., 2003,
+**     Astron.Astrophys., 412, 567
 **
 **     Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
 **
@@ -16558,7 +16969,7 @@ void iauTrxp(double r[3][3], double p[3], double trp[3])
 **     p        double[3]      p-vector
 **
 **  Returned:
-**     trp      double[3]      r * p
+**     trp      double[3]      r^T * p
 **
 **  Note:
 **     It is permissible for p and trp to be the same array.
@@ -17194,7 +17605,7 @@ void iauXys00a(double date1, double date2,
 **
 **  Returned:
 **     x,y          double   Celestial Intermediate Pole (Note 2)
-**     s            double   the CIO locator s (Note 2)
+**     s            double   the CIO locator s (Note 3)
 **
 **  Notes:
 **
@@ -17438,7 +17849,7 @@ void iauZr(double r[3][3])
 **
 */
 
-copyr.lis                                                2018 January 26
+copyr.lis                                                    2020 June 2
 
 
 COPYRIGHT NOTICE
@@ -17456,7 +17867,7 @@ second updates with no need to download new SOFA code.
 
 *+----------------------------------------------------------------------
 *
-*  Copyright (C) 2018
+*  Copyright (C) 2020
 *  Standards Of Fundamental Astronomy Board
 *  of the International Astronomical Union.
 *
@@ -17618,11 +18029,11 @@ file sofam.h.
 **  This file is part of the International Astronomical Union's
 **  SOFA (Standards Of Fundamental Astronomy) software collection.
 **
-**  This revision:   2017 October 7
+**  This revision:   2018 December 5
 **
-**  SOFA release 2018-01-30
+**  SOFA release 2020-07-21
 **
-**  Copyright (C) 2018 IAU SOFA Board.  See notes at end.
+**  Copyright (C) 2020 IAU SOFA Board.  See notes at end.
 */
 
 #include "sofam.h"
@@ -17903,10 +18314,28 @@ int iauStarpv(double ra, double dec,
               double pv[2][3]);
 
 /* Astronomy/StarCatalogs */
+
+void iauFk425(double r1950, double d1950,
+              double dr1950, double dd1950,
+              double p1950, double v1950,
+              double *r2000, double *d2000,
+              double *dr2000, double *dd2000,
+              double *p2000, double *v2000);
+void iauFk45z(double r1950, double d1950, double bepoch,
+              double *r2000, double *d2000);
+void iauFk524(double r2000, double d2000,
+              double dr2000, double dd2000,
+              double p2000, double v2000,
+              double *r1950, double *d1950,
+              double *dr1950, double *dd1950,
+              double *p1950, double *v1950);
 void iauFk52h(double r5, double d5,
               double dr5, double dd5, double px5, double rv5,
               double *rh, double *dh,
               double *drh, double *ddh, double *pxh, double *rvh);
+void iauFk54z(double r2000, double d2000, double bepoch,
+              double *r1950, double *d1950,
+              double *dr1950, double *dd1950);
 void iauFk5hip(double r5h[3][3], double s5h[3]);
 void iauFk5hz(double r5, double d5, double date1, double date2,
               double *rh, double *dh);
@@ -18086,7 +18515,7 @@ void iauSxpv(double s, double pv[2][3], double spv[2][3]);
 
 /*----------------------------------------------------------------------
 **
-**  Copyright (C) 2018
+**  Copyright (C) 2020
 **  Standards Of Fundamental Astronomy Board
 **  of the International Astronomical Union.
 **
@@ -18197,11 +18626,11 @@ void iauSxpv(double s, double pv[2][3], double spv[2][3]);
 **  the context of the SOFA software, and have no other official IAU
 **  status.  In addition, self consistency is not guaranteed.
 **
-**  This revision:   2017 March 16
+**  This revision:   2020 June 16
 **
-**  SOFA release 2018-01-30
+**  SOFA release 2020-07-21
 **
-**  Copyright (C) 2018 IAU SOFA Board.  See notes at end.
+**  Copyright (C) 2020 IAU SOFA Board.  See notes at end.
 */
 
 /* Star-independent astrometry parameters */
@@ -18317,7 +18746,8 @@ typedef struct {
 #define dint(A) ((A)<0.0?ceil(A):floor(A))
 
 /* dnint(A) - round to nearest whole number (double) */
-#define dnint(A) ((A)<0.0?ceil((A)-0.5):floor((A)+0.5))
+#define dnint(A) (fabs(A)<0.5?0.0\
+                                :((A)<0.0?ceil((A)-0.5):floor((A)+0.5)))
 
 /* dsign(A,B) - magnitude of A with sign of B (double) */
 #define dsign(A,B) ((B)<0.0?-fabs(A):fabs(A))
@@ -18337,7 +18767,7 @@ typedef struct {
 
 /*----------------------------------------------------------------------
 **
-**  Copyright (C) 2018
+**  Copyright (C) 2020
 **  Standards Of Fundamental Astronomy Board
 **  of the International Astronomical Union.
 **
@@ -18431,7 +18861,7 @@ typedef struct {
 **
 **--------------------------------------------------------------------*/
 
-board.lis                                                 2017 October 7
+board.lis                                                    2020 June 2
 
 
 
@@ -18443,8 +18873,7 @@ Current Membership
    John Bangert - United States Naval Observatory, retired
    Steven Bell - Her Majesty's Nautical Almanac Office (HMNAO)
    Nicole Capitaine - Paris Observatory
-   William Folkner - Jet Propulsion Laboratory
-   Mickaël Gastineau - Paris Observatory, IMCCE
+   Mickael Gastineau - Paris Observatory, IMCCE
    Catherine Hohenkerk - HMNAO (Chair, retired)
    Li Jinling - Shanghai Astronomical Observatory
    Brian Luzum - United States Naval Observatory (IERS)
@@ -18452,13 +18881,16 @@ Current Membership
    Jeffrey Percival - University of Wisconsin
    Wendy Puatua - United States Naval Observatory
    Scott Ransom - National Radio Astronomy Observatory
+   Nick Stamatakos - United States Naval Observatory
    Patrick Wallace - RAL Space, retired
+   Toni Wilmot -  Her Majesty's Nautical Almanac Office (Trainee)
 
 
 Past Members
 
    Wim Brouw              University of Groningen
    Mark Calabretta        Australia Telescope National Facility
+   William Folkner        Jet Propulsion Laboratory
    Anne-Marie Gontier     Paris Observatory
    George Hobbs           Australia Telescope National Facility
    George Kaplan          United States Naval Observatory
@@ -18467,5 +18899,5 @@ Past Members
    Jin Wen-Jing           Shanghai Astronomical Observatory
 
 
-The e-mail for the Board chair is Catherine.Hohenkerk@ukho.gov.uk
+The email address for the Board chair is catherine.hohenkerk@gmail.com
 
