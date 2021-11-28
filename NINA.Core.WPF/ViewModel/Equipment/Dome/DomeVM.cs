@@ -35,6 +35,7 @@ using NINA.Equipment.Interfaces;
 using NINA.Equipment.Equipment;
 using Nito.AsyncEx;
 using System.Linq;
+using NINA.Core.Enum;
 
 namespace NINA.WPF.Base.ViewModel.Equipment.Dome {
 
@@ -398,6 +399,7 @@ namespace NINA.WPF.Base.ViewModel.Equipment.Dome {
                     await Dome.FindHome(cancellationToken);
                 }
                 await Dome.Park(cancellationToken);
+                Logger.Info("Park complete");
                 return true;
             } else {
                 Logger.Error("Cannot park shutter. Dome does not support it.");
@@ -501,9 +503,10 @@ namespace NINA.WPF.Base.ViewModel.Equipment.Dome {
         }
 
         private async Task<bool> FindHome(object obj) {
-            Logger.Info($"Finding dome home position");
+            Logger.Info("Finding dome home position");
             await DisableFollowing(CancellationToken.None);
             await Dome?.FindHome(CancellationToken.None);
+            Logger.Info("Dome home find complete");
             return true;
         }
 
@@ -596,10 +599,7 @@ namespace NINA.WPF.Base.ViewModel.Equipment.Dome {
             }
 
             FollowEnabled = false;
-            while (Dome.Slewing && !cancellationToken.IsCancellationRequested) {
-                await Task.Delay(1000, cancellationToken);
-            }
-            return !FollowEnabled;
+            return true;
         }
 
         private object lockObj = new object();
@@ -622,6 +622,10 @@ namespace NINA.WPF.Base.ViewModel.Equipment.Dome {
                     }
                 }
             }
+        }
+
+        public async Task<bool> SyncToScopeCoordinates(Coordinates coordinates, PierSide sideOfPier, CancellationToken cancellationToken) {
+            return await this.domeFollower.SyncToScopeCoordinates(coordinates, sideOfPier, cancellationToken);
         }
 
         private readonly IDeviceUpdateTimer updateTimer;
