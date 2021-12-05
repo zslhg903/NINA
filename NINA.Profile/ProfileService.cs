@@ -220,12 +220,17 @@ namespace NINA.Profile {
             LocationChanged?.Invoke(this, null);
         }
 
+        public void ChangeElevation(double elevation) {
+            ActiveProfile.AstrometrySettings.Elevation = elevation;
+            LocationChanged?.Invoke(this, null);
+        }
+
         public void ChangeHorizon(string horizonFilePath) {
             ActiveProfile.AstrometrySettings.HorizonFilePath = horizonFilePath;
 
             try {
                 if (!string.IsNullOrWhiteSpace(horizonFilePath)) {
-                    ActiveProfile.AstrometrySettings.Horizon = CustomHorizon.FromFile(horizonFilePath);
+                    ActiveProfile.AstrometrySettings.Horizon = CustomHorizon.FromFilePath(horizonFilePath);
                 } else {
                     ActiveProfile.AstrometrySettings.HorizonFilePath = string.Empty;
                     ActiveProfile.AstrometrySettings.Horizon = null;

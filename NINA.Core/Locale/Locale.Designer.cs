@@ -7494,6 +7494,15 @@ namespace NINA.Core.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Elevation.
+        /// </summary>
+        internal static string LblElevation {
+            get {
+                return ResourceManager.GetString("LblElevation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enable bit scaling.
         /// </summary>
         internal static string LblEnableBitScaling {
@@ -13486,6 +13495,15 @@ namespace NINA.Core.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Get coordinates from the current scope position.
+        /// </summary>
+        internal static string LblScopeCoordinatesTooltip {
+            get {
+                return ResourceManager.GetString("LblScopeCoordinatesTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Scope settle time after flip.
         /// </summary>
         internal static string LblScopeSettleTimeAfterFlip {
@@ -14931,7 +14949,7 @@ namespace NINA.Core.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Synchronize Latitude/Longitude.
+        ///   Looks up a localized string similar to Synchronize site settings.
         /// </summary>
         internal static string LblSyncLatLong {
             get {
@@ -14940,8 +14958,9 @@ namespace NINA.Core.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Telescope&apos;s Latitude and Longitude differs from NINA&apos;s values.
-        ///Should the values be synced?.
+        ///   Looks up a localized string similar to The telescope&apos;s site settings differ from NINA&apos;s.
+        ///
+        ///Should the settings be synchronized?.
         /// </summary>
         internal static string LblSyncLatLongText {
             get {

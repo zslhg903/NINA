@@ -90,7 +90,6 @@ namespace NINA.ViewModel.FramingAssistant {
             this.domeMediator = domeMediator;
             this.domeFollower = domeFollower;
             this.imageDataFactory = imageDataFactory;
-            Opacity = 0.2;
 
             SkyMapAnnotator = new SkyMapAnnotator(telescopeMediator);
 
@@ -164,6 +163,7 @@ namespace NINA.ViewModel.FramingAssistant {
             CancelGetRotationFromCameraCommand = new RelayCommand(o => { try { getRotationTokenSource?.Cancel(); } catch (Exception) { } });
 
             CoordsFromPlanetariumCommand = new AsyncCommand<bool>(() => Task.Run(CoordsFromPlanetarium));
+            CoordsFromScopeCommand = new AsyncCommand<bool>(() => Task.Run(CoordsFromScope));
 
             GetDSOTemplatesCommand = new RelayCommand((object o) => {
                 DSOTemplates = sequenceMediator.GetDeepSkyObjectContainerTemplates();
@@ -419,12 +419,10 @@ namespace NINA.ViewModel.FramingAssistant {
             InitializeCache();
         }
 
-        private double opacity;
-
         public double Opacity {
-            get => opacity;
+            get => profileService.ActiveProfile.FramingAssistantSettings.Opacity;
             set {
-                opacity = value;
+                profileService.ActiveProfile.FramingAssistantSettings.Opacity = value;
                 RaisePropertyChanged();
             }
         }
@@ -1210,11 +1208,24 @@ namespace NINA.ViewModel.FramingAssistant {
             return (resp != null);
         }
 
+        private async Task<bool> CoordsFromScope() {
+            var telescopeInfo = telescopeMediator.GetInfo();
+            if (!telescopeInfo.Connected) {
+                Notification.ShowError(Loc.Instance["LblTelescopeNotConnected"]);
+                return false;
+            }
+
+            var dso = new DeepSkyObject(string.Empty, telescopeInfo.Coordinates, string.Empty, null);
+            await SetCoordinates(dso);
+            return true;
+        }
+
         public void Dispose() {
             this.cameraMediator.RemoveConsumer(this);
         }
 
         public ICommand CoordsFromPlanetariumCommand { get; set; }
+        public ICommand CoordsFromScopeCommand { get; set; }
         public ICommand DragStartCommand { get; private set; }
         public ICommand DragStopCommand { get; private set; }
         public ICommand DragMoveCommand { get; private set; }
