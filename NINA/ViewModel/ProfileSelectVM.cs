@@ -30,13 +30,11 @@ namespace NINA.ViewModel {
     public class ProfileSelectVM : BaseINPC {
         private CancellationTokenSource _cancelTokenSource;
         private IProfile _defaultProfile;
-        private IProfile _tempProfile;
 
         public ProfileSelectVM(IProfileService profileService) {
             this.profileService = profileService;
             Profiles = profileService.Profiles;
             selectedProfileMeta = profileService.Profiles.Where(x => x.Id == profileService.ActiveProfile.Id).First();
-            _tempProfile = profileService.ActiveProfile;
             _defaultProfile = ActiveProfile;
         }
 
@@ -82,9 +80,9 @@ namespace NINA.ViewModel {
             }
         }
 
-        public string FocalLength {
+        public double FocalLength {
             get {
-                return ActiveProfile.TelescopeSettings.FocalLength.ToString(CultureInfo.InvariantCulture);
+                return ActiveProfile.TelescopeSettings.FocalLength;
             }
         }
 

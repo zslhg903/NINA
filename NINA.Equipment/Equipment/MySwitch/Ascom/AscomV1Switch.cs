@@ -12,8 +12,10 @@
 
 #endregion "copyright"
 
+using ASCOM.DeviceInterface;
 using ASCOM.DriverAccess;
 using NINA.Core.Utility;
+using NINA.Equipment.ASCOMFacades;
 using NINA.Equipment.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -25,7 +27,7 @@ namespace NINA.Equipment.Equipment.MySwitch.Ascom {
 
     internal class AscomV1Switch : BaseINPC, ISwitch {
 
-        public AscomV1Switch(Switch s, short id) {
+        public AscomV1Switch(ISwitchFacade s, short id) {
             Id = id;
             ascomSwitchHub = s;
 
@@ -51,7 +53,7 @@ namespace NINA.Equipment.Equipment.MySwitch.Ascom {
             return success;
         }
 
-        protected Switch ascomSwitchHub;
+        protected ISwitchFacade ascomSwitchHub;
 
         public short Id { get; private set; }
 

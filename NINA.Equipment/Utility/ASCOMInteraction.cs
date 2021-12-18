@@ -34,13 +34,20 @@ using System.Runtime.CompilerServices;
 namespace NINA.Equipment.Utility {
 
     public class ASCOMInteraction {
+        private readonly IProfileService profileService;
+        private readonly IDeviceDispatcher deviceDispatcher;
 
-        public static List<ICamera> GetCameras(IProfileService profileService, IExposureDataFactory exposureDataFactory) {
+        public ASCOMInteraction(IDeviceDispatcher deviceDispatcher, IProfileService profileService) {
+            this.deviceDispatcher = deviceDispatcher;
+            this.profileService = profileService;
+        }
+
+        public List<ICamera> GetCameras(IExposureDataFactory exposureDataFactory) {
             var l = new List<ICamera>();
             using (var ascomDevices = new ASCOM.Utilities.Profile()) {
                 foreach (ASCOM.Utilities.KeyValuePair device in ascomDevices.RegisteredDevices("Camera")) {
                     try {
-                        AscomCamera cam = new AscomCamera(device.Key, device.Value + " (ASCOM)", profileService, exposureDataFactory);
+                        AscomCamera cam = new AscomCamera(device.Key, device.Value + " (ASCOM)", profileService, exposureDataFactory, deviceDispatcher);
                         Logger.Trace(string.Format("Adding {0}", cam.Name));
                         l.Add(cam);
                     } catch (Exception) {
@@ -51,12 +58,12 @@ namespace NINA.Equipment.Utility {
             }
         }
 
-        public static List<ITelescope> GetTelescopes(IProfileService profileService) {
+        public List<ITelescope> GetTelescopes() {
             var l = new List<ITelescope>();
             using (var ascomDevices = new ASCOM.Utilities.Profile()) {
                 foreach (ASCOM.Utilities.KeyValuePair device in ascomDevices.RegisteredDevices("Telescope")) {
                     try {
-                        AscomTelescope telescope = new AscomTelescope(device.Key, device.Value, profileService);
+                        AscomTelescope telescope = new AscomTelescope(device.Key, device.Value, profileService, deviceDispatcher);
                         l.Add(telescope);
                     } catch (Exception) {
                         //only add telescopes which are supported. e.g. x86 drivers will not work in x64
@@ -66,12 +73,12 @@ namespace NINA.Equipment.Utility {
             }
         }
 
-        public static List<IFilterWheel> GetFilterWheels(IProfileService profileService) {
+        public List<IFilterWheel> GetFilterWheels() {
             var l = new List<IFilterWheel>();
             using (var ascomDevices = new ASCOM.Utilities.Profile()) {
                 foreach (ASCOM.Utilities.KeyValuePair device in ascomDevices.RegisteredDevices("FilterWheel")) {
                     try {
-                        AscomFilterWheel fw = new AscomFilterWheel(device.Key, device.Value, profileService);
+                        AscomFilterWheel fw = new AscomFilterWheel(device.Key, device.Value, profileService, deviceDispatcher);
                         l.Add(fw);
                     } catch (Exception) {
                         //only add filter wheels which are supported. e.g. x86 drivers will not work in x64
@@ -81,12 +88,12 @@ namespace NINA.Equipment.Utility {
             }
         }
 
-        public static List<IRotator> GetRotators(IProfileService profileService) {
+        public List<IRotator> GetRotators() {
             var l = new List<IRotator>();
             using (var ascomDevices = new ASCOM.Utilities.Profile()) {
                 foreach (ASCOM.Utilities.KeyValuePair device in ascomDevices.RegisteredDevices("Rotator")) {
                     try {
-                        AscomRotator rotator = new AscomRotator(device.Key, device.Value);
+                        AscomRotator rotator = new AscomRotator(device.Key, device.Value, deviceDispatcher);
                         l.Add(rotator);
                     } catch (Exception) {
                         //only add filter wheels which are supported. e.g. x86 drivers will not work in x64
@@ -96,12 +103,12 @@ namespace NINA.Equipment.Utility {
             }
         }
 
-        public static List<ISafetyMonitor> GetSafetyMonitors(IProfileService profileService) {
+        public List<ISafetyMonitor> GetSafetyMonitors() {
             var l = new List<ISafetyMonitor>();
             using (var ascomDevices = new ASCOM.Utilities.Profile()) {
                 foreach (ASCOM.Utilities.KeyValuePair device in ascomDevices.RegisteredDevices("SafetyMonitor")) {
                     try {
-                        AscomSafetyMonitor safetyMonitor = new AscomSafetyMonitor(device.Key, device.Value);
+                        AscomSafetyMonitor safetyMonitor = new AscomSafetyMonitor(device.Key, device.Value, deviceDispatcher);
                         l.Add(safetyMonitor);
                     } catch (Exception) {
                         //only add filter wheels which are supported. e.g. x86 drivers will not work in x64
@@ -111,12 +118,12 @@ namespace NINA.Equipment.Utility {
             }
         }
 
-        public static List<IFocuser> GetFocusers(IProfileService profileService) {
+        public List<IFocuser> GetFocusers() {
             var l = new List<IFocuser>();
             using (var ascomDevices = new ASCOM.Utilities.Profile()) {
                 foreach (ASCOM.Utilities.KeyValuePair device in ascomDevices.RegisteredDevices("Focuser")) {
                     try {
-                        AscomFocuser focuser = new AscomFocuser(device.Key, device.Value);
+                        AscomFocuser focuser = new AscomFocuser(device.Key, device.Value, deviceDispatcher);
                         l.Add(focuser);
                     } catch (Exception) {
                         //only add filter wheels which are supported. e.g. x86 drivers will not work in x64
@@ -126,12 +133,12 @@ namespace NINA.Equipment.Utility {
             }
         }
 
-        public static List<ISwitchHub> GetSwitches(IProfileService profileService) {
+        public List<ISwitchHub> GetSwitches() {
             var l = new List<ISwitchHub>();
             using (var ascomDevices = new ASCOM.Utilities.Profile()) {
                 foreach (ASCOM.Utilities.KeyValuePair device in ascomDevices.RegisteredDevices("Switch")) {
                     try {
-                        AscomSwitchHub ascomSwitch = new AscomSwitchHub(device.Key, device.Value);
+                        AscomSwitchHub ascomSwitch = new AscomSwitchHub(device.Key, device.Value, deviceDispatcher);
                         l.Add(ascomSwitch);
                     } catch (Exception) {
                         //only add filter wheels which are supported. e.g. x86 drivers will not work in x64
@@ -141,13 +148,13 @@ namespace NINA.Equipment.Utility {
             }
         }
 
-        public static List<IWeatherData> GetWeatherDataSources(IProfileService profileService) {
+        public List<IWeatherData> GetWeatherDataSources() {
             var l = new List<IWeatherData>();
             var ascomDevices = new ASCOM.Utilities.Profile();
 
             foreach (ASCOM.Utilities.KeyValuePair device in ascomDevices.RegisteredDevices("ObservingConditions")) {
                 try {
-                    AscomObservingConditions obsdev = new AscomObservingConditions(device.Key, device.Value);
+                    AscomObservingConditions obsdev = new AscomObservingConditions(device.Key, device.Value, deviceDispatcher);
                     l.Add(obsdev);
                 } catch (Exception) {
                 }
@@ -155,13 +162,13 @@ namespace NINA.Equipment.Utility {
             return l;
         }
 
-        public static List<IDome> GetDomes(IProfileService profileService) {
+        public List<IDome> GetDomes() {
             var l = new List<IDome>();
             var ascomDevices = new ASCOM.Utilities.Profile();
 
             foreach (ASCOM.Utilities.KeyValuePair device in ascomDevices.RegisteredDevices("Dome")) {
                 try {
-                    AscomDome ascomDome = new AscomDome(device.Key, device.Value);
+                    AscomDome ascomDome = new AscomDome(device.Key, device.Value, deviceDispatcher);
                     l.Add(ascomDome);
                 } catch (Exception) {
                 }
@@ -169,13 +176,13 @@ namespace NINA.Equipment.Utility {
             return l;
         }
 
-        public static List<IFlatDevice> GetCoverCalibrators(IProfileService profileService) {
+        public List<IFlatDevice> GetCoverCalibrators() {
             var l = new List<IFlatDevice>();
             var ascomDevices = new ASCOM.Utilities.Profile();
 
             foreach (ASCOM.Utilities.KeyValuePair device in ascomDevices.RegisteredDevices("CoverCalibrator")) {
                 try {
-                    AscomCoverCalibrator ascomCoverCalibrator = new AscomCoverCalibrator(device.Key, device.Value);
+                    AscomCoverCalibrator ascomCoverCalibrator = new AscomCoverCalibrator(device.Key, device.Value, deviceDispatcher);
                     l.Add(ascomCoverCalibrator);
                 } catch (Exception) {
                 }
@@ -191,7 +198,7 @@ namespace NINA.Equipment.Utility {
 
         public static Version GetPlatformVersion() {
             using (var util = new ASCOM.Utilities.Util()) {
-                return new Version(util.MajorVersion, util.MinorVersion);
+                return new Version(util.MajorVersion, util.MinorVersion, util.ServicePack, util.BuildNumber);
             }
         }
 

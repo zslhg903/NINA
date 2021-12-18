@@ -38,20 +38,20 @@ namespace NINA.WPF.Base.ViewModel.Equipment.Switch {
 
     public class SwitchVM : DockableVM, ISwitchVM {
 
-        public SwitchVM(IProfileService profileService, IApplicationStatusMediator applicationStatusMediator, ISwitchMediator switchMediator) : base(profileService) {
+        public SwitchVM(IProfileService profileService, IApplicationStatusMediator applicationStatusMediator, ISwitchMediator switchMediator, IDeviceDispatcher deviceDispatcher) : base(profileService) {
             Title = Loc.Instance["LblSwitch"];
             ImageGeometry = (System.Windows.Media.GeometryGroup)System.Windows.Application.Current.Resources["SwitchesSVG"];
-            SwitchChooserVM = new SwitchChooserVM(profileService);
+            SwitchChooserVM = new SwitchChooserVM(profileService, deviceDispatcher);
             _ = Rescan();
 
             this.applicationStatusMediator = applicationStatusMediator;
             this.switchMediator = switchMediator;
             this.switchMediator.RegisterHandler(this);
 
-            ConnectCommand = new AsyncCommand<bool>(Connect);
-            DisconnectCommand = new AsyncCommand<bool>(async () => { await Disconnect(); return true; });
+            ConnectCommand = new AsyncCommand<bool>(() => Task.Run(Connect));
+            DisconnectCommand = new AsyncCommand<bool>(async () => { await Task.Run(Disconnect); return true; });
             CancelConnectCommand = new RelayCommand((object o) => CancelConnect());
-            RefreshDevicesCommand = new AsyncCommand<bool>(async o => { await Rescan(); return true; }, o => !(SwitchHub?.Connected == true));
+            RefreshDevicesCommand = new AsyncCommand<bool>(async o => { await Rescan(); return true; }, o => !SwitchInfo.Connected);
 
             updateTimer = new DeviceUpdateTimer(
                  GetSwitchValues,
@@ -59,7 +59,7 @@ namespace NINA.WPF.Base.ViewModel.Equipment.Switch {
                  profileService.ActiveProfile.ApplicationSettings.DevicePollingInterval
              );
 
-            SetSwitchValueCommand = new AsyncCommand<bool>(SetSwitchValue);
+            SetSwitchValueCommand = new AsyncCommand<bool>((p) => Task.Run(() => SetSwitchValue(p)));
             ToggleBooleanSwitchValueCommand = new AsyncCommand<bool>(async o => {
                 if (o is IWritableSwitch ws) {
                     ws.TargetValue = ws.Value == 0 ? 1 : 0;

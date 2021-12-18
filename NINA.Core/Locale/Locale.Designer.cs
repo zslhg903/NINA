@@ -951,6 +951,24 @@ namespace NINA.Core.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disables background dome synchronization with the telescope.
+        /// </summary>
+        internal static string Lbl_SequenceItem_Dome_DisableDomeSynchronization_Description {
+            get {
+                return ResourceManager.GetString("Lbl_SequenceItem_Dome_DisableDomeSynchronization_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disable Dome Sync.
+        /// </summary>
+        internal static string Lbl_SequenceItem_Dome_DisableDomeSynchronization_Name {
+            get {
+                return ResourceManager.GetString("Lbl_SequenceItem_Dome_DisableDomeSynchronization_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ensures the dome remains synchronized with the telescope.
         /// </summary>
         internal static string Lbl_SequenceItem_Dome_EnableDomeSynchronization_Description {
@@ -965,6 +983,24 @@ namespace NINA.Core.Locale {
         internal static string Lbl_SequenceItem_Dome_EnableDomeSynchronization_Name {
             get {
                 return ResourceManager.GetString("Lbl_SequenceItem_Dome_EnableDomeSynchronization_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rotates the dome to the home position.
+        /// </summary>
+        internal static string Lbl_SequenceItem_Dome_FindHome_Description {
+            get {
+                return ResourceManager.GetString("Lbl_SequenceItem_Dome_FindHome_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Find Dome Home.
+        /// </summary>
+        internal static string Lbl_SequenceItem_Dome_FindHome_Name {
+            get {
+                return ResourceManager.GetString("Lbl_SequenceItem_Dome_FindHome_Name", resourceCulture);
             }
         }
         
@@ -1001,6 +1037,24 @@ namespace NINA.Core.Locale {
         internal static string Lbl_SequenceItem_Dome_ParkDome_Name {
             get {
                 return ResourceManager.GetString("Lbl_SequenceItem_Dome_ParkDome_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Slews the dome to an absolute azimuth position.
+        /// </summary>
+        internal static string Lbl_SequenceItem_Dome_SetDomeAzimuth_Description {
+            get {
+                return ResourceManager.GetString("Lbl_SequenceItem_Dome_SetDomeAzimuth_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Slew Dome Azimuth.
+        /// </summary>
+        internal static string Lbl_SequenceItem_Dome_SetDomeAzimuth_Name {
+            get {
+                return ResourceManager.GetString("Lbl_SequenceItem_Dome_SetDomeAzimuth_Name", resourceCulture);
             }
         }
         
@@ -6071,6 +6125,15 @@ namespace NINA.Core.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Default.
+        /// </summary>
+        internal static string LblDefault {
+            get {
+                return ResourceManager.GetString("LblDefault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Default Auto Focus Exposure Time.
         /// </summary>
         internal static string LblDefaultAutoFocusExposureTime {
@@ -7260,6 +7323,24 @@ namespace NINA.Core.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sync slew dome when scope slews.
+        /// </summary>
+        internal static string LblDomeSyncSlewWhenMountSlew {
+            get {
+                return ResourceManager.GetString("LblDomeSyncSlewWhenMountSlew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Slews the dome to synchronize it with the telescope position when it slews. This setting doesn&apos;t maintain the dome synchronization as the scope tracks..
+        /// </summary>
+        internal static string LblDomeSyncSlewWhenMountSlewTooltip {
+            get {
+                return ResourceManager.GetString("LblDomeSyncSlewWhenMountSlewTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Synchronization Timeout.
         /// </summary>
         internal static string LblDomeSyncTimeout {
@@ -8107,6 +8188,15 @@ namespace NINA.Core.Locale {
         internal static string LblFlatDeviceBrightness {
             get {
                 return ResourceManager.GetString("LblFlatDeviceBrightness", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flat device cannot control brightness!.
+        /// </summary>
+        internal static string LblFlatDeviceCannotControlBrightness {
+            get {
+                return ResourceManager.GetString("LblFlatDeviceCannotControlBrightness", resourceCulture);
             }
         }
         
@@ -10636,6 +10726,15 @@ namespace NINA.Core.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to move focuser.
+        /// </summary>
+        internal static string LblMoveFocuserFailed {
+            get {
+                return ResourceManager.GetString("LblMoveFocuserFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Moves focuser to the specified target position.
         /// </summary>
         internal static string LblMoveFocuserTooltip {
@@ -11685,6 +11784,24 @@ namespace NINA.Core.Locale {
         internal static string LblPercentShort {
             get {
                 return ResourceManager.GetString("LblPercentShort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Device threads for ASCOM.
+        /// </summary>
+        internal static string LblPerDeviceThreadingEnabled {
+            get {
+                return ResourceManager.GetString("LblPerDeviceThreadingEnabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is an experimental setting that may improve UI responsiveness and reduce the chance of UI hangs when connecting to ASCOM drivers. This setting must be enabled before connecting devices for it to have an effect. Please share feedback with the contributors in Discord if you use this, since we&apos;re considering enabling this for everyone..
+        /// </summary>
+        internal static string LblPerDeviceThreadingEnabledTooltip {
+            get {
+                return ResourceManager.GetString("LblPerDeviceThreadingEnabledTooltip", resourceCulture);
             }
         }
         
@@ -15948,6 +16065,15 @@ namespace NINA.Core.Locale {
         internal static string LblTrackingASCOMServerEnabledTooltip {
             get {
                 return ResourceManager.GetString("LblTrackingASCOMServerEnabledTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tracking CCD ASCOM Server Logging.
+        /// </summary>
+        internal static string LblTrackingASCOMServerLoggingEnabled {
+            get {
+                return ResourceManager.GetString("LblTrackingASCOMServerLoggingEnabled", resourceCulture);
             }
         }
         

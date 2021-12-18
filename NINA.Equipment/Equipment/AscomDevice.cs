@@ -17,15 +17,12 @@ using ASCOM.DriverAccess;
 using NINA.Core.Locale;
 using NINA.Core.Utility;
 using NINA.Core.Utility.Notification;
+using NINA.Equipment.ASCOMFacades;
 using NINA.Equipment.Interfaces;
-using NINA.Equipment.Utility;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -34,14 +31,21 @@ namespace NINA.Equipment.Equipment {
     /// <summary>
     /// The unified class that handles the shared properties of all ASCOM devices like Connection, Generic Info and Setup
     /// </summary>
-    public abstract class AscomDevice<T> : BaseINPC, IDevice where T : AscomDriver {
+    public abstract class AscomDevice<DeviceT, ProxyI, ProxyT> : BaseINPC, IDevice
+        where DeviceT : AscomDriver
+        where ProxyI : class, IAscomDeviceFacade<DeviceT>
+        where ProxyT : class, ProxyI, new() {
 
-        public AscomDevice(string id, string name) {
+        public AscomDevice(string id, string name, IDeviceDispatcher deviceDispatcher, DeviceDispatcherType deviceDispatcherType) {
             Id = id;
             Name = name;
+            DeviceDispatcher = deviceDispatcher;
+            DeviceDispatcherType = deviceDispatcherType;
         }
 
-        protected T device;
+        protected IDeviceDispatcher DeviceDispatcher { get; private set; }
+        protected DeviceDispatcherType DeviceDispatcherType { get; private set; }
+        protected ProxyI device;
         public string Category { get; } = "ASCOM";
         protected abstract string ConnectionLostMessage { get; }
 
@@ -175,7 +179,10 @@ namespace NINA.Equipment.Equipment {
                     await PreConnect();
 
                     Logger.Trace($"{Name} - Creating instance for {Id}");
-                    device = GetInstance(Id);
+                    var concreteDevice = GetInstance(Id);
+                    var proxy = new ProxyT() { Proxied = concreteDevice };
+                    device = DeviceDispatchInterceptor<ProxyI>.Wrap(proxy, DeviceDispatcher, DeviceDispatcherType);
+
                     Connected = true;
                     if (Connected) {
                         Logger.Trace($"{Name} - Calling PostConnect");
@@ -190,7 +197,7 @@ namespace NINA.Equipment.Equipment {
             });
         }
 
-        protected abstract T GetInstance(string id);
+        protected abstract DeviceT GetInstance(string id);
 
         public void SetupDialog() {
             if (HasSetupDialog) {
@@ -198,7 +205,9 @@ namespace NINA.Equipment.Equipment {
                     bool dispose = false;
                     if (device == null) {
                         Logger.Trace($"{Name} - Creating instance for {Id}");
-                        device = GetInstance(Id);
+                        var concreteDevice = GetInstance(Id);
+                        var proxy = new ProxyT() { Proxied = concreteDevice };
+                        device = DeviceDispatchInterceptor<ProxyI>.Wrap(proxy, DeviceDispatcher, DeviceDispatcherType);
                         dispose = true;
                     }
                     Logger.Trace($"{Name} - Creating Setup Dialog for {Id}");
@@ -258,7 +267,9 @@ namespace NINA.Equipment.Equipment {
 
                 if (!propertyGETMemory.TryGetValue(propertyName, out var memory)) {
                     memory = new PropertyMemory(type.GetProperty(propertyName));
-                    propertyGETMemory[propertyName] = memory;
+                    lock (propertyGETMemory) {
+                        propertyGETMemory[propertyName] = memory;
+                    }
                 }
 
                 for (int i = 0; i < retries; i++) {
@@ -315,7 +326,9 @@ namespace NINA.Equipment.Equipment {
 
                 if (!propertySETMemory.TryGetValue(propertyName, out var memory)) {
                     memory = new PropertyMemory(type.GetProperty(propertyName));
-                    propertySETMemory[propertyName] = memory;
+                    lock (propertySETMemory) {
+                        propertySETMemory[propertyName] = memory;
+                    }
                 }
 
                 try {
@@ -373,7 +386,7 @@ namespace NINA.Equipment.Equipment {
             public bool IsImplemented { get; set; }
             public object LastValue { get; set; }
 
-            public object GetValue(AscomDriver device) {
+            public object GetValue(ProxyI device) {
                 var value = info.GetValue(device);
 
                 LastValue = value;
@@ -381,7 +394,7 @@ namespace NINA.Equipment.Equipment {
                 return value;
             }
 
-            public void SetValue(AscomDriver device, object value) {
+            public void SetValue(ProxyI device, object value) {
                 info.SetValue(device, value);
             }
         }

@@ -12,24 +12,20 @@
 
 #endregion "copyright"
 
+using ASCOM.DeviceInterface;
 using ASCOM.DriverAccess;
 using NINA.Core.Locale;
 using NINA.Core.Utility;
-using NINA.Core.Utility.Notification;
+using NINA.Equipment.ASCOMFacades;
 using NINA.Equipment.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace NINA.Equipment.Equipment.MySwitch.Ascom {
 
-    internal class AscomSwitchHub : AscomDevice<Switch>, ISwitchHub, IDisposable {
-
-        public AscomSwitchHub(string id, string name) : base(id, name) {
+    internal class AscomSwitchHub : AscomDevice<Switch, ISwitchFacade, SwitchFacadeProxy>, ISwitchHub, IDisposable {
+        public AscomSwitchHub(string id, string name, IDeviceDispatcher deviceDispatcher) : base(id, name, deviceDispatcher, DeviceDispatcherType.Switch) {
         }
 
         public ICollection<ISwitch> Switches { get; private set; } = new AsyncObservableCollection<ISwitch>();
@@ -76,7 +72,7 @@ namespace NINA.Equipment.Equipment.MySwitch.Ascom {
         }
 
         protected override Switch GetInstance(string id) {
-            return new Switch(id);
+            return DeviceDispatcher.Invoke(DeviceDispatcherType, () => new Switch(id));
         }
     }
 }

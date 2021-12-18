@@ -46,12 +46,14 @@ namespace NINA.WPF.Base.ViewModel.Equipment.Telescope {
             IProfileService profileService,
             ITelescopeMediator telescopeMediator,
             IApplicationStatusMediator applicationStatusMediator,
-            IDomeMediator domeMediator) : base(profileService) {
+            IDomeMediator domeMediator, 
+            IDeviceDispatcher deviceDispatcher) : base(profileService) {
             this.profileService = profileService;
             this.telescopeMediator = telescopeMediator;
             this.telescopeMediator.RegisterHandler(this);
             this.applicationStatusMediator = applicationStatusMediator;
             this.domeMediator = domeMediator;
+            this.deviceDispatcher = deviceDispatcher;
             Title = Loc.Instance["LblTelescope"];
             ImageGeometry = (System.Windows.Media.GeometryGroup)System.Windows.Application.Current.Resources["TelescopeSVG"];
 
@@ -61,25 +63,25 @@ namespace NINA.WPF.Base.ViewModel.Equipment.Telescope {
             });
             _ = Rescan();
 
-            ChooseTelescopeCommand = new AsyncCommand<bool>(() => ChooseTelescope());
+            ChooseTelescopeCommand = new AsyncCommand<bool>(() => Task.Run(ChooseTelescope));
             CancelChooseTelescopeCommand = new RelayCommand(CancelChooseTelescope);
-            DisconnectCommand = new AsyncCommand<bool>(() => DisconnectTelescope());
-            ParkCommand = new AsyncCommand<bool>(() => {
+            DisconnectCommand = new AsyncCommand<bool>(() => Task.Run(DisconnectTelescope));
+            ParkCommand = new AsyncCommand<bool>(() => Task.Run(() => {
                 InitCancelSlewTelescope();
                 return ParkTelescope(progress, _cancelSlewTelescopeSource.Token);
-            });
+            }));
 
-            UnparkCommand = new AsyncCommand<bool>(() => {
+            UnparkCommand = new AsyncCommand<bool>(() => Task.Run(() => {
                 InitCancelSlewTelescope();
                 return UnparkTelescope(progress, _cancelSlewTelescopeSource.Token);
-            });
-            SetParkPositionCommand = new AsyncCommand<bool>(SetParkPosition);
-            SlewToCoordinatesCommand = new AsyncCommand<bool>(SlewToCoordinatesInternal);
-            RefreshTelescopeListCommand = new AsyncCommand<bool>(async o => { await Rescan(); return true; }, o => !(Telescope?.Connected == true));
-            FindHomeCommand = new AsyncCommand<bool>(() => {
+            }));
+            SetParkPositionCommand = new AsyncCommand<bool>(() => Task.Run(SetParkPosition));
+            SlewToCoordinatesCommand = new AsyncCommand<bool>((p) => Task.Run(() => SlewToCoordinatesInternal(p)));
+            RefreshTelescopeListCommand = new AsyncCommand<bool>(async o => { await Task.Run(Rescan); return true; }, o => !TelescopeInfo.Connected);
+            FindHomeCommand = new AsyncCommand<bool>(() => Task.Run(() => {
                 InitCancelSlewTelescope();
                 return FindHome(progress, _cancelSlewTelescopeSource.Token);
-            });
+            }));
 
             MoveCommand = new RelayCommand(Move);
             StopMoveCommand = new RelayCommand(StopMove);
@@ -355,7 +357,7 @@ namespace NINA.WPF.Base.ViewModel.Equipment.Telescope {
         public TelescopeChooserVM TelescopeChooserVM {
             get {
                 if (_telescopeChooserVM == null) {
-                    _telescopeChooserVM = new TelescopeChooserVM(profileService);
+                    _telescopeChooserVM = new TelescopeChooserVM(profileService, deviceDispatcher);
                 }
                 return _telescopeChooserVM;
             }
@@ -393,6 +395,8 @@ namespace NINA.WPF.Base.ViewModel.Equipment.Telescope {
                 _cancelChooseTelescopeSource = new CancellationTokenSource();
                 if (telescope != null) {
                     try {
+                        var currentThread = System.Threading.Thread.CurrentThread;
+
                         var connected = await telescope?.Connect(_cancelChooseTelescopeSource.Token);
                         _cancelChooseTelescopeSource.Token.ThrowIfCancellationRequested();
                         if (connected) {
@@ -799,6 +803,7 @@ namespace NINA.WPF.Base.ViewModel.Equipment.Telescope {
         private ITelescopeMediator telescopeMediator;
         private IApplicationStatusMediator applicationStatusMediator;
         private IDomeMediator domeMediator;
+        private IDeviceDispatcher deviceDispatcher;
         private IProgress<ApplicationStatus> progress;
 
         public double TargetRightAscencionSeconds {
@@ -862,9 +867,19 @@ namespace NINA.WPF.Base.ViewModel.Equipment.Telescope {
                     Logger.Info($"Slewing from {position} to {coords}");
 
                     var domeSyncTask = Task.CompletedTask;
-                    if (this.domeMediator.IsFollowingScope) {
-                        var targetSideOfPier = Astrometry.MeridianFlip.ExpectedPierSide(coords, Angle.ByHours(this.TelescopeInfo.SiderealTime));
-                        domeSyncTask = this.domeMediator.SyncToScopeCoordinates(coords, targetSideOfPier, token);
+                    var domeInfo = this.domeMediator.GetInfo();
+                    if (domeInfo.Connected && domeInfo.CanSetAzimuth) {
+                        if (this.domeMediator.IsFollowingScope || this.profileService.ActiveProfile.DomeSettings.SyncSlewDomeWhenMountSlews) {
+                            var targetSideOfPier = Astrometry.MeridianFlip.ExpectedPierSide(coords, Angle.ByHours(this.TelescopeInfo.SiderealTime));
+                            domeSyncTask = Task.Run(async () => {
+                                try {
+                                    return await this.domeMediator.SyncToScopeCoordinates(coords, targetSideOfPier, token);
+                                } catch (Exception e) {
+                                    Logger.Error("Failed to sync dome when issuing a scope slew. Continuing with the scope slew", e);
+                                    return false;
+                                }
+                            }, token);
+                        }
                     }
 
                     await Telescope.SlewToCoordinates(coords, token);

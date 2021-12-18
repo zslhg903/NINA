@@ -36,19 +36,20 @@ namespace NINA.WPF.Base.ViewModel.Equipment.WeatherData {
 
     public class WeatherDataVM : DockableVM, IWeatherDataVM {
 
-        public WeatherDataVM(IProfileService profileService, IWeatherDataMediator weatherDataMediator, IApplicationStatusMediator applicationStatusMediator) : base(profileService) {
+        public WeatherDataVM(IProfileService profileService, IWeatherDataMediator weatherDataMediator, IApplicationStatusMediator applicationStatusMediator, IDeviceDispatcher deviceDispatcher) : base(profileService) {
             Title = Loc.Instance["LblWeather"];
             ImageGeometry = (System.Windows.Media.GeometryGroup)System.Windows.Application.Current.Resources["CloudSVG"];
 
             this.weatherDataMediator = weatherDataMediator;
             this.weatherDataMediator.RegisterHandler(this);
             this.applicationStatusMediator = applicationStatusMediator;
+            this.deviceDispatcher = deviceDispatcher;
             _ = Rescan();
 
-            ChooseWeatherDataCommand = new AsyncCommand<bool>(() => ChooseWeatherData());
+            ChooseWeatherDataCommand = new AsyncCommand<bool>(() => Task.Run(ChooseWeatherData));
             CancelChooseWeatherDataCommand = new RelayCommand(CancelChooseWeatherData);
-            DisconnectCommand = new AsyncCommand<bool>(() => DisconnectDiag());
-            RefreshWeatherDataListCommand = new AsyncCommand<bool>(async o => { await Rescan(); return true; }, o => !(WeatherData?.Connected == true));
+            DisconnectCommand = new AsyncCommand<bool>(() => Task.Run(DisconnectDiag));
+            RefreshWeatherDataListCommand = new AsyncCommand<bool>(async o => { await Rescan(); return true; }, o => !WeatherDataInfo.Connected);
 
             updateTimer = new DeviceUpdateTimer(
                 GetWeatherDataValues,
@@ -298,7 +299,7 @@ namespace NINA.WPF.Base.ViewModel.Equipment.WeatherData {
         public WeatherDataChooserVM WeatherDataChooserVM {
             get {
                 if (_weatherDataChooserVM == null) {
-                    _weatherDataChooserVM = new WeatherDataChooserVM(profileService);
+                    _weatherDataChooserVM = new WeatherDataChooserVM(profileService, deviceDispatcher);
                 }
                 return _weatherDataChooserVM;
             }
@@ -308,6 +309,7 @@ namespace NINA.WPF.Base.ViewModel.Equipment.WeatherData {
         private DeviceUpdateTimer updateTimer;
         private IWeatherDataMediator weatherDataMediator;
         private IApplicationStatusMediator applicationStatusMediator;
+        private IDeviceDispatcher deviceDispatcher;
         public IAsyncCommand ChooseWeatherDataCommand { get; private set; }
         public ICommand RefreshWeatherDataListCommand { get; private set; }
         public ICommand CancelChooseWeatherDataCommand { get; private set; }

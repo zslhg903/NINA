@@ -17,7 +17,7 @@ using ASCOM.DeviceInterface;
 using ASCOM.DriverAccess;
 using NINA.Core.Locale;
 using NINA.Core.Utility;
-using NINA.Core.Utility.Notification;
+using NINA.Equipment.ASCOMFacades;
 using NINA.Equipment.Interfaces;
 using System;
 using System.Threading;
@@ -25,12 +25,11 @@ using System.Threading.Tasks;
 
 namespace NINA.Equipment.Equipment.MyFocuser {
 
-    internal class AscomFocuser : AscomDevice<Focuser>, IFocuser, IDisposable {
-
-        public AscomFocuser(string focuser, string name) : base(focuser, name) {
+    internal class AscomFocuser : AscomDevice<Focuser, IFocuserFacade, FocuserFacadeProxy>, IFocuser, IDisposable {
+        public AscomFocuser(string focuser, string name, IDeviceDispatcher deviceDispatcher) : base(focuser, name, deviceDispatcher, DeviceDispatcherType.Focuser) {
         }
 
-        public Focuser Device => device;
+        public IFocuserFacade Device => device;
 
         public bool IsMoving {
             get {
@@ -106,6 +105,7 @@ namespace NINA.Equipment.Equipment.MyFocuser {
             }
         }
 
+        private static TimeSpan SameFocuserPositionTimeout = TimeSpan.FromSeconds(10);
         private async Task MoveInternalAbsolute(int position, CancellationToken ct, int waitInMs = 1000) {
             if (Connected) {
                 var reEnableTempComp = TempComp;
@@ -113,11 +113,24 @@ namespace NINA.Equipment.Equipment.MyFocuser {
                     TempComp = false;
                 }
 
+                var lastPosition = int.MinValue;
+                int samePositionCount = 0;
                 while (position != device.Position && !ct.IsCancellationRequested) {
                     device.Move(position);
                     while (IsMoving && !ct.IsCancellationRequested) {
                         await CoreUtil.Wait(TimeSpan.FromMilliseconds(waitInMs), ct);
                     }
+
+                    if (lastPosition == device.Position) {
+                        ++samePositionCount;
+                        var samePositionTime = TimeSpan.FromMilliseconds(waitInMs * samePositionCount);
+                        if (samePositionTime >= SameFocuserPositionTimeout) {
+                            throw new Exception($"Focuser stuck at position {lastPosition} beyond {SameFocuserPositionTimeout} timeout");
+                        }
+                    } else {
+                        samePositionCount = 0;
+                    }
+                    lastPosition = device.Position;
                 }
 
                 if (reEnableTempComp) {
@@ -182,7 +195,7 @@ namespace NINA.Equipment.Equipment.MyFocuser {
         }
 
         protected override Focuser GetInstance(string id) {
-            return new Focuser(id);
+            return DeviceDispatcher.Invoke(DeviceDispatcherType, () => new Focuser(id));
         }
     }
 }
