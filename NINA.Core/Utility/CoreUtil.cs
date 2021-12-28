@@ -71,6 +71,12 @@ namespace NINA.Core.Utility {
             }
         }
 
+        public static string UserAgent {
+            get {
+                return $"N.I.N.A./{Version} ({Environment.OSVersion}; {(Environment.Is64BitOperatingSystem ? "Win64" : "Win32")}; {(Environment.Is64BitProcess ? "x64" : "x86")})";
+            }
+        }
+
         public static string GetUniqueFilePath(string fullPath) {
             int count = 1;
 
