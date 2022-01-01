@@ -1,7 +1,6 @@
 ﻿#region "copyright"
-
 /*
-    Copyright © 2016 - 2021 Stefan Berg <isbeorn86+NINA@googlemail.com> and the N.I.N.A. contributors
+    Copyright © 2016 - 2022 Stefan Berg <isbeorn86+NINA@googlemail.com> and the N.I.N.A. contributors 
 
     This file is part of N.I.N.A. - Nighttime Imaging 'N' Astronomy.
 
@@ -9,9 +8,7 @@
     License, v. 2.0. If a copy of the MPL was not distributed with this
     file, You can obtain one at http://mozilla.org/MPL/2.0/.
 */
-
 #endregion "copyright"
-
 using Newtonsoft.Json;
 using NINA.Core.Enum;
 using NINA.Equipment.Equipment.MyCamera;
@@ -532,7 +529,16 @@ namespace NINA.Sequencer.Container {
                 startup.Add(wait);
             }
 
-            var firstInstruction = Items.FirstOrDefault(x => (x as SimpleExposure).Enabled);
+            // Find the first valid instruction to determine which filter is currently relevant
+            var firstInstruction = Items.FirstOrDefault(x => {
+                if (x is SimpleExposure exp) {
+                    var loop = exp.GetLoopCondition() as LoopCondition;
+                    if (exp.Enabled && exp.Status == SequenceEntityStatus.CREATED && loop != null && loop.CompletedIterations < loop.Iterations) {
+                        return true;
+                    }
+                }
+                return false;
+            });
             if (firstInstruction != null) {
                 startup.Add((ISequenceItem)(firstInstruction as SimpleExposure).GetSwitchFilter().Clone());
             }

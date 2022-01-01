@@ -1,7 +1,6 @@
 #region "copyright"
-
 /*
-    Copyright © 2016 - 2021 Stefan Berg <isbeorn86+NINA@googlemail.com> and the N.I.N.A. contributors
+    Copyright © 2016 - 2022 Stefan Berg <isbeorn86+NINA@googlemail.com> and the N.I.N.A. contributors 
 
     This file is part of N.I.N.A. - Nighttime Imaging 'N' Astronomy.
 
@@ -9,9 +8,7 @@
     License, v. 2.0. If a copy of the MPL was not distributed with this
     file, You can obtain one at http://mozilla.org/MPL/2.0/.
 */
-
 #endregion "copyright"
-
 using NINA.ViewModel;
 using NINA.WPF.Base.ViewModel.Equipment.Camera;
 using NINA.WPF.Base.ViewModel.Equipment.Dome;
@@ -48,8 +45,6 @@ namespace NINA.Utility.AvalonDock {
 
         public DataTemplate PlatesolveTemplate { get; set; }
 
-        public DataTemplate PolarAlignmentTemplate { get; set; }
-
         public DataTemplate GuiderTemplate { get; set; }
 
         public DataTemplate FilterWheelTemplate { get; set; }
@@ -78,13 +73,13 @@ namespace NINA.Utility.AvalonDock {
 
         public DataTemplate SwitchTemplate { get; set; }
         public DataTemplate FlatDeviceTemplate { get; set; }
-        public DataTemplate ExposureCalculatorTemplate { get; set; }
 
         public DataTemplate DomeTemplate { get; set; }
 
         public DataTemplate FailedToLoadTemplate { get; set; }
 
         public override System.Windows.DataTemplate SelectTemplate(object item, System.Windows.DependencyObject container) {
+            if (item == null) { return FailedToLoadTemplate; }
             switch (item) {
                 case CameraVM _:
                     return CameraTemplate;
@@ -94,9 +89,6 @@ namespace NINA.Utility.AvalonDock {
 
                 case AnchorablePlateSolverVM _:
                     return PlatesolveTemplate;
-
-                case PolarAlignmentVM _:
-                    return PolarAlignmentTemplate;
 
                 case GuiderVM _:
                     return GuiderTemplate;
@@ -142,9 +134,6 @@ namespace NINA.Utility.AvalonDock {
 
                 case FlatDeviceVM _:
                     return FlatDeviceTemplate;
-
-                case ExposureCalculatorVM _:
-                    return ExposureCalculatorTemplate;
 
                 case DomeVM _:
                     return DomeTemplate;

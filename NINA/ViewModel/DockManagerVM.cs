@@ -1,7 +1,6 @@
 #region "copyright"
-
 /*
-    Copyright © 2016 - 2021 Stefan Berg <isbeorn86+NINA@googlemail.com> and the N.I.N.A. contributors
+    Copyright © 2016 - 2022 Stefan Berg <isbeorn86+NINA@googlemail.com> and the N.I.N.A. contributors 
 
     This file is part of N.I.N.A. - Nighttime Imaging 'N' Astronomy.
 
@@ -9,9 +8,7 @@
     License, v. 2.0. If a copy of the MPL was not distributed with this
     file, You can obtain one at http://mozilla.org/MPL/2.0/.
 */
-
 #endregion "copyright"
-
 using NINA.Utility;
 using NINA.Profile.Interfaces;
 using System;
@@ -64,13 +61,11 @@ namespace NINA.ViewModel {
                              IWeatherDataVM weatherDataVM,
                              IDomeVM domeVM,
                              IAnchorableSnapshotVM snapshotVM,
-                             IPolarAlignmentVM polarAlignmentVM,
                              IAnchorablePlateSolverVM plateSolverVM,
                              ITelescopeVM telescopeVM,
                              IGuiderVM guiderVM,
                              IFocusTargetsVM focusTargetsVM,
                              IAutoFocusToolVM autoFocusToolVM,
-                             IExposureCalculatorVM exposureCalculatorVM,
                              IImageHistoryVM imageHistoryVM,
                              IImageControlVM imageControlVM,
                              IImageStatisticsVM imageStatisticsVM,
@@ -102,10 +97,8 @@ namespace NINA.ViewModel {
             initAnchorables.Add(snapshotVM);
             initAnchorables.Add(thumbnailVM);
             initAnchorables.Add(plateSolverVM);
-            initAnchorables.Add(polarAlignmentVM);
             initAnchorables.Add(autoFocusToolVM);
             initAnchorables.Add(focusTargetsVM);
-            initAnchorables.Add(exposureCalculatorVM);
             initAnchorables.Add(flatDeviceVM);
             initAnchorables.Add(safetyMonitorVM);
 
@@ -128,10 +121,8 @@ namespace NINA.ViewModel {
             initAnchorableTools.Add(snapshotVM);
             initAnchorableTools.Add(thumbnailVM);
             initAnchorableTools.Add(plateSolverVM);
-            initAnchorableTools.Add(polarAlignmentVM);
             initAnchorableTools.Add(autoFocusToolVM);
             initAnchorableTools.Add(focusTargetsVM);
-            initAnchorableTools.Add(exposureCalculatorVM);
 
             ClosingCommand = new RelayCommand(ClosingApplication);
 
@@ -187,9 +178,10 @@ namespace NINA.ViewModel {
 
                     var serializer = new AvalonDock.Layout.Serialization.XmlLayoutSerializer(_dockmanager);
                     serializer.LayoutSerializationCallback += (s, args) => {
-                        var d = (DockableVM)args.Content;
-                        d.IsVisible = true;
-                        args.Content = d;
+                        if (args.Content is DockableVM d) {
+                            d.IsVisible = true;
+                            args.Content = d;
+                        }
                     };
 
                     LoadDefaultLayout(serializer);

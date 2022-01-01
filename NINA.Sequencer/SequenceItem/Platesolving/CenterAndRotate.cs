@@ -1,7 +1,7 @@
 ﻿#region "copyright"
 
 /*
-    Copyright © 2016 - 2021 Stefan Berg <isbeorn86+NINA@googlemail.com> and the N.I.N.A. contributors
+    Copyright © 2016 - 2022 Stefan Berg <isbeorn86+NINA@googlemail.com> and the N.I.N.A. contributors
 
     This file is part of N.I.N.A. - Nighttime Imaging 'N' Astronomy.
 
@@ -109,7 +109,6 @@ namespace NINA.Sequencer.SequenceItem.Platesolving {
 
             bool stoppedGuiding = false;
             try {
-                var orientation = 0.0f;
                 float rotationDistance = float.MaxValue;
 
                 stoppedGuiding = await guiderMediator.StopGuiding(token);
@@ -128,13 +127,13 @@ namespace NINA.Sequencer.SequenceItem.Platesolving {
                 var targetRotation = (float)Rotation;
 
                 /* Loop until the rotation is within tolerances*/
-                while (Math.Abs(rotationDistance) > profileService.ActiveProfile.PlateSolveSettings.RotationTolerance) {
+                do {
                     var solveResult = await Solve(progress, token);
                     if (!solveResult.Success) {
                         throw new SequenceEntityFailedException(Loc.Instance["LblPlatesolveFailed"]);
                     }
 
-                    orientation = (float)solveResult.Orientation;
+                    var orientation = (float)solveResult.Orientation;
                     rotatorMediator.Sync(orientation);
 
                     var prevTargetRotation = targetRotation;
@@ -159,12 +158,12 @@ namespace NINA.Sequencer.SequenceItem.Platesolving {
                         }
                     }
 
-                    if (AstroUtil.EuclidianModulus(rotationDistance, 360) > profileService.ActiveProfile.PlateSolveSettings.RotationTolerance) {
+                    if (!Angle.ByDegree(rotationDistance).Equals(Angle.Zero, Angle.ByDegree(profileService.ActiveProfile.PlateSolveSettings.RotationTolerance))) {
                         Logger.Info($"Rotator not inside tolerance {profileService.ActiveProfile.PlateSolveSettings.RotationTolerance} - Current {orientation}° / Target: {Rotation}° - Moving rotator relatively by {rotationDistance}°");
                         await rotatorMediator.MoveRelative(rotationDistance, token);
                         token.ThrowIfCancellationRequested();
                     }
-                };
+                } while (!Angle.ByDegree(rotationDistance).Equals(Angle.Zero, Angle.ByDegree(profileService.ActiveProfile.PlateSolveSettings.RotationTolerance)));
 
                 /* Once everything is in place do a centering of the object */
                 var centerResult = await base.DoCenter(progress, token);

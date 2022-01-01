@@ -1,7 +1,7 @@
 #region "copyright"
 
 /*
-    Copyright © 2016 - 2021 Stefan Berg <isbeorn86+NINA@googlemail.com> and the N.I.N.A. contributors
+    Copyright © 2016 - 2022 Stefan Berg <isbeorn86+NINA@googlemail.com> and the N.I.N.A. contributors
 
     This file is part of N.I.N.A. - Nighttime Imaging 'N' Astronomy.
 
@@ -38,14 +38,12 @@ namespace NINA.Profile.Interfaces {
         IMeridianFlipSettings MeridianFlipSettings { get; set; }
         IPlanetariumSettings PlanetariumSettings { get; set; }
         IPlateSolveSettings PlateSolveSettings { get; set; }
-        IPolarAlignmentSettings PolarAlignmentSettings { get; set; }
         IRotatorSettings RotatorSettings { get; set; }
         IFlatDeviceSettings FlatDeviceSettings { get; set; }
         ISequenceSettings SequenceSettings { get; set; }
         ISwitchSettings SwitchSettings { get; set; }
         ITelescopeSettings TelescopeSettings { get; set; }
         IWeatherDataSettings WeatherDataSettings { get; set; }
-        IExposureCalculatorSettings ExposureCalculatorSettings { get; set; }
         ISnapShotControlSettings SnapShotControlSettings { get; set; }
         ISafetyMonitorSettings SafetyMonitorSettings { get; set; }
         IPluginSettings PluginSettings { get; set; }

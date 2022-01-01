@@ -1,7 +1,6 @@
 #region "copyright"
-
 /*
-    Copyright © 2016 - 2021 Stefan Berg <isbeorn86+NINA@googlemail.com> and the N.I.N.A. contributors
+    Copyright © 2016 - 2022 Stefan Berg <isbeorn86+NINA@googlemail.com> and the N.I.N.A. contributors 
 
     This file is part of N.I.N.A. - Nighttime Imaging 'N' Astronomy.
 
@@ -9,9 +8,7 @@
     License, v. 2.0. If a copy of the MPL was not distributed with this
     file, You can obtain one at http://mozilla.org/MPL/2.0/.
 */
-
 #endregion "copyright"
-
 using NINA.Astrometry;
 using NINA.Core.Enum;
 using NINA.Core.Interfaces.API.SGP;
@@ -55,7 +52,6 @@ namespace NINA.ViewModel {
 
         public OptionsVM(IProfileService profileService,
                          IFilterWheelMediator filterWheelMediator,
-                         IExposureCalculatorVM exposureCalculatorVM,
                          IAllDeviceConsumer deviceConsumer,
                          IVersionCheckVM versionCheckVM,
                          ProjectVersion projectVersion,
@@ -69,7 +65,6 @@ namespace NINA.ViewModel {
             CanClose = false;
             ImageGeometry = (System.Windows.Media.GeometryGroup)System.Windows.Application.Current.Resources["SettingsSVG"];
 
-            this.exposureCalculatorVM = exposureCalculatorVM;
             DeviceConsumer = deviceConsumer;
             this.versionCheckVM = versionCheckVM;
             this.projectVersion = projectVersion;
@@ -82,7 +77,6 @@ namespace NINA.ViewModel {
             DockManagerVM = dockManagerVM;
             OpenWebRequestCommand = new RelayCommand(OpenWebRequest);
             OpenImageFileDiagCommand = new RelayCommand(OpenImageFileDiag);
-            OpenSharpCapSensorAnalysisFolderDiagCommand = new RelayCommand(OpenSharpCapSensorAnalysisFolderDiag);
             OpenSequenceTemplateDiagCommand = new RelayCommand(OpenSequenceTemplateDiag);
             OpenStartupSequenceTemplateDiagCommand = new RelayCommand(OpenStartupSequenceTemplateDiag);
             OpenTargetsFolderDiagCommand = new RelayCommand(OpenTargetsFolderDiag);
@@ -341,19 +335,6 @@ namespace NINA.ViewModel {
             }
         }
 
-        private void OpenSharpCapSensorAnalysisFolderDiag(object o) {
-            using (var diag = new System.Windows.Forms.FolderBrowserDialog()) {
-                diag.SelectedPath = ActiveProfile.ImageSettings.SharpCapSensorAnalysisFolder;
-                System.Windows.Forms.DialogResult result = diag.ShowDialog();
-                if (result == System.Windows.Forms.DialogResult.OK) {
-                    ActiveProfile.ImageSettings.SharpCapSensorAnalysisFolder = diag.SelectedPath + "\\";
-                    //var vm = (ApplicationVM)Application.Current.Resources["AppVM"];
-                    var sensorAnalysisData = exposureCalculatorVM.LoadSensorAnalysisData(ActiveProfile.ImageSettings.SharpCapSensorAnalysisFolder);
-                    Notification.ShowInformation(String.Format(Loc.Instance["LblSharpCapSensorAnalysisLoadedFormat"], sensorAnalysisData.Count));
-                }
-            }
-        }
-
         public IDockManagerVM DockManagerVM { get; }
 
         private void OpenSequenceTemplateDiag(object o) {
@@ -482,7 +463,6 @@ namespace NINA.ViewModel {
         public ICommand OpenASTAPFileDiagCommand { get; private set; }
 
         public ICommand OpenImageFileDiagCommand { get; private set; }
-        public ICommand OpenSharpCapSensorAnalysisFolderDiagCommand { get; private set; }
         public ICommand SensorAnalysisFolderChangedCommand { get; private set; }
 
         public ICommand OpenSequenceTemplateDiagCommand { get; private set; }
@@ -764,7 +744,6 @@ namespace NINA.ViewModel {
 
         private ProfileMeta _selectedProfile;
         private IFilterWheelMediator filterWheelMediator;
-        private readonly IExposureCalculatorVM exposureCalculatorVM;
         private readonly IVersionCheckVM versionCheckVM;
         private readonly ProjectVersion projectVersion;
         private readonly IPlanetariumFactory planetariumFactory;

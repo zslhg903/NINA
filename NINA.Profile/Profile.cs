@@ -1,7 +1,7 @@
 #region "copyright"
 
 /*
-    Copyright © 2016 - 2021 Stefan Berg <isbeorn86+NINA@googlemail.com> and the N.I.N.A. contributors
+    Copyright © 2016 - 2022 Stefan Berg <isbeorn86+NINA@googlemail.com> and the N.I.N.A. contributors
 
     This file is part of N.I.N.A. - Nighttime Imaging 'N' Astronomy.
 
@@ -40,7 +40,6 @@ namespace NINA.Profile {
     [KnownType(typeof(ImageSettings))]
     [KnownType(typeof(MeridianFlipSettings))]
     [KnownType(typeof(PlateSolveSettings))]
-    [KnownType(typeof(PolarAlignmentSettings))]
     [KnownType(typeof(RotatorSettings))]
     [KnownType(typeof(FlatDeviceSettings))]
     [KnownType(typeof(SequenceSettings))]
@@ -49,7 +48,6 @@ namespace NINA.Profile {
     [KnownType(typeof(FlatWizardSettings))]
     [KnownType(typeof(PlanetariumSettings))]
     [KnownType(typeof(SwitchSettings))]
-    [KnownType(typeof(ExposureCalculatorSettings))]
     [KnownType(typeof(SnapShotControlSettings))]
     [KnownType(typeof(SafetyMonitorSettings))]
     [KnownType(typeof(PluginSettings))]
@@ -111,14 +109,12 @@ namespace NINA.Profile {
             MeridianFlipSettings = new MeridianFlipSettings();
             PlanetariumSettings = new PlanetariumSettings();
             PlateSolveSettings = new PlateSolveSettings();
-            PolarAlignmentSettings = new PolarAlignmentSettings();
             RotatorSettings = new RotatorSettings();
             FlatDeviceSettings = new FlatDeviceSettings();
             SequenceSettings = new SequenceSettings();
             SwitchSettings = new SwitchSettings();
             TelescopeSettings = new TelescopeSettings();
             WeatherDataSettings = new WeatherDataSettings();
-            ExposureCalculatorSettings = new ExposureCalculatorSettings();
             SnapShotControlSettings = new SnapShotControlSettings();
             SafetyMonitorSettings = new SafetyMonitorSettings();
             PluginSettings = new PluginSettings();
@@ -143,14 +139,12 @@ namespace NINA.Profile {
             MeridianFlipSettings.PropertyChanged += SettingsChanged;
             PlanetariumSettings.PropertyChanged += SettingsChanged;
             PlateSolveSettings.PropertyChanged += SettingsChanged;
-            PolarAlignmentSettings.PropertyChanged += SettingsChanged;
             RotatorSettings.PropertyChanged += SettingsChanged;
             FlatDeviceSettings.PropertyChanged += SettingsChanged;
             SequenceSettings.PropertyChanged += SettingsChanged;
             SwitchSettings.PropertyChanged += SettingsChanged;
             TelescopeSettings.PropertyChanged += SettingsChanged;
             WeatherDataSettings.PropertyChanged += SettingsChanged;
-            ExposureCalculatorSettings.PropertyChanged += SettingsChanged;
             SnapShotControlSettings.PropertyChanged += SettingsChanged;
             SafetyMonitorSettings.PropertyChanged += SettingsChanged;
             PluginSettings.PropertyChanged += SettingsChanged;
@@ -253,9 +247,6 @@ namespace NINA.Profile {
         public IPlateSolveSettings PlateSolveSettings { get; set; }
 
         [DataMember]
-        public IPolarAlignmentSettings PolarAlignmentSettings { get; set; }
-
-        [DataMember]
         public IRotatorSettings RotatorSettings { get; set; }
 
         [DataMember]
@@ -278,9 +269,6 @@ namespace NINA.Profile {
 
         [DataMember]
         public IPlanetariumSettings PlanetariumSettings { get; set; }
-
-        [DataMember]
-        public IExposureCalculatorSettings ExposureCalculatorSettings { get; set; }
 
         [DataMember]
         public ISnapShotControlSettings SnapShotControlSettings { get; set; }

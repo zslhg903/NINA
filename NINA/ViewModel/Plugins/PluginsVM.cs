@@ -1,7 +1,6 @@
 ﻿#region "copyright"
-
 /*
-    Copyright © 2016 - 2021 Stefan Berg <isbeorn86+NINA@googlemail.com> and the N.I.N.A. contributors
+    Copyright © 2016 - 2022 Stefan Berg <isbeorn86+NINA@googlemail.com> and the N.I.N.A. contributors 
 
     This file is part of N.I.N.A. - Nighttime Imaging 'N' Astronomy.
 
@@ -9,9 +8,7 @@
     License, v. 2.0. If a copy of the MPL was not distributed with this
     file, You can obtain one at http://mozilla.org/MPL/2.0/.
 */
-
 #endregion "copyright"
-
 using NINA.Core.Locale;
 using NINA.Core.Model;
 using NINA.Core.Utility;
@@ -54,6 +51,7 @@ namespace NINA.ViewModel.Plugins {
                 }
             });
             UpdatePluginCommand = new AsyncCommand<bool>(() => InstallPlugin(true));
+            UpdateAllPluginsCommand = new AsyncCommand<bool>(() => UpdateAllPlugins(), (o) => AvailablePluginUpdateCount > 0);
             InstallPluginCommand = new AsyncCommand<bool>(() => InstallPlugin(false));
             CancelInstallPluginCommand = new RelayCommand((object o) => { try { installCts?.Cancel(); } catch (Exception) { } });
             CancelFetchPluginsCommand = new RelayCommand((object o) => { try { fetchCts?.Cancel(); } catch (Exception) { } });
@@ -137,6 +135,31 @@ namespace NINA.ViewModel.Plugins {
                         Logger.Error(ex);
                         Notification.ShowError(string.Format(Loc.Instance["LblPluginInstallationFailed"], manifest.Name));
                     }
+                    AvailablePluginUpdateCount = AvailablePlugins.Where(x => x.State == PluginState.UpdateAvailable)?.Count() ?? 0;
+                    return true;
+                }
+            });
+        }
+
+        private Task<bool> UpdateAllPlugins() {
+            return Task.Run(async () => {
+                using (installCts = new CancellationTokenSource()) {
+                    try {
+                        var installer = new PluginInstaller();
+                        foreach (var manifest in AvailablePlugins.Where(x => x.State == PluginState.UpdateAvailable)) {
+                            try {
+                                await installer.Install(manifest, true, installCts.Token);
+                                manifest.State = PluginState.InstalledAndRequiresRestart;
+                            } catch (OperationCanceledException) {
+                                throw;
+                            } catch (Exception ex) {
+                                Logger.Error(ex);
+                                Notification.ShowError(string.Format(Loc.Instance["LblPluginInstallationFailed"], manifest.Name));
+                            }
+                        }
+                    } catch (OperationCanceledException) {
+                    }
+                    AvailablePluginUpdateCount = AvailablePlugins.Where(x => x.State == PluginState.UpdateAvailable)?.Count() ?? 0;
                     return true;
                 }
             });
@@ -171,6 +194,7 @@ namespace NINA.ViewModel.Plugins {
         public ICommand RestartCommand { get; }
 
         public IAsyncCommand UpdatePluginCommand { get; }
+        public IAsyncCommand UpdateAllPluginsCommand { get; }
         public IAsyncCommand UninstallPluginCommand { get; }
 
         private ExtendedPluginManifest selectedAvailablePlugin;
@@ -263,7 +287,7 @@ namespace NINA.ViewModel.Plugins {
                 AvailablePlugins = list;
                 SelectedAvailablePlugin = m;
 
-                AvailablePluginUpdateCount = AvailablePlugins.Where(x => x.State == PluginState.UpdateAvailable).Count();
+                AvailablePluginUpdateCount = AvailablePlugins.Where(x => x.State == PluginState.UpdateAvailable)?.Count() ?? 0;
             } catch (OperationCanceledException) {
             } catch (Exception ex) {
                 Logger.Error(ex);

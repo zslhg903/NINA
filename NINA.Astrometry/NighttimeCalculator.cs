@@ -1,7 +1,7 @@
 ﻿#region "copyright"
 
 /*
-    Copyright © 2016 - 2021 Stefan Berg <isbeorn86+NINA@googlemail.com> and the N.I.N.A. contributors
+    Copyright © 2016 - 2022 Stefan Berg <isbeorn86+NINA@googlemail.com> and the N.I.N.A. contributors
 
     This file is part of N.I.N.A. - Nighttime Imaging 'N' Astronomy.
 
@@ -62,7 +62,7 @@ namespace NINA.Astrometry {
 
         public static DateTime GetReferenceDate(DateTime reference) {
             DateTime d = reference;
-            if (d.Hour > 12) {
+            if (d.Hour > 12 || (d.Hour == 12 && d.Minute > 0)) {
                 d = new DateTime(d.Year, d.Month, d.Day, 12, 0, 0, reference.Kind);
             } else {
                 var tmp = d.AddDays(-1);
