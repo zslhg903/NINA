@@ -134,7 +134,7 @@ namespace NINA.ViewModel {
         }
 
         private void OpenHorizonFilePathDiag(object obj) {
-            var dialog = GetFilteredFileDialog(string.Empty, string.Empty, "Horizon File|*.hrz;*.txt|MountWizzard4 Horizon File|*.hpts");
+            var dialog = GetFilteredFileDialog(string.Empty, string.Empty, "Horizon File|*.hrz;*.hzn;*.txt|MountWizzard4 Horizon File|*.hpts");
             if (dialog.ShowDialog() == true) {
                 HorizonFilePath = dialog.FileName;
             }
@@ -514,7 +514,8 @@ namespace NINA.ViewModel {
             new CultureInfo("pt-PT"),
             new CultureInfo("el-GR"),
             new CultureInfo("cs-CZ"),
-            new CultureInfo("ca-ES")
+            new CultureInfo("ca-ES"),
+            new CultureInfo("nb-NO")
         };
 
         public ObservableCollection<CultureInfo> AvailableLanguages {

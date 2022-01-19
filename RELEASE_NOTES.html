@@ -30,13 +30,14 @@ More details at <a href="https://nighttime-imaging.eu/donate/" target="_blank">n
 <h1 id="version-2.0-beta">Version 2.0 - Beta</h1>
 <p>The Release Notes below will only mention the changes compared to the last released version.<br />
 To identify what has changed in between beta builds, please refer to the <a href="https://bitbucket.org/Isbeorn/nina/commits/branch/release/2.0">bitbucket commit history</a></p>
-<h2 id="change-of-setting-locations">Change of setting locations</h2>
+<h2 id="change-of-existing-settings-and-panels">Change of existing settings and panels</h2>
 <ul>
 <li>Options page tab location is moved to the left instead of the top to be similar to main tabs</li>
 <li>Sequencer end options have been moved into the simple sequencer tab</li>
-<li>Meridian Flip settings show no longer an enabled flag, but can be enabled in the simple sequencer or added as a trigger into the advanced sequencer instead</li>
+<li>Meridian Flip settings show no longer an enabled flag, but must be enabled in the simple sequencer screen or added as a trigger into the advanced sequencer instead</li>
 <li>Autofocus options have been moved into a separate tab</li>
 <li>PHD2 specific settings are now available in the equipment guider tab after connection</li>
+<li>Optimal exposure calculator is removed from the core application, but available as a plugin</li>
 </ul>
 <h2 id="complete-sequencer-rework">Complete Sequencer Rework</h2>
 <h3 id="sequence-tab-changed-to-show-a-sequence-navigation-first">Sequence Tab changed to show a sequence navigation first</h3>
@@ -118,6 +119,12 @@ To identify what has changed in between beta builds, please refer to the <a href
 <li>Replacing of the complete targets is removed, as this is not necessary.</li>
 <li>Possibility to manually enter target rotation</li>
 <li>A new multi action button replaces the slew button. This button can either &quot;slew&quot;, &quot;slew and center&quot; or &quot;slew, center and rotate&quot; your current framing</li>
+<li>Improved precision when dragging the rectangle around, especially for longer distances</li>
+<li>Added a new option to preserve the alignment when being far away from celestial equator where panels won't be perfectly aligned to a rectangle anymore when having the same rotation</li>
+<li>Visually show the misalignment when having the same rotation for each panel when being further away from the celestial equator</li>
+<li>Added a new grid showing the mosaic panel coordinates and orientations</li>
+<li>Added a center dot for the framing rectangle</li>
+<li>A new toggle is available to toggle the sky background instead of the framing rectangle</li>
 </ul>
 <h2 id="imaging-tab-sequence-panel">Imaging Tab - Sequence Panel</h2>
 <ul>
@@ -251,6 +258,9 @@ To identify what has changed in between beta builds, please refer to the <a href
 <li>Various layout improvements and redesign of controls</li>
 <li>Flat Wizard page controls are streamlined with the rest of the application by replacing the sliders with steppers</li>
 <li>When closing a dock panel in the imaging tab and reopening it again, the position is properly restored</li>
+<li>Cooling charts in the camera equipment tab have been merged into one single chart with the history size increased from 100 to 1000</li>
+<li>On web requests the user-agent header is now filled properly</li>
+<li>An autofocus indicator in the HFR history will no longer change the Y-Axis scale</li>
 </ul>
 <h3 id="subsampling">Subsampling</h3>
 <ul>

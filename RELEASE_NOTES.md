@@ -10,13 +10,14 @@ More details at <a href="https://nighttime-imaging.eu/donate/" target="_blank">n
 The Release Notes below will only mention the changes compared to the last released version.  
 To identify what has changed in between beta builds, please refer to the [bitbucket commit history](https://bitbucket.org/Isbeorn/nina/commits/branch/release/2.0)
 
-## Change of setting locations
+## Change of existing settings and panels
 
 - Options page tab location is moved to the left instead of the top to be similar to main tabs
 - Sequencer end options have been moved into the simple sequencer tab
-- Meridian Flip settings show no longer an enabled flag, but can be enabled in the simple sequencer or added as a trigger into the advanced sequencer instead
+- Meridian Flip settings show no longer an enabled flag, but must be enabled in the simple sequencer screen or added as a trigger into the advanced sequencer instead
 - Autofocus options have been moved into a separate tab
 - PHD2 specific settings are now available in the equipment guider tab after connection
+- Optimal exposure calculator is removed from the core application, but available as a plugin
 
 ## Complete Sequencer Rework
 
@@ -74,6 +75,12 @@ To identify what has changed in between beta builds, please refer to the [bitbuc
 - Replacing of the complete targets is removed, as this is not necessary. 
 - Possibility to manually enter target rotation 
 - A new multi action button replaces the slew button. This button can either "slew", "slew and center" or "slew, center and rotate" your current framing
+- Improved precision when dragging the rectangle around, especially for longer distances
+- Added a new option to preserve the alignment when being far away from celestial equator where panels won't be perfectly aligned to a rectangle anymore when having the same rotation
+- Visually show the misalignment when having the same rotation for each panel when being further away from the celestial equator
+- Added a new grid showing the mosaic panel coordinates and orientations
+- Added a center dot for the framing rectangle
+- A new toggle is available to toggle the sky background instead of the framing rectangle
 
 ## Imaging Tab - Sequence Panel
 - As the new sequencer has a dynamic operation mode, the old summary is not feasible anymore when using the advanced sequencer
@@ -190,6 +197,9 @@ To identify what has changed in between beta builds, please refer to the [bitbuc
 - Various layout improvements and redesign of controls
 - Flat Wizard page controls are streamlined with the rest of the application by replacing the sliders with steppers
 - When closing a dock panel in the imaging tab and reopening it again, the position is properly restored
+- Cooling charts in the camera equipment tab have been merged into one single chart with the history size increased from 100 to 1000
+- On web requests the user-agent header is now filled properly
+- An autofocus indicator in the HFR history will no longer change the Y-Axis scale
 
 ### Subsampling
 - The sub sample button above the image panel has been removed

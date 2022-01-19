@@ -1452,6 +1452,24 @@ namespace NINA.Core.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Takes an exposure for the given duration, gain and offset for the specified region of interest.
+        /// </summary>
+        internal static string Lbl_SequenceItem_Imaging_TakeSubframeExposure_Description {
+            get {
+                return ResourceManager.GetString("Lbl_SequenceItem_Imaging_TakeSubframeExposure_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Take Subframe Exposure.
+        /// </summary>
+        internal static string Lbl_SequenceItem_Imaging_TakeSubframeExposure_Name {
+            get {
+                return ResourceManager.GetString("Lbl_SequenceItem_Imaging_TakeSubframeExposure_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Moves the instruction down by one position.
         ///If the position below it is an instruction set that is expanded, it will be moved inside the instruction set.
         ///If the position below it is an instruction set that is not currently expanded, it will be moved below the instruction set..
@@ -7206,6 +7224,15 @@ namespace NINA.Core.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dome did not report shutter movement or failure after completing the request. This is non conformant and dangerous behavior. Please report this to your dome vendor..
+        /// </summary>
+        internal static string LblDomeShutterDidNotRespond {
+            get {
+                return ResourceManager.GetString("LblDomeShutterDidNotRespond", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Open Shutter.
         /// </summary>
         internal static string LblDomeShutterOpen {
@@ -10728,6 +10755,15 @@ namespace NINA.Core.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mosaic Panels.
+        /// </summary>
+        internal static string LblMosaicPanels {
+            get {
+                return ResourceManager.GetString("LblMosaicPanels", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The mount&apos;s clock differs from the computer&apos;s clock by {0:0} seconds. This may lead to inaccurate pointing and issues with plate solving. Please review your mount&apos;s documentation regarding time configuration..
         /// </summary>
         internal static string LblMountTimeDifferenceTooLarge {
@@ -12687,6 +12723,26 @@ namespace NINA.Core.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Preserve alignment.
+        /// </summary>
+        internal static string LblPreserveAlignment {
+            get {
+                return ResourceManager.GetString("LblPreserveAlignment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Having this option enabled will ensure that the panels align to a single rectangular panel, but will result in different rotation angles for each panel. 
+        ///This option should be enabled when automatic camera rotation is available or when manual rotation of the camera is possible for each mosaic panel.
+        ///.
+        /// </summary>
+        internal static string LblPreserveAlignmentTooltip {
+            get {
+                return ResourceManager.GetString("LblPreserveAlignmentTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pressure.
         /// </summary>
         internal static string LblPressure {
@@ -13340,6 +13396,33 @@ namespace NINA.Core.Locale {
         internal static string LblRms {
             get {
                 return ResourceManager.GetString("LblRms", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ROI.
+        /// </summary>
+        internal static string LblROI {
+            get {
+                return ResourceManager.GetString("LblROI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Region of Interest expressed in percentage relative to the center.
+        /// </summary>
+        internal static string LblROIPercentageTooltip {
+            get {
+                return ResourceManager.GetString("LblROIPercentageTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When enabled, the sky background will be rotated instead of the rectangle..
+        /// </summary>
+        internal static string LblRotateSkyTooltip {
+            get {
+                return ResourceManager.GetString("LblRotateSkyTooltip", resourceCulture);
             }
         }
         
