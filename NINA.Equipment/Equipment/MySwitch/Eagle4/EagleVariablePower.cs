@@ -1,12 +1,6 @@
 #region "copyright"
-<<<<<<< HEAD
-
-/*
-    Copyright © 2016 - 2022 Stefan Berg <isbeorn86+NINA@googlemail.com> and the N.I.N.A. contributors
-=======
 /*
     Copyright © 2016 - 2022 Stefan Berg <isbeorn86+NINA@googlemail.com> and the N.I.N.A. contributors 
->>>>>>> release/2.0
 
     This file is part of N.I.N.A. - Nighttime Imaging 'N' Astronomy.
 
@@ -14,13 +8,7 @@
     License, v. 2.0. If a copy of the MPL was not distributed with this
     file, You can obtain one at http://mozilla.org/MPL/2.0/.
 */
-<<<<<<< HEAD
-
 #endregion "copyright"
-
-=======
-#endregion "copyright"
->>>>>>> release/2.0
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using NINA.Core.Utility;
