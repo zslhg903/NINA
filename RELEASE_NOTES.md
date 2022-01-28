@@ -179,6 +179,7 @@ To identify what has changed in between beta builds, please refer to the [bitbuc
 - Empty gain and offset settings will now always reflect the settings set in Equipment - Camera (valid for imaging, sequence and auto-focus)
 - Any active field of view or ocular rotation angle is now imported along with coordinates from Stellarium and TheSky X
 - New translation for Czech (Čeština) has been added
+- New translation for Norwegian Bokmal (Norsk bokmål) has been added
 - Can send the sequencer target coordinates to the Framing Wizard
 - Improved Meridian Flip reliability by retrying when changing the pier or slewing close to the meridian fails. NINA now provides a warning suggesting to increase the meridian wait time if this hapens
 - Guider settings moved to the guider equipment page making them easier to find and exposing only settings relevant for each type of guider
@@ -200,6 +201,8 @@ To identify what has changed in between beta builds, please refer to the [bitbuc
 - Cooling charts in the camera equipment tab have been merged into one single chart with the history size increased from 100 to 1000
 - On web requests the user-agent header is now filled properly
 - An autofocus indicator in the HFR history will no longer change the Y-Axis scale
+- The automatic roll over to a blind solver can now be switched off in the plate solver tab
+- For the first image in an image view control, the image will now be shown as size to fit instead of 1:1 by default
 
 ### Subsampling
 - The sub sample button above the image panel has been removed

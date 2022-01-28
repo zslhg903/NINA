@@ -12,6 +12,7 @@
 
 #endregion "copyright"
 
+using NINA.Core.Utility.Extensions;
 using System;
 using System.Globalization;
 using System.Windows;
@@ -202,8 +203,8 @@ namespace NINA.WPF.Base.View {
                 val = 0;
             }
 
-            PART_ScaleTransform.ScaleX = val;
-            PART_ScaleTransform.ScaleY = val;
+            PART_ScaleTransform.ScaleX = Math.Floor(val * 100) / 100d;
+            PART_ScaleTransform.ScaleY = Math.Floor(val * 100) / 100d;
 
             PART_TextblockScale.Text = val.ToString("P0", CultureInfo.InvariantCulture);
         }
@@ -301,6 +302,17 @@ namespace NINA.WPF.Base.View {
 
         private void ButtonZoomOneToOne_Click(object sender, RoutedEventArgs e) {
             Zoom(1);
+        }
+
+        private void PART_Canvas_SizeChanged(object sender, SizeChangedEventArgs e) {
+            if (sender is Canvas i && e.PreviousSize.Width == 0 && e.PreviousSize.Height == 0 && e.NewSize.Width > 0 && e.NewSize.Height > 0) {
+                var view = i.FindParent<ImageView>();
+                if(view != null) { 
+                    view.RecalculateScalingFactors();
+                    view.Zoom(view.fittingScale * 0.9);
+                    view.Zoom(view.fittingScale);
+                }
+            }
         }
     }
 }
