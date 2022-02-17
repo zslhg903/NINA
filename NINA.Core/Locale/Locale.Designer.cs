@@ -2999,6 +2999,15 @@ namespace NINA.Core.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ASCOM Driver Error.
+        /// </summary>
+        internal static string LblASCOMDriverError {
+            get {
+                return ResourceManager.GetString("LblASCOMDriverError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ASCOM Platform Version is outdated. Please update to the latest ASCOM platform version. Otherwise the application might not be able to connect to all ASCOM devices..
         /// </summary>
         internal static string LblASCOMPlatformOutdated {
@@ -3085,6 +3094,15 @@ namespace NINA.Core.Locale {
         internal static string LblASTAPShort {
             get {
                 return ResourceManager.GetString("LblASTAPShort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ASTAP Warning.
+        /// </summary>
+        internal static string LblASTAPWarning {
+            get {
+                return ResourceManager.GetString("LblASTAPWarning", resourceCulture);
             }
         }
         
@@ -4379,6 +4397,15 @@ namespace NINA.Core.Locale {
         internal static string LblCanonCameraDisconnected {
             get {
                 return ResourceManager.GetString("LblCanonCameraDisconnected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Canon Driver Error.
+        /// </summary>
+        internal static string LblCanonDriverError {
+            get {
+                return ResourceManager.GetString("LblCanonDriverError", resourceCulture);
             }
         }
         
@@ -12165,6 +12192,15 @@ namespace NINA.Core.Locale {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to PHD2 Warning.
+        /// </summary>
+        internal static string LblPhd2Warning {
+            get {
+                return ResourceManager.GetString("LblPhd2Warning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Keep guide stars off sensor edges by at least.
         /// </summary>
         internal static string LblPixelMargin {
@@ -13706,7 +13742,7 @@ namespace NINA.Core.Locale {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to For DSLRs the image file format setting is ignored. RAW format will be saved instead!.
+        ///   Looks up a localized string similar to This setting is ignored for DSLRs when using the native driver. The camera&apos;s RAW format will be saved instead!.
         /// </summary>
         internal static string LblSaveImageAsDSLRNote {
             get {
@@ -17579,6 +17615,15 @@ namespace NINA.Core.Locale {
         internal static string LblZoomStretch {
             get {
                 return ResourceManager.GetString("LblZoomStretch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ZWO Driver Error.
+        /// </summary>
+        internal static string LblZWODriverError {
+            get {
+                return ResourceManager.GetString("LblZWODriverError", resourceCulture);
             }
         }
         

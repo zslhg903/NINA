@@ -81,6 +81,7 @@ To identify what has changed in between beta builds, please refer to the [bitbuc
 - Added a new grid showing the mosaic panel coordinates and orientations
 - Added a center dot for the framing rectangle
 - A new toggle is available to toggle the sky background instead of the framing rectangle
+- The Sky Object Annotation will now properly draw elliptical objects when position angle and size information is available instead of always showing them as circular
 
 ## Imaging Tab - Sequence Panel
 - As the new sequencer has a dynamic operation mode, the old summary is not feasible anymore when using the advanced sequencer
@@ -203,6 +204,7 @@ To identify what has changed in between beta builds, please refer to the [bitbuc
 - An autofocus indicator in the HFR history will no longer change the Y-Axis scale
 - The automatic roll over to a blind solver can now be switched off in the plate solver tab
 - For the first image in an image view control, the image will now be shown as size to fit instead of 1:1 by default
+- Profiles can now store an arbitrary description
 
 ### Subsampling
 - The sub sample button above the image panel has been removed

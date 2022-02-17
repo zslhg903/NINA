@@ -53,10 +53,11 @@ using NINA.WPF.Base.Interfaces.ViewModel;
 using NINA.Sequencer.SequenceItem.Imaging;
 using NINA.Sequencer.Trigger.Autofocus;
 using NINA.Equipment.Equipment.MyCamera;
+using System.ComponentModel;
 
 namespace NINA.ViewModel.Sequencer {
 
-    internal class Sequence2VM : SequencerBaseVM, ISequence2VM {
+    internal class Sequence2VM : BaseVM, ISequence2VM {
         private IApplicationStatusMediator applicationStatusMediator;
         private ISequenceMediator sequenceMediator;
         private ICameraMediator cameraMediator;
@@ -68,8 +69,8 @@ namespace NINA.ViewModel.Sequencer {
             IApplicationStatusMediator applicationStatusMediator,
             ICameraMediator cameraMediator,
             ISequencerFactory factory
-
             ) : base(profileService) {
+            
             this.applicationStatusMediator = applicationStatusMediator;
 
             this.sequenceMediator = sequenceMediator;
@@ -90,6 +91,48 @@ namespace NINA.ViewModel.Sequencer {
             DetachCommand = new GalaSoft.MvvmLight.Command.RelayCommand<object>(Detach);
             SkipCurrentItemCommand = new AsyncCommand<bool>(SkipCurrentItem);
             SkipToEndOfSequenceCommand = new AsyncCommand<bool>(SkipToEndOfSequence);
+        }
+
+        private string savePath = string.Empty;
+        public string SavePath {
+            get => savePath;
+            set {
+                savePath = value;
+                if(!string.IsNullOrWhiteSpace(value)) {
+                    DetachSequencerINPC();
+                    Sequencer.MainContainer.SequenceTitle = Path.GetFileNameWithoutExtension(value);
+                    AttachSequencerINPC();
+                }                
+                RaisePropertyChanged();
+            }
+        }
+
+        private ISequencer sequencer;
+        public ISequencer Sequencer {
+            get => sequencer;
+            private set {
+                DetachSequencerINPC();
+                sequencer = value;
+                AttachSequencerINPC();
+            }
+        }
+
+        private void DetachSequencerINPC() {
+            if (sequencer != null && sequencer.MainContainer is INotifyPropertyChanged oldinpc) {
+                oldinpc.PropertyChanged -= Sequencer_PropertyChanged;
+            }
+        }
+
+        private void AttachSequencerINPC() {
+            if (sequencer != null && sequencer.MainContainer is INotifyPropertyChanged newinpc) {
+                newinpc.PropertyChanged += Sequencer_PropertyChanged;
+            }
+        }
+
+        private void Sequencer_PropertyChanged(object sender, PropertyChangedEventArgs e) {
+            if(e.PropertyName == nameof(Sequencer.MainContainer.SequenceTitle)) {
+                SavePath = string.Empty;
+            }
         }
 
         private bool IsSimpleSequencerEnabled() {
@@ -149,6 +192,7 @@ namespace NINA.ViewModel.Sequencer {
                         try {
                             LoadSequenceFromFile(profileService.ActiveProfile.SequenceSettings.StartupSequenceTemplate);
                             SavePath = string.Empty;
+                            Sequencer.MainContainer.ClearHasChanged();
                         } catch (Exception ex) {
                             Logger.Error("Startup Sequence failed to load", ex);
                         }
@@ -254,8 +298,8 @@ namespace NINA.ViewModel.Sequencer {
                     SavePath = file;
                     Sequencer.MainContainer = container;
                     Sequencer.MainContainer.Validate();
-                    Sequencer.MainContainer.ClearHasChanged();
                     SavePath = file;
+                    Sequencer.MainContainer.ClearHasChanged();
                 } else {
                     Logger.Error("Unable to load sequence - Sequencer root element must be sequence root container!");
                     Notification.ShowError(Loc.Instance["Lbl_Sequencer_RootElementMustBeRootContainer"]);
@@ -393,7 +437,13 @@ namespace NINA.ViewModel.Sequencer {
         }
 
         public IList<IDeepSkyObjectContainer> GetDeepSkyObjectContainerTemplates() {
-            return TemplateController.Templates.Where(x => x.Container is IDeepSkyObjectContainer).Select(y => y.Container as IDeepSkyObjectContainer).ToList();
+            var emptyContainer = SequencerFactory.GetContainer<DeepSkyObjectContainer>();
+            var templates = TemplateController.Templates.Where(x => x.Container is IDeepSkyObjectContainer).Select(y => y.Container as IDeepSkyObjectContainer).ToList();
+            
+            var items = new List<IDeepSkyObjectContainer>();
+            items.Add(emptyContainer);
+            items.AddRange(templates);
+            return items;
         }
 
         public void AddTarget(IDeepSkyObjectContainer container) {

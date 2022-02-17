@@ -333,6 +333,7 @@
     <Compile Include="Utility\AvalonDock\PaneStyleSelector.cs" />
     <Compile Include="Utility\GlobalObjects.cs" />
     <Compile Include="Utility\IoCBindings.cs" />
+    <Compile Include="Utility\IPluggableBehaviorManager.cs" />
     <Compile Include="Utility\PaneTemplateSelector.cs" />
     <Compile Include="Utility\PluggableAutoFocusVMFactory.cs" />
     <Compile Include="Utility\PluggableBehaviorManager.cs" />
@@ -350,7 +351,6 @@
     <Compile Include="ViewModel\Plugins\PluginsVM.cs" />
     <Compile Include="ViewModel\Plugins\PluginOptionsDataTemplateSelector.cs" />
     <Compile Include="ViewModel\Sequencer\SequenceNavigationVM.cs" />
-    <Compile Include="ViewModel\Sequencer\SequencerBaseVM.cs" />
     <Compile Include="ViewModel\Sequencer\SimpleSequence\SimpleDSOContainer.cs" />
     <Compile Include="ViewModel\MainWindowVM.cs" />
     <Compile Include="ViewModel\Sequencer\SimpleSequence\SimpleEndContainer.cs" />
@@ -369,6 +369,7 @@
     <Compile Include="View\Imaging\AnchorableSequenceNavigationView.xaml.cs">
       <DependentUpon>AnchorableSequenceNavigationView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Imaging\AutoFocusDataTemplateSelector.cs" />
     <Compile Include="View\Plugins\AvailablePluginsView.xaml.cs">
       <DependentUpon>AvailablePluginsView.xaml</DependentUpon>
     </Compile>
@@ -1141,6 +1142,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Database\Migration\5.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Database\Migration\6.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="External\x64\MallinCam\mallincam.dll">

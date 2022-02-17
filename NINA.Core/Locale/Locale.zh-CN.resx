@@ -5794,7 +5794,7 @@
     <value>在后台运行一个服务，以从其他应用程序中控制内置的跟踪相机</value>
   </data>
   <data name="LblTrackingASCOMServerLoggingEnabled" xml:space="preserve">
-    <value>Tracking CCD ASCOM Server Logging</value>
+    <value>跟踪CCD ASCOM服务器日志</value>
   </data>
   <data name="LblTrackingASCOMServerPipeName" xml:space="preserve">
     <value>服务管道名称</value>
@@ -6048,5 +6048,8 @@
   <data name="LblUpdateExistingTargetInSequencerTooltip" xml:space="preserve">
     <value>点击后，将显示已有序列目标的列表。点击其中一个目标后，该目标将更新为现在的名称、坐标和旋转角度。
 此选项在马赛克模式下不可见。</value>
+  </data>
+  <data name="LblBlindSolveFailoverEnabled" xml:space="preserve">
+    <value>Use Blind Solver for Failures</value>
   </data>
 </root>

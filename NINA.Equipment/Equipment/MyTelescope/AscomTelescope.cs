@@ -533,7 +533,7 @@ namespace NINA.Equipment.Equipment.MyTelescope {
                 }
             } catch (Exception ex) {
                 Logger.Error(ex);
-                Notification.ShowError(Loc.Instance["LblMeridianFlipFailed"]);
+                Notification.ShowExternalError(Loc.Instance["LblMeridianFlipFailed"] + "" + ex.Message, Loc.Instance["LblASCOMDriverError"]);
             } finally {
                 TargetCoordinates = null;
                 TargetSideOfPier = null;
@@ -607,7 +607,7 @@ namespace NINA.Equipment.Equipment.MyTelescope {
                             }
                         } catch (Exception e) {
                             Logger.Error(e);
-                            Notification.ShowError(e.Message);
+                            Notification.ShowExternalError(e.Message, Loc.Instance["LblASCOMDriverError"]);
                         }
                     } else {
                         Logger.Warning("Telescope parked");
@@ -631,7 +631,7 @@ namespace NINA.Equipment.Equipment.MyTelescope {
                             device.PulseGuide((ASCOM.DeviceInterface.GuideDirections)direction, duration);
                         } catch (Exception e) {
                             Logger.Error(e);
-                            Notification.ShowError(e.Message);
+                            Notification.ShowExternalError(e.Message, Loc.Instance["LblASCOMDriverError"]);
                         }
                     } else {
                         Notification.ShowWarning(Loc.Instance["LblTelescopeParkedWarn"]);
@@ -656,7 +656,7 @@ namespace NINA.Equipment.Equipment.MyTelescope {
                     device.SetPark();
                 } catch (Exception e) {
                     Logger.Error(e);
-                    Notification.ShowError(e.Message);
+                    Notification.ShowExternalError(e.Message, Loc.Instance["LblASCOMDriverError"]);
                 }
             }
         }
@@ -701,7 +701,7 @@ namespace NINA.Equipment.Equipment.MyTelescope {
                     throw;
                 } catch (Exception e) {
                     Logger.Error(e);
-                    Notification.ShowError(e.Message);
+                    Notification.ShowExternalError(e.Message, Loc.Instance["LblASCOMDriverError"]);
                 } finally {
                     TargetCoordinates = null;
                 }
@@ -725,7 +725,7 @@ namespace NINA.Equipment.Equipment.MyTelescope {
                         success = true;
                     } catch (Exception ex) {
                         Logger.Error(ex);
-                        Notification.ShowError(ex.Message);
+                        Notification.ShowExternalError(ex.Message, Loc.Instance["LblASCOMDriverError"]);
                     }
                 } else {
                     Logger.Error("Telescope is not tracking to be able to sync");
@@ -741,7 +741,7 @@ namespace NINA.Equipment.Equipment.MyTelescope {
                     device.FindHome();
                 } catch (Exception e) {
                     Logger.Error(e);
-                    Notification.ShowError(e.Message);
+                    Notification.ShowExternalError(e.Message, Loc.Instance["LblASCOMDriverError"]);
                 }
             }
         }
@@ -752,7 +752,7 @@ namespace NINA.Equipment.Equipment.MyTelescope {
                     device.Unpark();
                 } catch (Exception e) {
                     Logger.Error(e);
-                    Notification.ShowError(e.Message);
+                    Notification.ShowExternalError(e.Message, Loc.Instance["LblASCOMDriverError"]);
                 }
             }
         }
@@ -782,7 +782,7 @@ namespace NINA.Equipment.Equipment.MyTelescope {
                     }
                 } catch (Exception ex) {
                     Logger.Error(ex);
-                    Notification.ShowError(ex.Message);
+                    Notification.ShowExternalError(ex.Message, Loc.Instance["LblASCOMDriverError"]);
                 }
                 return 24;
             }
@@ -1034,31 +1034,37 @@ namespace NINA.Equipment.Equipment.MyTelescope {
                 }
 
                 if (Connected && device.CanSetTracking) {
-                    // Set the mode regardless of whether it is the same as what is currently set
-                    // Some ASCOM drivers incorrectly report custom rates as Sidereal, and this can help force set the tracking mode to the desired value
-                    var currentTrackingMode = TrackingRate.TrackingMode;
-                    switch (value) {
-                        case TrackingMode.Sidereal:
-                            device.TrackingRate = DriveRates.driveSidereal;
-                            break;
+                    try {
+                        // Set the mode regardless of whether it is the same as what is currently set
+                        // Some ASCOM drivers incorrectly report custom rates as Sidereal, and this can help force set the tracking mode to the desired value
+                        var currentTrackingMode = TrackingRate.TrackingMode;
+                        switch (value) {
+                            case TrackingMode.Sidereal:
+                                device.TrackingRate = DriveRates.driveSidereal;
+                                break;
 
-                        case TrackingMode.Lunar:
-                            device.TrackingRate = DriveRates.driveLunar;
-                            break;
+                            case TrackingMode.Lunar:
+                                device.TrackingRate = DriveRates.driveLunar;
+                                break;
 
-                        case TrackingMode.Solar:
-                            device.TrackingRate = DriveRates.driveSolar;
-                            break;
+                            case TrackingMode.Solar:
+                                device.TrackingRate = DriveRates.driveSolar;
+                                break;
 
-                        case TrackingMode.King:
-                            device.TrackingRate = DriveRates.driveKing;
-                            break;
-                    }
-                    device.Tracking = (value != TrackingMode.Stopped);
-                    if (currentTrackingMode != value) {
-                        RaisePropertyChanged();
-                        RaisePropertyChanged(nameof(TrackingRate));
-                        RaisePropertyChanged(nameof(TrackingEnabled));
+                            case TrackingMode.King:
+                                device.TrackingRate = DriveRates.driveKing;
+                                break;
+                        }
+                        device.Tracking = (value != TrackingMode.Stopped);
+
+                        if (currentTrackingMode != value) {
+                            RaisePropertyChanged();
+                            RaisePropertyChanged(nameof(TrackingRate));
+                            RaisePropertyChanged(nameof(TrackingEnabled));
+                        }
+                    } catch(Exception ex) {
+                        Logger.Error(ex);
+                        Notification.ShowExternalError(ex.Message, Loc.Instance["LblASCOMDriverError"]);
                     }
                 }
             }
